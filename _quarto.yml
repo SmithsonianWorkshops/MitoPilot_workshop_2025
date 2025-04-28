@@ -1,0 +1,38 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "MitoPilot Workshop 2025"
+  navbar:
+    background: primary
+    search: true
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - section: "Setup"
+        contents:
+        - qmd/setup/01_Hydra.qmd
+        - qmd/setup/02_RstudioServer.qmd
+      - section: "Example Fish Project"
+        contents:
+        - qmd/example_project/01_init.qmd
+        - qmd/example_project/02_asmb.qmd
+        - qmd/example_project/03_annotation.qmd
+        - qmd/example_project/04_export.qmd
+      - section: "Other Clades"
+        contents:
+        - qmd/custom_project/01_setup.qmd
+        - qmd/custom_project/02_customDB.qmd
+        - qmd/custom_project/03_customRuleset.qmd
+
+format:
+  html:
+    theme: yeti
+    css: styles.css
+    toc: true
+    mermaid:
+      theme: default
+
+
