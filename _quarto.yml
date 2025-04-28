@@ -15,12 +15,15 @@ website:
         contents:
         - qmd/setup/01_Hydra.qmd
         - qmd/setup/02_RstudioServer.qmd
+        - qmd/setup/03_install.qmd
+        - qmd/setup/04_launch.qmd
       - section: "Example Fish Project"
         contents:
         - qmd/example_project/01_init.qmd
-        - qmd/example_project/02_asmb.qmd
-        - qmd/example_project/03_annotation.qmd
-        - qmd/example_project/04_export.qmd
+        - qmd/example_project/02_nextflow.qmd
+        - qmd/example_project/03_asmb.qmd
+        - qmd/example_project/04_annotation.qmd
+        - qmd/example_project/05_export.qmd
       - section: "Other Clades"
         contents:
         - qmd/custom_project/01_setup.qmd

@@ -43,5 +43,26 @@
   },
   "qmd/custom_project/02_customDB.qmd": {
     "02_customDB.html": "92c6c0de"
+  },
+  "qmd/setup/04_launch.qmd": {
+    "04_launch.html": "17bb2656"
+  },
+  "qmd/setup/03_install.qmd": {
+    "03_install.html": "d094a66f"
+  },
+  "qmd/example_project/05_export.qmd": {
+    "05_export.html": "199cad3a"
+  },
+  "qmd/example_project/04_asmb.qmd": {
+    "04_asmb.html": "71b009c5"
+  },
+  "qmd/example_project/02_nextflow.qmd": {
+    "02_nextflow.html": "5fb9b8b0"
+  },
+  "qmd/example_project/04_annotation.qmd": {
+    "04_annotation.html": "c6ea0f5a"
+  },
+  "qmd/example_project/03_asmb.qmd": {
+    "03_asmb.html": "b400a0bd"
   }
 }
