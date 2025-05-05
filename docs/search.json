@@ -12,5 +12,49 @@
     "title": "MitoPilot Workshop 2025",
     "section": "",
     "text": "Website for the 2025 Smithsonian NMNH MitoPilot workshop."
+  },
+  {
+    "objectID": "qmd/custom_project/01_setup.html",
+    "href": "qmd/custom_project/01_setup.html",
+    "title": "01 - things to consider",
+    "section": "",
+    "text": "You will need an account to access the Hyrda computing cluster. Instructions are available here.\n\n\nDan MacGuigan has submitted a request to the Hydra team for installation of a Nextflow module. But for now, you will need to install your own copy of Nextflow on the cluster. Login to Hydra and run the following.\n# Nextflow installation instructions\n# from https://www.nextflow.io/docs/latest/install.html\ncd ~\nmodule load tools/java/21.0.2\ncurl -s https://get.nextflow.io | bash # install Nextflow\nchmod +x nextflow # make Nextflow executable\nThere will now be an executable nextflow file in your home directory. You should move it to a location that is in your PATH. For example:\nmkdir ~/bin # create bin directory, if needed\nmv ~/nextflow ~/bin/nextflow # move nextflow to bin directory\necho 'export PATH=\"${HOME}/bin:${PATH}\"' &gt;&gt; ~/.bashrc # add bin directory to PATH, in case it's not already there\nsource ~/.bashrc\nThis should allow you to call nextflow from anywhere on the cluster.\n\n\n\n\n\n\nNote\n\n\n\nYou must load the Hydra Java module (module load tools/java/21.0.2) whenever you wish to use Nextflow.",
+    "crumbs": [
+      "Other Clades",
+      "01 - things to consider"
+    ]
+  },
+  {
+    "objectID": "qmd/custom_project/01_setup.html#first-time-setup",
+    "href": "qmd/custom_project/01_setup.html#first-time-setup",
+    "title": "01 - things to consider",
+    "section": "",
+    "text": "Dan MacGuigan has submitted a request to the Hydra team for installation of a Nextflow module. But for now, you will need to install your own copy of Nextflow on the cluster. Login to Hydra and run the following.\n# Nextflow installation instructions\n# from https://www.nextflow.io/docs/latest/install.html\ncd ~\nmodule load tools/java/21.0.2\ncurl -s https://get.nextflow.io | bash # install Nextflow\nchmod +x nextflow # make Nextflow executable\nThere will now be an executable nextflow file in your home directory. You should move it to a location that is in your PATH. For example:\nmkdir ~/bin # create bin directory, if needed\nmv ~/nextflow ~/bin/nextflow # move nextflow to bin directory\necho 'export PATH=\"${HOME}/bin:${PATH}\"' &gt;&gt; ~/.bashrc # add bin directory to PATH, in case it's not already there\nsource ~/.bashrc\nThis should allow you to call nextflow from anywhere on the cluster.\n\n\n\n\n\n\nNote\n\n\n\nYou must load the Hydra Java module (module load tools/java/21.0.2) whenever you wish to use Nextflow.",
+    "crumbs": [
+      "Other Clades",
+      "01 - things to consider"
+    ]
+  },
+  {
+    "objectID": "qmd/setup/02_RstudioServer.html",
+    "href": "qmd/setup/02_RstudioServer.html",
+    "title": "02 - RStudio server",
+    "section": "",
+    "text": "We will use RStudio server to run MitoPilot. RStudio server on Hydra functions just like the normal RStudio on your local computer, except that you are accessing it remotely.\nTo launch RStudio server on Hydra:\n\nlogin to Hydra\nrun conda deactivate to avoid package conflicts (may not be necessary for all users)\nrun module load tools/R/RStudio/server\nrun start-rstudio-server (you may be asked to run a different command if this is your first time)\nleave this cluster terminal window open\nin a new terminal window on your local computer:\n\nstart an ssh tunnel by running something like ssh -N -L 8787:compute-64-16:8787 sylvain@hydra-login01.si.edu\n\nthe exact command should have been printed by start-rstudio-server in your cluster terminal window\n\nleave this local terminal window open\nopen a web browser and enter http://localhost:8787 in the URL bar\nenter your cluster login credentials to access the RStudio server\nany commands run in this new window will execute on the cluster in the interactive session",
+    "crumbs": [
+      "Setup",
+      "02 - RStudio server"
+    ]
+  },
+  {
+    "objectID": "qmd/setup/02_RstudioServer.html#launching-rstudio-server",
+    "href": "qmd/setup/02_RstudioServer.html#launching-rstudio-server",
+    "title": "02 - RStudio server",
+    "section": "",
+    "text": "We will use RStudio server to run MitoPilot. RStudio server on Hydra functions just like the normal RStudio on your local computer, except that you are accessing it remotely.\nTo launch RStudio server on Hydra:\n\nlogin to Hydra\nrun conda deactivate to avoid package conflicts (may not be necessary for all users)\nrun module load tools/R/RStudio/server\nrun start-rstudio-server (you may be asked to run a different command if this is your first time)\nleave this cluster terminal window open\nin a new terminal window on your local computer:\n\nstart an ssh tunnel by running something like ssh -N -L 8787:compute-64-16:8787 sylvain@hydra-login01.si.edu\n\nthe exact command should have been printed by start-rstudio-server in your cluster terminal window\n\nleave this local terminal window open\nopen a web browser and enter http://localhost:8787 in the URL bar\nenter your cluster login credentials to access the RStudio server\nany commands run in this new window will execute on the cluster in the interactive session",
+    "crumbs": [
+      "Setup",
+      "02 - RStudio server"
+    ]
   }
 ]

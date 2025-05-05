@@ -1,3 +1,42 @@
 ---
 title: "01 - Hydra cluster setup"
 ---
+
+## Access to the Hydra cluster
+
+You will need an account to access the Smithsonian Hyrda computing cluster. Instructions are available [here](https://confluence.si.edu/display/HPC/Hydra+Policies).
+
+## First time setup
+
+Dan MacGuigan has submitted a request to the Hydra team for installation of a Nextflow module. But for now, you will need to install your own copy of Nextflow on the cluster. Login to Hydra and run the following.
+
+```bash
+# Nextflow installation instructions
+# from https://www.nextflow.io/docs/latest/install.html
+cd ~
+# load Java module, needed by Nextflow
+module load tools/java/21.0.2
+# install Nextflow
+curl -s https://get.nextflow.io | bash 
+# make Nextflow executable
+chmod +x nextflow 
+```
+
+There will now be an executable `nextflow` file in your home directory. You should move it to a location that is in your `PATH`. For example:
+
+```bash
+ # create bin directory, if needed
+mkdir ~/bin
+# move nextflow to bin directory
+mv ~/nextflow ~/bin/nextflow 
+# add bin directory to PATH, in case it's not already there
+echo 'export PATH="${HOME}/bin:${PATH}"' >> ~/.bashrc 
+# reload your bash configuration file
+source ~/.bashrc
+```
+ 
+This should allow you to call `nextflow` from anywhere on the cluster.
+
+:::{.callout-important}
+You must load the Hydra Java module (`module load tools/java/21.0.2`) whenever you wish to use Nextflow.
+:::

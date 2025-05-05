@@ -1,3 +1,22 @@
 ---
 title: "02 - RStudio server"
 ---
+
+## Launching RStudio server
+
+We will use RStudio server to run MitoPilot. RStudio server on Hydra functions just like the normal RStudio on your local computer, except that you are accessing it remotely.
+
+To launch RStudio server on Hydra:
+
+- login to Hydra
+- run `conda deactivate` to avoid package conflicts (may not be necessary for all users)
+- run `module load tools/R/RStudio/server`
+- run `start-rstudio-server` (you may be asked to run a different command if this is your first time)
+- leave this cluster terminal window open 
+- in a new terminal window on your local computer:
+	- start an ssh tunnel by running something like `ssh -N -L 8787:compute-64-16:8787 sylvain@hydra-login01.si.edu`
+	  - the exact command should have been printed by `start-rstudio-server` in your cluster terminal window
+	- leave this local terminal window open
+	- open a web browser and enter `http://localhost:8787` in the URL bar
+	- enter your cluster login credentials to access the RStudio server
+	- any commands run in this new window will execute on the cluster in the interactive session
