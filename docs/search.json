@@ -7,35 +7,6 @@
     "text": "Website for the 2025 Smithsonian NMNH MitoPilot workshop."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "MitoPilot Workshop 2025",
-    "section": "",
-    "text": "Website for the 2025 Smithsonian NMNH MitoPilot workshop."
-  },
-  {
-    "objectID": "qmd/custom_project/01_setup.html",
-    "href": "qmd/custom_project/01_setup.html",
-    "title": "01 - things to consider",
-    "section": "",
-    "text": "You will need an account to access the Hyrda computing cluster. Instructions are available here.\n\n\nDan MacGuigan has submitted a request to the Hydra team for installation of a Nextflow module. But for now, you will need to install your own copy of Nextflow on the cluster. Login to Hydra and run the following.\n# Nextflow installation instructions\n# from https://www.nextflow.io/docs/latest/install.html\ncd ~\nmodule load tools/java/21.0.2\ncurl -s https://get.nextflow.io | bash # install Nextflow\nchmod +x nextflow # make Nextflow executable\nThere will now be an executable nextflow file in your home directory. You should move it to a location that is in your PATH. For example:\nmkdir ~/bin # create bin directory, if needed\nmv ~/nextflow ~/bin/nextflow # move nextflow to bin directory\necho 'export PATH=\"${HOME}/bin:${PATH}\"' &gt;&gt; ~/.bashrc # add bin directory to PATH, in case it's not already there\nsource ~/.bashrc\nThis should allow you to call nextflow from anywhere on the cluster.\n\n\n\n\n\n\nNote\n\n\n\nYou must load the Hydra Java module (module load tools/java/21.0.2) whenever you wish to use Nextflow.",
-    "crumbs": [
-      "Other Clades",
-      "01 - things to consider"
-    ]
-  },
-  {
-    "objectID": "qmd/custom_project/01_setup.html#first-time-setup",
-    "href": "qmd/custom_project/01_setup.html#first-time-setup",
-    "title": "01 - things to consider",
-    "section": "",
-    "text": "Dan MacGuigan has submitted a request to the Hydra team for installation of a Nextflow module. But for now, you will need to install your own copy of Nextflow on the cluster. Login to Hydra and run the following.\n# Nextflow installation instructions\n# from https://www.nextflow.io/docs/latest/install.html\ncd ~\nmodule load tools/java/21.0.2\ncurl -s https://get.nextflow.io | bash # install Nextflow\nchmod +x nextflow # make Nextflow executable\nThere will now be an executable nextflow file in your home directory. You should move it to a location that is in your PATH. For example:\nmkdir ~/bin # create bin directory, if needed\nmv ~/nextflow ~/bin/nextflow # move nextflow to bin directory\necho 'export PATH=\"${HOME}/bin:${PATH}\"' &gt;&gt; ~/.bashrc # add bin directory to PATH, in case it's not already there\nsource ~/.bashrc\nThis should allow you to call nextflow from anywhere on the cluster.\n\n\n\n\n\n\nNote\n\n\n\nYou must load the Hydra Java module (module load tools/java/21.0.2) whenever you wish to use Nextflow.",
-    "crumbs": [
-      "Other Clades",
-      "01 - things to consider"
-    ]
-  },
-  {
     "objectID": "qmd/setup/02_RstudioServer.html",
     "href": "qmd/setup/02_RstudioServer.html",
     "title": "02 - RStudio server",
@@ -56,5 +27,45 @@
       "Setup",
       "02 - RStudio server"
     ]
+  },
+  {
+    "objectID": "qmd/setup/01_Hydra.html",
+    "href": "qmd/setup/01_Hydra.html",
+    "title": "01 - Hydra cluster setup",
+    "section": "",
+    "text": "You will need an account to access the Smithsonian Hyrda computing cluster. Instructions are available here.",
+    "crumbs": [
+      "Setup",
+      "01 - Hydra cluster setup"
+    ]
+  },
+  {
+    "objectID": "qmd/setup/01_Hydra.html#access-to-the-hydra-cluster",
+    "href": "qmd/setup/01_Hydra.html#access-to-the-hydra-cluster",
+    "title": "01 - Hydra cluster setup",
+    "section": "",
+    "text": "You will need an account to access the Smithsonian Hyrda computing cluster. Instructions are available here.",
+    "crumbs": [
+      "Setup",
+      "01 - Hydra cluster setup"
+    ]
+  },
+  {
+    "objectID": "qmd/setup/01_Hydra.html#first-time-setup",
+    "href": "qmd/setup/01_Hydra.html#first-time-setup",
+    "title": "01 - Hydra cluster setup",
+    "section": "First time setup",
+    "text": "First time setup\nDan MacGuigan has submitted a request to the Hydra team for installation of a Nextflow module. But for now, you will need to install your own copy of Nextflow on the cluster. Login to Hydra and run the following.\n# Nextflow installation instructions\n# from https://www.nextflow.io/docs/latest/install.html\ncd ~\n# load Java module, needed by Nextflow\nmodule load tools/java/21.0.2\n# install Nextflow\ncurl -s https://get.nextflow.io | bash \n# make Nextflow executable\nchmod +x nextflow \nThere will now be an executable nextflow file in your home directory. You should move it to a location that is in your PATH. For example:\n # create bin directory, if needed\nmkdir ~/bin\n# move nextflow to bin directory\nmv ~/nextflow ~/bin/nextflow \n# add bin directory to PATH, in case it's not already there\necho 'export PATH=\"${HOME}/bin:${PATH}\"' &gt;&gt; ~/.bashrc \n# reload your bash configuration file\nsource ~/.bashrc\nThis should allow you to call nextflow from anywhere on the cluster.\n\n\n\n\n\n\nImportant\n\n\n\nYou must load the Hydra Java module (module load tools/java/21.0.2) whenever you wish to use Nextflow.",
+    "crumbs": [
+      "Setup",
+      "01 - Hydra cluster setup"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MitoPilot Workshop 2025",
+    "section": "",
+    "text": "Website for the 2025 Smithsonian NMNH MitoPilot workshop."
   }
 ]

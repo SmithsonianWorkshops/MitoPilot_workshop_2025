@@ -223,8 +223,14 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#launching-rstudio-server" id="toc-launching-rstudio-server" class="nav-link active" data-scroll-target="#launching-rstudio-server">Launching RStudio server</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -248,8 +254,31 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="launching-rstudio-server" class="level2">
+<h2 class="anchored" data-anchor-id="launching-rstudio-server">Launching RStudio server</h2>
+<p>We will use RStudio server to run MitoPilot. RStudio server on Hydra functions just like the normal RStudio on your local computer, except that you are accessing it remotely.</p>
+<p>To launch RStudio server on Hydra:</p>
+<ul>
+<li>login to Hydra</li>
+<li>run <code>conda deactivate</code> to avoid package conflicts (may not be necessary for all users)</li>
+<li>run <code>module load tools/R/RStudio/server</code></li>
+<li>run <code>start-rstudio-server</code> (you may be asked to run a different command if this is your first time)</li>
+<li>leave this cluster terminal window open</li>
+<li>in a new terminal window on your local computer:
+<ul>
+<li>start an ssh tunnel by running something like <code>ssh -N -L 8787:compute-64-16:8787 sylvain@hydra-login01.si.edu</code>
+<ul>
+<li>the exact command should have been printed by <code>start-rstudio-server</code> in your cluster terminal window</li>
+</ul></li>
+<li>leave this local terminal window open</li>
+<li>open a web browser and enter <code>http://localhost:8787</code> in the URL bar</li>
+<li>enter your cluster login credentials to access the RStudio server</li>
+<li>any commands run in this new window will execute on the cluster in the interactive session</li>
+</ul></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
