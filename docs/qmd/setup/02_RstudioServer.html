@@ -148,6 +148,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qmd/full_R_script/R-script.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Full R script</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
@@ -177,8 +183,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/setup/04_launch.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - launch MitoPilot GUI</span></a>
+  <a href="../../qmd/setup/04_load.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04 - load MitoPilot</span></a>
   </div>
 </li>
       </ul>
@@ -265,8 +271,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#launching-rstudio-server" id="toc-launching-rstudio-server" class="nav-link active" data-scroll-target="#launching-rstudio-server">Launching RStudio server</a>
   <ul class="collapse">
+  <li><a href="#rstudio-galaxy-server-recommended" id="toc-rstudio-galaxy-server-recommended" class="nav-link" data-scroll-target="#rstudio-galaxy-server-recommended">RStudio Galaxy server (recommended)</a></li>
   <li><a href="#tunneling-to-a-rstudio-server-session" id="toc-tunneling-to-a-rstudio-server-session" class="nav-link" data-scroll-target="#tunneling-to-a-rstudio-server-session">Tunneling to a RStudio server session</a></li>
-  <li><a href="#rstudio-galaxy-server" id="toc-rstudio-galaxy-server" class="nav-link" data-scroll-target="#rstudio-galaxy-server">RStudio Galaxy server</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -297,6 +303,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="launching-rstudio-server">Launching RStudio server</h2>
 <p>We will use RStudio server to run MitoPilot. RStudio server on Hydra functions just like the normal RStudio on your local computer, except that you are accessing it remotely.</p>
 <p>There are two methods to access RStudio server on Hydra.</p>
+<section id="rstudio-galaxy-server-recommended" class="level3">
+<h3 class="anchored" data-anchor-id="rstudio-galaxy-server-recommended">RStudio Galaxy server (recommended)</h3>
+<p>The Hydra Team recently launched an interactive R Studio environment that is accessible directly via a browser, at <a href="https://galaxy.si.edu/R4">https://galaxy.si.edu/R4</a>.</p>
+<p>Hydra users can leverage this server to test, debug, and develop R based workflows using the interactive RStudio GUI (currently running R 4.4.3).</p>
+<p>By logging in with your Hydra account credentials, users will have access to the storage under /pool, /scratch and /store. This server offers resources totaling 192 CPUs and 1.5 T of RAM.</p>
+<p><strong><em>Notes:</em></strong></p>
+<ol type="1">
+<li>This is a shared resource and should be used accordingly. Long running jobs or jobs requiring the entire resources of the server would be more appropriate as a job submission.</li>
+<li>This server is only accessible from trusted computers, not on the public internet. For technical reasons, to access this resource via telework.si.edu, go to <a href="https://galaxy.si.edu">https://galaxy.si.edu</a> and then choose the “R4 v443” option.</li>
+<li>This is a new resource - please be patient as we test this offering with our user community. We will evaluate this test once Hydra is moved to the new datacenter and decide whether it should be kept or altered in any way.</li>
+</ol>
+</section>
 <section id="tunneling-to-a-rstudio-server-session" class="level3">
 <h3 class="anchored" data-anchor-id="tunneling-to-a-rstudio-server-session">Tunneling to a RStudio server session</h3>
 <p>To launch RStudio server on Hydra, run the following.</p>
@@ -306,7 +324,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load tools/R/RStudio/server</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># launch RStudio server</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">start-rstudio-server</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>If this is your first time launching RStudio server, you may be asked to run a different command.</p>
+</div>
+</div>
 <p>You will see something like this printed to your screen.</p>
 <pre><code>start-rstudio-server: starting RStudio server on host=login02 and port=8787
   you need to create a ssh tunnel on your local machine with
@@ -326,7 +356,7 @@ Why can’t I connect?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If you get a message saying “ERROR system error 98 (Address already in use)” when running <code>start-rstudio-server</code>, this means someone else has an tunnel established with the default port (8787). To fix this, try using a different port, e.g.&nbsp;<code>start-rstudio-server -port 8890</code>. Any port number between 1025-65535 is allowed.</p>
+<p>If you get a message saying “ERROR system error 98 (Address already in use)”, someone else has a tunnel established with the default port (8787). To fix this, try using a different port, e.g.&nbsp;<code>start-rstudio-server -port 8890</code>. Any port number between 1025-65535 is allowed.</p>
 </div>
 </div>
 <p>Leave this cluster terminal window open, open a new terminal window on your local computer, and run the <code>ssh</code> command printed by <code>start-rstudio-server</code>.</p>
@@ -334,18 +364,6 @@ Why can’t I connect?
 <p>Enter your Hydra password when prompted. If nothing happens, this means that you have successfully established a SSH tunnel and can connect to RStudio server.</p>
 <p>Leaving both terminal windows open, enter <a href="http://localhost:YOUR_PORT_NUMBER">http://localhost:YOUR_PORT_NUMBER</a> in a web browser. We recommend using Chrome or Firefox. There are some known issues running MitoPilot with Safari.</p>
 <p>Enter your cluster login credentials to access the RStudio server. This should open a full RStudio session in your browser. Any R commands run in this new window will execute on the cluster.</p>
-</section>
-<section id="rstudio-galaxy-server" class="level3">
-<h3 class="anchored" data-anchor-id="rstudio-galaxy-server">RStudio Galaxy server</h3>
-<p>The Hydra Team recently launched a new interactive R Studio environment that is accessible directly via a browser, at <a href="https://galaxy.si.edu/R4">https://galaxy.si.edu/R4</a>.</p>
-<p>Hydra users can leverage this server to test, debug, and develop R based workflows using the interactive R Studio GUI (currently running R 4.4.3).</p>
-<p>By logging in with your Hydra account credentials, users will have access to the storage under /pool, /scratch and /store. This server offers resources totaling 192 CPUs and 1.5 T of RAM.</p>
-<p><strong><em>Notes:</em></strong></p>
-<ol type="1">
-<li>This is a shared resource and should be used accordingly. Long running jobs or jobs requiring the entire resources of the server would be more appropriate as a job submission.</li>
-<li>This server is only accessible from trusted computers, not on the public internet. For technical reasons, to access this resource via telework.si.edu, go to <a href="https://galaxy.si.edu">https://galaxy.si.edu</a> and then choose the “R4 v443” option.</li>
-<li>This is a new resource - please be patient as we test this offering with our user community. We will evaluate this test once Hydra is moved to the new datacenter and decide whether it should be kept or altered in any way.</li>
-</ol>
 
 
 </section>

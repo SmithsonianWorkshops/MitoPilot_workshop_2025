@@ -64,5 +64,11 @@
   },
   "qmd/example_project/03_asmb.qmd": {
     "03_asmb.html": "b400a0bd"
+  },
+  "qmd/setup/04_load.qmd": {
+    "04_load.html": "e0d6247b"
+  },
+  "qmd/full_R_script/R-script.qmd": {
+    "R-script.html": "dc0a2cd2"
   }
 }

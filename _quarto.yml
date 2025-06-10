@@ -11,12 +11,13 @@ website:
     style: "docked"
     search: true
     contents:
+      - qmd/full_R_script/R-script.qmd
       - section: "Setup"
         contents:
         - qmd/setup/01_Hydra.qmd
         - qmd/setup/02_RstudioServer.qmd
         - qmd/setup/03_install.qmd
-        - qmd/setup/04_launch.qmd
+        - qmd/setup/04_load.qmd
       - section: "Example Fish Project"
         contents:
         - qmd/example_project/01_init.qmd

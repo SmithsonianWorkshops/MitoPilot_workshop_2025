@@ -1,0 +1,9 @@
+---
+title: "04 - load MitoPilot"
+---
+
+## Loading the MitoPilot package
+
+To load the MitoPilot R package, run `library(MitoPilot)` within your RStudio server session. You can now utilize all of MitoPilot's functions, such as [initializing a project](https://smithsonian.github.io/MitoPilot/#initializing-a-project) or [opening the R Shiny GUI](https://smithsonian.github.io/MitoPilot/#running-the-pipeline). 
+
+We're now ready to start the [example project](https://dmacguigan.github.io/MitoPilot_workshop_2025/qmd/example_project/01_init.html)!

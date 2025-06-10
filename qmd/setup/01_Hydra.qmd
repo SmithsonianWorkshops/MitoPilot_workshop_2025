@@ -8,7 +8,7 @@ You will need an account to access the Smithsonian Hyrda computing cluster. Inst
 
 ## First time setup
 
-Dan MacGuigan has submitted a request to the Hydra team for installation of a Nextflow module. But for now, you will need to install your own copy of Nextflow on the cluster. Login to Hydra and run the following.
+We have submitted a request to the Hydra team for installation of a Nextflow module. But for now, you will need to install your own copy of Nextflow on the cluster. Login to Hydra and run the following.
 
 ```bash
 # Nextflow installation instructions

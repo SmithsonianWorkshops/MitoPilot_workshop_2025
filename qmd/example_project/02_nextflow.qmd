@@ -1,3 +1,72 @@
 ---
 title: "02 - running Nextflow"
 ---
+
+Now that our test project is set up, it's time to run the analysis workflow. MitoPilot utilizes [Nextflow](https://www.nextflow.io/) to analyze all of the samples in parallel. Obviously, this is more efficient than a simple serial workflow running one sample at a time.
+
+To generate the Nextflow command for the MitoPilot Assemble module, simply click the `UPDATE` button.
+
+![Fig. 13](/images/13.png)
+
+There are two ways to run this Nextflow command on Hydra.
+
+## Using the GUI
+
+With the Update window open, click the `Start Nextflow` button. This will run the analysis pipeline within the MitoPilot GUI. This requires you to keep the GUI open while the pipeline is running.
+
+::: {.callout-note}
+We recommend only using this method for small numbers of samples. If your internet connection is interrupted, the analysis pipeline will stop. You can resume an interrupted run, but it will waste time and can occasionally cause bugs.
+:::
+
+![Fig. 14](/images/14.png)
+
+And we're off! You should see Nextflow output being printed the to `Progress` window. This window will continually update as the pipeline progresses. As long as the gears in the top right are spinning, the pipeline is still running.
+
+The Assemble pipeline module has 3 steps: preprocessing (filtering) the raw FASTQ files with [fastp](https://github.com/OpenGene/fastp), assembling the mitogenomes using [GetOrganelle](https://github.com/Kinggerm/GetOrganelle), and calculating coverage maps for the assemblies using [bowtie2](https://github.com/BenLangmead/bowtie2).
+
+Nextflow distributes the analyses across multiple batch jobs on the Hydra cluster. This can allow you to run hundreds of samples simultaneously. You can use your Hydra's job scheduler to check on the status of MitoPilot jobs. Some samples may finish faster than others.
+
+![Fig. 15](/images/15.png)
+
+You may notice that some samples fail at certain steps (though this is unlikely for the test dataset). Often this is due to a memory error, so MitoPilot will retry failed samples with more RAM. The Nextflow log tracks the number of failed samples and retries.
+
+![Fig. 16](/images/16.png)
+
+## Using a batch job
+
+If you have a large number of samples to process (more than a few dozen), we recommend running the assemble and annotate MitoPilot modules as batch jobs. 
+
+You will still need to generate the Nextflow command using the MitoPilot GUI. But instead of clicking the `Start Nextflow` button, copy the Nextflow command and create a batch submission script.
+
+We have provided a template below. You may wish to modify the job name (`-N`) and the log file name (`-o`).
+
+```bash
+#!/bin/sh
+#$ -N MitoPilot_assembly # MODIFY THIS IF DESIRED
+#$ -o MitoPilot_assembly.log # MODIFY THIS IF DESIRED
+#$ -cwd -j y
+#$ -q lTWFM.sq
+#$ -l wfmq
+#$ -pe mthread 2
+#$ -S /bin/sh
+
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+
+source ~/.bashrc
+
+module load tools/java/21.0.2 # required for Nextflow on Hydra
+
+# EXAMPLE NEXTFLOW COMMAND
+nextflow -log /pool/public/genomics/macguigand/MitoPilot/22030FL-06-02/run_02/.logs/nextflow.log run /home/macguigand/R/x86_64-pc-linux-gnu-library/4.4/MitoPilot/nextflow -c /pool/public/genomics/macguigand/MitoPilot/22030FL-06-02/run_02/.config -entry WF1
+
+echo = `date` job $JOB_NAME done
+
+```
+
+::: {.callout-important}
+You must use the options `-q lTWFM.sq` and `-l wfmq`. This is a special Hydra queue for workflow managers like Nextflow. You must also include `-pe mthread 2` in order to have enough available RAM for building the MitoPilot Singularity image.
+:::
+
+Move the submission script into your MitoPilot project directory. In the above example, `/pool/public/genomics/macguigand/MitoPilot/22030FL-06-02/run_02/`. Then submit the job using `qsub MY_SCRIPT_NAME.sh`.
+
+You can monitor the progress of this job using the `qstat` command and by checking on the log files. Once the job is done, you can relaunch the GUI to inspect the results. The same approach can be used for the Annotate module.

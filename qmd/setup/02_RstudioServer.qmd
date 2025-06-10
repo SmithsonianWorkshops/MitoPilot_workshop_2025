@@ -8,6 +8,20 @@ We will use RStudio server to run MitoPilot. RStudio server on Hydra functions j
 
 There are two methods to access RStudio server on Hydra.
 
+### RStudio Galaxy server (recommended)
+
+The Hydra Team recently launched an interactive R Studio environment that is accessible directly via a browser, at [https://galaxy.si.edu/R4](https://galaxy.si.edu/R4).
+
+Hydra users can leverage this server to test, debug, and develop R based workflows using the interactive RStudio GUI (currently running R 4.4.3).
+
+By logging in with your Hydra account credentials, users will have access to the storage under /pool, /scratch and /store. This server offers resources totaling 192 CPUs and 1.5 T of RAM.
+
+***Notes:***
+
+1. This is a shared resource and should be used accordingly. Long running jobs or jobs requiring the entire resources of the server would be more appropriate as a job submission.
+2. This server is only accessible from trusted computers, not on the public internet. For technical reasons, to access this resource via telework.si.edu, go to [https://galaxy.si.edu](https://galaxy.si.edu) and then choose the "R4 v443" option.
+3. This is a new resource - please be patient as we test this offering with our user community. We will evaluate this test once Hydra is moved to the new datacenter and decide whether it should be kept or altered in any way.
+
 ### Tunneling to a RStudio server session
 
 To launch RStudio server on Hydra, run the following.
@@ -21,7 +35,9 @@ module load tools/R/RStudio/server
 start-rstudio-server
 ```
 
+::: {.callout-note}
 If this is your first time launching RStudio server, you may be asked to run a different command.
+:::
 
 You will see something like this printed to your screen.
 
@@ -37,7 +53,7 @@ TTY detected. Printing informational message about logging configuration. Loggin
 ```
 
 ::: {.callout-note title="Why can't I connect?"}
-If you get a message saying "ERROR system error 98 (Address already in use)" when running `start-rstudio-server`, this means someone else has an tunnel established with the default port (8787). To fix this, try using a different port, e.g. `start-rstudio-server -port 8890`. Any port number between 1025-65535 is allowed.
+If you get a message saying "ERROR system error 98 (Address already in use)", someone else has a tunnel established with the default port (8787). To fix this, try using a different port, e.g. `start-rstudio-server -port 8890`. Any port number between 1025-65535 is allowed.
 :::
 
 
@@ -52,17 +68,3 @@ Enter your Hydra password when prompted. If nothing happens, this means that you
 Leaving both terminal windows open, enter [http://localhost:YOUR_PORT_NUMBER](http://localhost:YOUR_PORT_NUMBER) in a web browser. We recommend using Chrome or Firefox. There are some known issues running MitoPilot with Safari.
 
 Enter your cluster login credentials to access the RStudio server. This should open a full RStudio session in your browser. Any R commands run in this new window will execute on the cluster.
-
-### RStudio Galaxy server
-
-The Hydra Team recently launched a new interactive R Studio environment that is accessible directly via a browser, at [https://galaxy.si.edu/R4](https://galaxy.si.edu/R4).
-
-Hydra users can leverage this server to test, debug, and develop R based workflows using the interactive R Studio GUI (currently running R 4.4.3).
-
-By logging in with your Hydra account credentials, users will have access to the storage under /pool, /scratch and /store. This server offers resources totaling 192 CPUs and 1.5 T of RAM.
-
-***Notes:***
-
-1. This is a shared resource and should be used accordingly. Long running jobs or jobs requiring the entire resources of the server would be more appropriate as a job submission.
-2. This server is only accessible from trusted computers, not on the public internet. For technical reasons, to access this resource via telework.si.edu, go to [https://galaxy.si.edu](https://galaxy.si.edu) and then choose the "R4 v443" option.
-3. This is a new resource - please be patient as we test this offering with our user community. We will evaluate this test once Hydra is moved to the new datacenter and decide whether it should be kept or altered in any way.

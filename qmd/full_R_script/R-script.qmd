@@ -1,0 +1,38 @@
+---
+title: "Full R script"
+---
+
+```{R eval=F}
+# SI NMNH MitoPilot workshop
+# June 13, 2025
+# https://dmacguigan.github.io/MitoPilot_workshop_2025/
+# author: Dan MacGuigan
+# macguigand@si.edu
+
+###########################################################################
+# INSTALL MitoPilot
+###########################################################################
+
+if (!requireNamespace("remotes", quietly = TRUE)) {
+  install.packages("remotes")
+}
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+  install.packages("BiocManager")
+}
+BiocManager::install("Smithsonian/MitoPilot")
+
+###########################################################################
+# UPDATE MitoPilot (if needed)
+###########################################################################
+
+remove.packages("MitoPilot")
+BiocManager::install("Smithsonian/MitoPilot")
+.rs.restartR()
+
+###########################################################################
+# LOADING MitoPilot
+###########################################################################
+
+library(MitoPilot)
+
+```
