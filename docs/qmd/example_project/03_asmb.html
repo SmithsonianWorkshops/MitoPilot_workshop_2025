@@ -229,8 +229,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#inspecting-assembly-results" id="toc-inspecting-assembly-results" class="nav-link active" data-scroll-target="#inspecting-assembly-results">Inspecting Assembly Results</a></li>
+  <li><a href="#problematic-samples" id="toc-problematic-samples" class="nav-link" data-scroll-target="#problematic-samples">Problematic Samples</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -254,8 +261,127 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="inspecting-assembly-results" class="level2">
+<h2 class="anchored" data-anchor-id="inspecting-assembly-results">Inspecting Assembly Results</h2>
+<p>Once MitoPilot finishes the Assemble workflow, sample table should now be updated with new information.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/19.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 19</figcaption>
+</figure>
+</div>
+<p>If you want to locate the results files for a sample, scroll all the way to the right and click <code>output</code>. This will open the appropriate folder in the <code>Files</code> pane of your RStudio session.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/20.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 20</figcaption>
+</figure>
+</div>
+<p>You can also view the results within the MitoPilot GUI. For example, select SRR21843972 (<em>Stomias affinis</em>), then click <code>details</code>. This will open a new window with the mitogenome sequence.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/21.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 21</figcaption>
+</figure>
+</div>
+<p>Select the sequence and click the <code>Fasta</code> button in the bottom right. This will copy the FASTA formatted mitogenome to your clipboard, which you can paste into your favorite text editor. This could be useful for a quick BLAST search.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/22.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 22</figcaption>
+</figure>
+</div>
+<p>You can also click the <code>view</code> button, which will open a summary figure in a new tab, including mean read depth, sequence error rate, and GC content.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/23.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 23</figcaption>
+</figure>
+</div>
+<p>Notice that in this figure, read depth drops off dramatically at both ends of the sequence. SRR21843972 was unable to assemble a circular mitogenome due to poor read coverage in this region. To assemble a circular mitogenome, you could try running the Assemble module again with different <code>GetOrganelle</code> settings (see their <a href="https://github.com/Kinggerm/GetOrganelle/wiki/FAQ">Wiki</a>), the <code>MitoFinder</code> assembler, or more sequence data.</p>
+</section>
+<section id="problematic-samples" class="level2">
+<h2 class="anchored" data-anchor-id="problematic-samples">Problematic Samples</h2>
+<p>In this test dataset, there are two problematic samples which returned failed states. You can see which samples failed by looking for the exclamation mark state icon. Selecting a sample with that icon and clicking on the <code>STATE</code> button will confirm.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/24.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 24</figcaption>
+</figure>
+</div>
+<p>One failed sample is SRR22396758 (<em>Upeneus parvus</em>). We purposefully truncated the data for this sample to contain only 200 reads.</p>
+<p>With so few reads, this sample failed to meet the <code>min_depth</code> threshold and returned a message “Insufficient sequencing depth” in the <code>Notes</code> column. When analyzing your own data, you can specify the <code>min_depth</code> threshold with the <code>new_project</code> function.</p>
+<p>The other failed sample is SRR21844202 (<em>Fundulus majalis</em>). This sample had plenty of data and we were able to assemble a mitogenome. However, the message in the <code>Notes</code> columns says “Unable to resolve single assembly from reads.”</p>
+<p><a href="https://github.com/Kinggerm/GetOrganelle">GetOrganelle</a> produced two alternate assembly paths for this sample. This is usually due to complicated assembly graphs near a repeat region. Please refer to <a href="https://doi.org/10.1186/s13059-020-02154-5">the GetOrganlle paper</a> for more information about multiple assembly paths.</p>
+<p>Let’s take a peek at SRR21844202 (<em>Fundulus majalis</em>). Select the sample, scroll all the way to the right, and click on <code>details</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/25.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 25</figcaption>
+</figure>
+</div>
+<p>We can see two assemblies listed here. Clicking on <code>view</code> will show us the coverage, error, and GC content graphs for each assembly.</p>
+<p>Path #1</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/26.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 26</figcaption>
+</figure>
+</div>
+<p>Path #2</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/27.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 27</figcaption>
+</figure>
+</div>
+<p>The two assembly paths differ slightly around 13,000 bp.</p>
+<p>We can chose to move forward with just one assembly path by clicking the “ignore” button for one of the assembly paths.</p>
+<p>Alternatively, we can use the consensus sequence. Select both paths and click the <code>Align</code> button in the bottom right. The sequence alignment will pop up, showing us that the two paths have 99.9897% sequence similarity.</p>
+<p>If we scroll through the alignment, we can see a few base pair differences.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/28.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 28</figcaption>
+</figure>
+</div>
+<p>Selecting <code>Trim Consensus</code> will remove any conflicting regions of the aligned assembly paths and produce a shorter consensus sequence of both alignments. Doing so will automatically ignore the original two assembly paths.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/29.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 29</figcaption>
+</figure>
+</div>
+<p>Click close and return to the samples table. You will see that the <code># Paths</code> column for SRR21844202 is highlighted and there is a note indicating that the assembly was edited. This sample has also been automatically changed to a locked state.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/30.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 30</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Carefully consider your options for samples with multiple assembly paths. You may wish to align each assembly against a reference or compare depth of sequencing coverage. There is no one-size-fits-all solution.</p>
+</div>
+</div>
+<p>To proceed to the Annotate module, we need to lock the successful samples in the Assemble module. Select all of the samples except SRR22396758 (<em>Upeneus parvus</em>) and click the <code>LOCK</code> button. Then use the dropdown menu in the top left to navigate to the Annotate module.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/31.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 31</figcaption>
+</figure>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

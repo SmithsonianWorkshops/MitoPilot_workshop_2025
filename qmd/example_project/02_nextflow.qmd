@@ -24,13 +24,25 @@ And we're off! You should see Nextflow output being printed the to `Progress` wi
 
 The Assemble pipeline module has 3 steps: preprocessing (filtering) the raw FASTQ files with [fastp](https://github.com/OpenGene/fastp), assembling the mitogenomes using [GetOrganelle](https://github.com/Kinggerm/GetOrganelle), and calculating coverage maps for the assemblies using [bowtie2](https://github.com/BenLangmead/bowtie2).
 
-Nextflow distributes the analyses across multiple batch jobs on the Hydra cluster. This can allow you to run hundreds of samples simultaneously. You can use your Hydra's job scheduler to check on the status of MitoPilot jobs. Some samples may finish faster than others.
+Nextflow distributes the analyses across multiple batch jobs on the Hydra cluster. This can allow you to run hundreds of samples simultaneously. The `Progress` window will update as samples finish each step.
+
+You can use your Hydra's job scheduler to check on the status of MitoPilot jobs. Some samples may finish faster than others.
 
 ![Fig. 15](/images/15.png)
 
 You may notice that some samples fail at certain steps (though this is unlikely for the test dataset). Often this is due to a memory error, so MitoPilot will retry failed samples with more RAM. The Nextflow log tracks the number of failed samples and retries.
 
 ![Fig. 16](/images/16.png)
+
+The test dataset should take a few minutes to finish. When it's done, your `Progress` window should look something like this.
+
+![Fig. 17](/images/17.png)
+
+If you scroll all the way to the bottom of the `Progress` window, you can some summary info about the run.
+
+![Fig. 18](/images/18.png)
+
+Click `Close` to return to the samples table.
 
 ## Using a batch job
 
@@ -57,7 +69,7 @@ source ~/.bashrc
 module load tools/java/21.0.2 # required for Nextflow on Hydra
 
 # EXAMPLE NEXTFLOW COMMAND
-nextflow -log /pool/public/genomics/macguigand/MitoPilot/22030FL-06-02/run_02/.logs/nextflow.log run /home/macguigand/R/x86_64-pc-linux-gnu-library/4.4/MitoPilot/nextflow -c /pool/public/genomics/macguigand/MitoPilot/22030FL-06-02/run_02/.config -entry WF1
+nextflow -log /pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025/test_project_01/.logs/nextflow.log run /home/macguigand/R/x86_64-redhat-linux-gnu-library/4.4/MitoPilot/nextflow -c /pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025/test_project_01/.config -entry WF1 
 
 echo = `date` job $JOB_NAME done
 

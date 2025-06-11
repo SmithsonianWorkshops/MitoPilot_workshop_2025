@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -262,7 +297,24 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="loading-the-mitopilot-package" class="level2">
 <h2 class="anchored" data-anchor-id="loading-the-mitopilot-package">Loading the MitoPilot package</h2>
-<p>To load the MitoPilot R package, run <code>library(MitoPilot)</code> within your RStudio server session. You can now utilize all of MitoPilot’s functions, such as <a href="https://smithsonian.github.io/MitoPilot/#initializing-a-project">initializing a project</a> or <a href="https://smithsonian.github.io/MitoPilot/#running-the-pipeline">opening the R Shiny GUI</a>.</p>
+<p>To load the MitoPilot R package, we first need to modify our <code>PATH</code> environmental variable. This will allow our RStudio session to find several important programs, including <code>java</code>, <code>nextflow</code>, and <code>qsub</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># modify PATH to include:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   ~/bin (contains nextflow exe)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   java 21.0.2 (required for nextflow)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   qsub (required for nextflow to submit jobs)  </span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>default_path <span class="ot">&lt;-</span> <span class="st">"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/rstudio-server/bin/quarto/bin:/usr/lib/rstudio-server/bin/postback"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>new_path <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">Sys.getenv</span>(<span class="st">"HOME"</span>), <span class="st">"/bin:/share/apps/tools/java/21.0.2/bin:/cm/shared/apps/uge/8.8.1/bin/lx-amd64/"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">PATH =</span> <span class="fu">paste</span>(new_path, default_path, <span class="at">sep =</span> <span class="st">":"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, load the MitoPilot package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MitoPilot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You should see a message confirming that Nextflow is installed and accessible.</p>
+<pre><code>Welcome to {MitoPilot}!
+Using Nextflow version 24.10.4 build 5934</code></pre>
+<p>You can now utilize all of MitoPilot’s functions, such as <a href="https://smithsonian.github.io/MitoPilot/#initializing-a-project">initializing a project</a> or <a href="https://smithsonian.github.io/MitoPilot/#running-the-pipeline">opening the R Shiny GUI</a>.</p>
 <p>We’re now ready to start the <a href="https://dmacguigan.github.io/MitoPilot_workshop_2025/qmd/example_project/01_init.html">example project</a>!</p>
 
 

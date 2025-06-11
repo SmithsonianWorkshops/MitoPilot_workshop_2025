@@ -18,7 +18,7 @@ library(MitoPilot)
 
 # specify the directory where your test project will be created
 # if the directory does not exist, MitoPilot will create it
-wd = "/pool/public/genomics/macguigand/MitoPilot/testing/2025_06_10"
+wd = "/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01"
 
 # specify an execution environment, "local", "NMNH_Hydra", or "NOAA_SEDNA"
 ex = "NMNH_Hydra"
@@ -35,7 +35,8 @@ MitoPilot::new_test_project(
 If the test project was successfully initialized, you should see the following message.
 
 ```
-Creating project directory: /pool/public/genomics/macguigand/MitoPilot/testing/2025_06_10
+Creating project directory: /pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01
+SRR22396758 - Upeneus parvus                                                                                                                                 
 SRR22396794 - Psychrolutes paradoxus
 SRR22396940 - Psenes pellucidus
 SRR22396740 - Hoplostethus occidentalis
@@ -46,8 +47,8 @@ SRR22396627 - Gigantura indica
 SRR21843972 - Stomias affinis
 SRR22396843 - Conger oceanicus
 SRR22396668 - Erotelis smaragdus
-SRR22396758 - Upeneus parvus
 SRR22396865 - Paraconger caudilimbatus
+SRR19434536 - Rhinecanthus rectangulus
 Project initialized successfully.
 Please open and review the .config file to ensure all required options are specified.
 ```
@@ -61,7 +62,7 @@ We can now launch the R Shiny Graphical User Interface (GUI) to examine our test
 ```{r eval=F}
 # the function to launch the GUI 
 # must be called from within your project directory
-wd = "/pool/public/genomics/macguigand/MitoPilot/testing/2025_06_10"
+wd = "/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01"
 setwd(wd)
 MitoPilot::MitoPilot()
 ```
@@ -114,7 +115,7 @@ After clicking `Update`, your table should now show `test` for all samples in th
 
 You can set different parameters for different samples by simply selecting the set you want to change and repeating the above process. But for this test dataset, let's keep everything consistent.
 
-Let's also change the `Assembly Opts`. Repeat the process above, and creating a new `high_mem` setting with 6 CPUs and 36 GB of memory.
+Let's also change the `Assembly Opts`. Repeat the process above, and creating a new `high_mem` setting with 6 CPUs and 60 GB of memory.
 
 ![Fig. 12](/images/12.png)
 

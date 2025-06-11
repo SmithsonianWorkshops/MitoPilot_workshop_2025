@@ -1,3 +1,82 @@
 ---
 title: "02 - assembly"
 ---
+
+## Inspecting Assembly Results
+
+Once MitoPilot finishes the Assemble workflow, sample table should now be updated with new information.
+
+![Fig. 19](/images/19.png)
+
+If you want to locate the results files for a sample, scroll all the way to the right and click `output`. This will open the appropriate folder in the `Files` pane of your RStudio session.
+
+![Fig. 20](/images/20.png)
+
+You can also view the results within the MitoPilot GUI. For example, select SRR21843972 (*Stomias affinis*), then click `details`. This will open a new window with the mitogenome sequence.
+
+![Fig. 21](/images/21.png)
+
+Select the sequence and click the `Fasta` button in the bottom right. This will copy the FASTA formatted mitogenome to your clipboard, which you can paste into your favorite text editor. This could be useful for a quick BLAST search.
+
+![Fig. 22](/images/22.png)
+
+You can also click the `view` button, which will open a summary figure in a new tab, including mean read depth, sequence error rate, and GC content.
+
+![Fig. 23](/images/23.png)
+
+Notice that in this figure, read depth drops off dramatically at both ends of the sequence. SRR21843972 was unable to assemble a circular mitogenome due to poor read coverage in this region. To assemble a circular mitogenome, you could try running the Assemble module again with different `GetOrganelle` settings (see their [Wiki](https://github.com/Kinggerm/GetOrganelle/wiki/FAQ)), the `MitoFinder` assembler, or more sequence data.
+
+## Problematic Samples
+
+In this test dataset, there are two problematic samples which returned failed states. You can see which samples failed by looking for the exclamation mark state icon. Selecting a sample with that icon and clicking on the `STATE` button will confirm.
+
+![Fig. 24](/images/24.png)
+
+One failed sample is SRR22396758 (_Upeneus parvus_). We purposefully truncated the data for this sample to contain only 200 reads. 
+
+With so few reads, this sample failed to meet the `min_depth` threshold and returned a message "Insufficient sequencing depth" in the `Notes` column. When analyzing your own data, you can specify the `min_depth` threshold with the `new_project` function.
+
+The other failed sample is SRR21844202
+(_Fundulus majalis_). This sample had plenty of data and we were able to assemble a mitogenome. However, the message in the `Notes` columns says "Unable to resolve single assembly from reads."
+
+[GetOrganelle](https://github.com/Kinggerm/GetOrganelle) produced two alternate assembly paths for this sample. This is usually due to complicated assembly graphs near a repeat region. Please refer to [the GetOrganlle paper](https://doi.org/10.1186/s13059-020-02154-5) for more information about multiple assembly paths.
+
+Let's take a peek at SRR21844202 (_Fundulus majalis_). Select the sample, scroll all the way to the right, and click on `details`.
+
+![Fig. 25](/images/25.png)
+
+We can see two assemblies listed here. Clicking on `view` will show us the coverage, error, and GC content graphs for each assembly.
+
+Path #1
+
+![Fig. 26](/images/26.png)
+
+Path #2
+
+![Fig. 27](/images/27.png)
+
+The two assembly paths differ slightly around 13,000 bp.
+
+We can chose to move forward with just one assembly path by clicking the "ignore" button for one of the assembly paths.
+ 
+Alternatively, we can use the consensus sequence. Select both paths and click the `Align` button in the bottom right. The sequence alignment will pop up, showing us that the two paths have 99.9897% sequence similarity.
+
+If we scroll through the alignment, we can see a few base pair differences.
+
+![Fig. 28](/images/28.png)
+
+Selecting `Trim Consensus` will remove any conflicting regions of the aligned assembly paths and produce a shorter consensus sequence of both alignments. Doing so will automatically ignore the original two assembly paths.
+
+![Fig. 29](/images/29.png)
+
+Click close and return to the samples table. You will see that the `# Paths` column for SRR21844202 is highlighted and there is a note indicating that the assembly was edited. This sample has also been automatically changed to a locked state.
+
+![Fig. 30](/images/30.png)
+
+::: {.callout-important}
+Carefully consider your options for samples with multiple assembly paths. You may wish to align each assembly against a reference or compare depth of sequencing coverage. There is no one-size-fits-all solution.
+:::
+
+To proceed to the Annotate module, we need to lock the successful samples in the Assemble module. Select all of the samples except SRR22396758 (_Upeneus parvus_) and click the `LOCK` button. Then use the dropdown menu in the top left to navigate to the Annotate module.
+
+![Fig. 31](/images/31.png)

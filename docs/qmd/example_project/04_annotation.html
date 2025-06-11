@@ -229,8 +229,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#running-the-annotate-module" id="toc-running-the-annotate-module" class="nav-link active" data-scroll-target="#running-the-annotate-module">Running the Annotate Module</a></li>
+  <li><a href="#exploring-annotation-results" id="toc-exploring-annotation-results" class="nav-link" data-scroll-target="#exploring-annotation-results">Exploring Annotation Results</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -254,8 +261,39 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="running-the-annotate-module" class="level2">
+<h2 class="anchored" data-anchor-id="running-the-annotate-module">Running the Annotate Module</h2>
+<p>We can now move on to the Annotate pipeline module. This module consists of an annotation step using <a href="https://gitlab.com/Bernt/MITOS">Mitos2</a> and <a href="https://github.com/UCSC-LoweLab/tRNAscan-SE">tRNAscan-SE</a>, a taxon-specific curation step to refine the annotation models, and a validation step to flag possible issues or known errors that would be rejected by NCBI GenBank.</p>
+<p>Use the dropdown menu in the top left and select <code>Annotate</code>.</p>
+<p>Let’s edit the <code>Annotate Opts</code> and increase the memory allocation to 60 GB. In this window, you could also edit the Mitos2 and tRNAscan-SE options. In the future, we will allow users to specify custom reference databases for annotation.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/32.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 32</figcaption>
+</figure>
+</div>
+<p>You can also edit the curation options. For the test dataset, the default <code>fish_mito</code> options are fine.</p>
+<p>In the curation options window, you can see all of the complex rules that will be applied when MitoPilot performs automatic curation of the annotation results. For example, here are the allowed stop codons for protein coding genes.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/33.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 33</figcaption>
+</figure>
+</div>
+<p>To run the Annotate module, you can use either approach described in the previous <a href="../../qmd/example_project/02_nextflow.html">Nextflow</a> section. Let’s use the GUI method.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/34.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 34</figcaption>
+</figure>
+</div>
+<p>Once all steps are complete, the gears will stop spinning and you’ll see a summary message printed at the bottom of the <code>Progress</code> window. Click <code>Close</code> to return to the sample table.</p>
+</section>
+<section id="exploring-annotation-results" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-annotation-results">Exploring Annotation Results</h2>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

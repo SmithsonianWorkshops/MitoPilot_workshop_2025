@@ -320,7 +320,7 @@ Note
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the directory where your test project will be created</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># if the directory does not exist, MitoPilot will create it</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>wd <span class="ot">=</span> <span class="st">"/pool/public/genomics/macguigand/MitoPilot/testing/2025_06_10"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>wd <span class="ot">=</span> <span class="st">"/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01"</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># specify an execution environment, "local", "NMNH_Hydra", or "NOAA_SEDNA"</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ex <span class="ot">=</span> <span class="st">"NMNH_Hydra"</span></span>
@@ -334,7 +334,8 @@ Note
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If the test project was successfully initialized, you should see the following message.</p>
-<pre><code>Creating project directory: /pool/public/genomics/macguigand/MitoPilot/testing/2025_06_10
+<pre><code>Creating project directory: /pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01
+SRR22396758 - Upeneus parvus                                                                                                                                 
 SRR22396794 - Psychrolutes paradoxus
 SRR22396940 - Psenes pellucidus
 SRR22396740 - Hoplostethus occidentalis
@@ -345,8 +346,8 @@ SRR22396627 - Gigantura indica
 SRR21843972 - Stomias affinis
 SRR22396843 - Conger oceanicus
 SRR22396668 - Erotelis smaragdus
-SRR22396758 - Upeneus parvus
 SRR22396865 - Paraconger caudilimbatus
+SRR19434536 - Rhinecanthus rectangulus
 Project initialized successfully.
 Please open and review the .config file to ensure all required options are specified.</code></pre>
 <p>The new project directory contains a hidden file <code>.config</code>, which you can inspect if you wish. This file contains parameters that will be used by Nextflow to run the MitoPilot analysis workflow. All of the default settings in the config should be fine for the test project.</p>
@@ -357,7 +358,7 @@ Please open and review the .config file to ensure all required options are speci
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the function to launch the GUI </span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># must be called from within your project directory</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>wd <span class="ot">=</span> <span class="st">"/pool/public/genomics/macguigand/MitoPilot/testing/2025_06_10"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>wd <span class="ot">=</span> <span class="st">"/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01"</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(wd)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>MitoPilot<span class="sc">::</span><span class="fu">MitoPilot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -442,7 +443,7 @@ Please open and review the .config file to ensure all required options are speci
 </figure>
 </div>
 <p>You can set different parameters for different samples by simply selecting the set you want to change and repeating the above process. But for this test dataset, let’s keep everything consistent.</p>
-<p>Let’s also change the <code>Assembly Opts</code>. Repeat the process above, and creating a new <code>high_mem</code> setting with 6 CPUs and 36 GB of memory.</p>
+<p>Let’s also change the <code>Assembly Opts</code>. Repeat the process above, and creating a new <code>high_mem</code> setting with 6 CPUs and 60 GB of memory.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../images/12.png" class="img-fluid figure-img"></p>

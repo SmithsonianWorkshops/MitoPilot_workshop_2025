@@ -329,7 +329,8 @@ Note
 </div>
 <p>And we’re off! You should see Nextflow output being printed the to <code>Progress</code> window. This window will continually update as the pipeline progresses. As long as the gears in the top right are spinning, the pipeline is still running.</p>
 <p>The Assemble pipeline module has 3 steps: preprocessing (filtering) the raw FASTQ files with <a href="https://github.com/OpenGene/fastp">fastp</a>, assembling the mitogenomes using <a href="https://github.com/Kinggerm/GetOrganelle">GetOrganelle</a>, and calculating coverage maps for the assemblies using <a href="https://github.com/BenLangmead/bowtie2">bowtie2</a>.</p>
-<p>Nextflow distributes the analyses across multiple batch jobs on the Hydra cluster. This can allow you to run hundreds of samples simultaneously. You can use your Hydra’s job scheduler to check on the status of MitoPilot jobs. Some samples may finish faster than others.</p>
+<p>Nextflow distributes the analyses across multiple batch jobs on the Hydra cluster. This can allow you to run hundreds of samples simultaneously. The <code>Progress</code> window will update as samples finish each step.</p>
+<p>You can use your Hydra’s job scheduler to check on the status of MitoPilot jobs. Some samples may finish faster than others.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../images/15.png" class="img-fluid figure-img"></p>
@@ -343,6 +344,21 @@ Note
 <figcaption>Fig. 16</figcaption>
 </figure>
 </div>
+<p>The test dataset should take a few minutes to finish. When it’s done, your <code>Progress</code> window should look something like this.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/17.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 17</figcaption>
+</figure>
+</div>
+<p>If you scroll all the way to the bottom of the <code>Progress</code> window, you can some summary info about the run.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/18.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 18</figcaption>
+</figure>
+</div>
+<p>Click <code>Close</code> to return to the samples table.</p>
 </section>
 <section id="using-a-batch-job" class="level2">
 <h2 class="anchored" data-anchor-id="using-a-batch-job">Using a batch job</h2>
@@ -365,7 +381,7 @@ Note
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load tools/java/21.0.2 <span class="co"># required for Nextflow on Hydra</span></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># EXAMPLE NEXTFLOW COMMAND</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ex">nextflow</span> <span class="at">-log</span> /pool/public/genomics/macguigand/MitoPilot/22030FL-06-02/run_02/.logs/nextflow.log run /home/macguigand/R/x86_64-pc-linux-gnu-library/4.4/MitoPilot/nextflow <span class="at">-c</span> /pool/public/genomics/macguigand/MitoPilot/22030FL-06-02/run_02/.config <span class="at">-entry</span> WF1</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ex">nextflow</span> <span class="at">-log</span> /pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025/test_project_01/.logs/nextflow.log run /home/macguigand/R/x86_64-redhat-linux-gnu-library/4.4/MitoPilot/nextflow <span class="at">-c</span> /pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025/test_project_01/.config <span class="at">-entry</span> WF1 </span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> = <span class="kw">`</span><span class="fu">date</span><span class="kw">`</span> job <span class="va">$JOB_NAME</span> done</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-important callout-titled">

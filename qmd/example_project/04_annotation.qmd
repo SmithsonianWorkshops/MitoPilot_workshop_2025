@@ -1,3 +1,27 @@
 ---
 title: "03 - annotation"
 ---
+
+## Running the Annotate Module
+
+We can now move on to the Annotate pipeline module. This module consists of an annotation step using [Mitos2](https://gitlab.com/Bernt/MITOS) and [tRNAscan-SE](https://github.com/UCSC-LoweLab/tRNAscan-SE), a taxon-specific curation step to refine the annotation models, and a validation step to flag possible issues or known errors that would be rejected by NCBI GenBank.
+
+Use the dropdown menu in the top left and select `Annotate`.
+
+Let's edit the `Annotate Opts` and increase the memory allocation to 60 GB. In this window, you could also edit the Mitos2 and tRNAscan-SE options. In the future, we will allow users to specify custom reference databases for annotation.
+
+![Fig. 32](/images/32.png)
+
+You can also edit the curation options. For the test dataset, the default `fish_mito` options are fine.
+
+In the curation options window, you can see all of the complex rules that will be applied when MitoPilot performs automatic curation of the annotation results. For example, here are the allowed stop codons for protein coding genes.
+
+![Fig. 33](/images/33.png)
+
+To run the Annotate module, you can use either approach described in the previous [Nextflow](02_nextflow.qmd) section. Let's use the GUI method.
+
+![Fig. 34](/images/34.png)
+
+Once all steps are complete, the gears will stop spinning and you'll see a summary message printed at the bottom of the `Progress` window. Click `Close` to return to the sample table.
+
+## Exploring Annotation Results
