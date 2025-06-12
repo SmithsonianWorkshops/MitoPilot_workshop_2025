@@ -29,4 +29,4 @@ Using Nextflow version 24.10.4 build 5934
 
 You can now utilize all of MitoPilot's functions, such as [initializing a project](https://smithsonian.github.io/MitoPilot/#initializing-a-project) or [opening the R Shiny GUI](https://smithsonian.github.io/MitoPilot/#running-the-pipeline). 
 
-We're now ready to start the [example project](https://dmacguigan.github.io/MitoPilot_workshop_2025/qmd/example_project/01_init.html)!
+We're now ready to start the [example project](/qmd/example_project/01_init.qmd)!
