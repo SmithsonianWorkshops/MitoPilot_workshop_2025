@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>04 - annotation – MitoPilot Workshop 2025</title>
+<title>03 - intro to R – MitoPilot Workshop 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,7 +93,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/example_project/01_init.html">Example Fish Project</a></li><li class="breadcrumb-item"><a href="../../qmd/example_project/04_annotation.html">04 - annotation</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/setup/01_Hydra.html">Setup</a></li><li class="breadcrumb-item"><a href="../../qmd/setup/03_RIntro.html">03 - intro to R</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -154,7 +154,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/setup/03_RIntro.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/setup/03_RIntro.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">03 - intro to R</span></a>
   </div>
 </li>
@@ -201,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/example_project/04_annotation.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../qmd/example_project/04_annotation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">04 - annotation</span></a>
   </div>
 </li>
@@ -247,23 +247,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#running-the-annotate-module" id="toc-running-the-annotate-module" class="nav-link active" data-scroll-target="#running-the-annotate-module">Running the Annotate Module</a></li>
-  <li><a href="#exploring-annotation-results" id="toc-exploring-annotation-results" class="nav-link" data-scroll-target="#exploring-annotation-results">Exploring Annotation Results</a></li>
-  <li><a href="#editing-annotation-results" id="toc-editing-annotation-results" class="nav-link" data-scroll-target="#editing-annotation-results">Editing Annotation Results</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/example_project/01_init.html">Example Fish Project</a></li><li class="breadcrumb-item"><a href="../../qmd/example_project/04_annotation.html">04 - annotation</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/setup/01_Hydra.html">Setup</a></li><li class="breadcrumb-item"><a href="../../qmd/setup/03_RIntro.html">03 - intro to R</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">04 - annotation</h1>
+<h1 class="title">03 - intro to R</h1>
 </div>
 
 
@@ -280,110 +272,14 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="running-the-annotate-module" class="level2">
-<h2 class="anchored" data-anchor-id="running-the-annotate-module">Running the Annotate Module</h2>
-<p>We can now move on to the Annotate pipeline module. This module consists of an annotation step using <a href="https://gitlab.com/Bernt/MITOS">Mitos2</a> and <a href="https://github.com/UCSC-LoweLab/tRNAscan-SE">tRNAscan-SE</a>, a taxon-specific curation step to refine the annotation models, and a validation step to flag possible issues or known errors that would be rejected by NCBI GenBank.</p>
-<p>Use the dropdown menu in the top left and select <code>Annotate</code>.</p>
-<p>Let’s edit the <code>Annotate Opts</code> and increase the memory allocation to 60 GB. In this window, you could also edit the Mitos2 and tRNAscan-SE options. In the future, we will allow users to specify custom reference databases for annotation.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../images/32.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 32</figcaption>
-</figure>
-</div>
-<p>You can also edit the curation options. For the test dataset, the default <code>fish_mito</code> options are fine, but let’s increase the memory to 24 Gb.</p>
-<p>In the curation options window, you can see all of the complex rules that will be applied when MitoPilot performs automatic curation of the annotation results. For example, here are the allowed stop codons for protein-coding genes.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../images/33.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 33</figcaption>
-</figure>
-</div>
-<p>To run the Annotate module, you can use either approach described in the previous <a href="../../qmd/example_project/02_nextflow.html">Nextflow</a> section. Let’s use the GUI method.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../images/34.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 34</figcaption>
-</figure>
-</div>
-<p>Once all steps are complete, the gears will stop spinning and you’ll see a summary message printed at the bottom of the <code>Progress</code> window. Click <code>Close</code> to return to the sample table.</p>
-</section>
-<section id="exploring-annotation-results" class="level2">
-<h2 class="anchored" data-anchor-id="exploring-annotation-results">Exploring Annotation Results</h2>
-<p>There are a LOT of results to explore from the Annotate module. The sample table reports some basic stats about the number of protein-coding genes (PCGs), tRNAs, and rRNAs. The <code>missing</code> column reports which mitochondrial genes were not annotated (based on the provided curation model). The <code>extra</code> column notes the number of potentially duplicated genes.</p>
-<p>Lastly, the <code>warnings</code> column indicates how many warning flags were raised during the validation step. Samples with many warnings will require more manual curation to ensure that they are not rejected upon submission to NCBI GenBank. Warning messages are explained in further detail <a href="https://smithsonian.github.io/MitoPilot/articles/Fish-Mitogenome-Curation.html">here</a>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../images/35.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 35</figcaption>
-</figure>
-</div>
-<p>The annotation results for each sample can be examined more closely by clicking the <code>details</code> button. First, let’s examine the details for a good sample, SRR19434536 (<em>Rhinecanthus rectangulus</em>).</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../images/36.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 36</figcaption>
-</figure>
-</div>
-<p>This sample has the expected number of genes and no warnings. However, the <code>notes</code> column shows that MitoPilot still made some tweaks to the annotation during the curation step. For example, the start position of rRNA rrnL was moved 22 bp upstream and the stop codon for NAD2 was trimmed by 2 bp.</p>
-<p>Nucleotide sequences (and amino acid sequence for PCGs) can be copied to the clipboard using the <code>nt</code> (and <code>aa</code>) buttons on the far right. This could be helpful if you’d like to manually BLAST some genes.</p>
-<p>Clicking on the <code>Coverage Map</code> button will show a plot of sequence depth, zooming to the position of the highlighted gene. The colored bars representing the genes are transparent, allowing you to spot overlapping gene models that may need manual adjustment.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../images/37.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 37</figcaption>
-</figure>
-</div>
-<p>For protein-coding genes, you can click the <code>Alignment</code> button to show the protein alignment of your annotated gene against a reference database. Currently, this shows only the top BLAST hits from the curation process, which may be one or more sequences.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../images/38.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 38</figcaption>
-</figure>
-</div>
-<p>If you would like to use your own custom BLAST database, you can check the <code>Local blast</code> box. MitoPilot will return a message with instructions to run <code>options('MitoPilot.local.db' = '/path/to/local/blastp/db')</code> within your RStudio session. You will need to restart the MitoPilot GUI for this change to take effect.</p>
-</section>
-<section id="editing-annotation-results" class="level2">
-<h2 class="anchored" data-anchor-id="editing-annotation-results">Editing Annotation Results</h2>
-<p>MitoPilot offers some basic functions to manually edit your annotation results. Let’s open the alignment for the SRR19434536 (<em>Rhinecanthus rectangulus</em>) “cox1” gene. Clicking the <code>EDIT</code> button brings up a few options to change the start and stop position annotation.</p>
-<p>Try clicking the <code>+</code> button next to <code>START</code>. You should see that the “cox1 (focal)” sequence start position has shifted.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../images/39.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 39</figcaption>
-</figure>
-</div>
-<p>This is clearly a worse alignment. Click <code>RESET</code> to undo your changes.</p>
-<p>If the alignment view contains many sequences, manual editing will be slow since MitoPilot has to redo the alignment every time you adjust a codon position. To speed this up, you can select the <code>Align fewer refs</code> box. This will restrict the alignment to the top five BLAST hits.</p>
-<p>Below the alignment section you will find the <code>Notes</code>. Use this section to keep track of your manual edits. Anything you write here will be saved automatically.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../images/40.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 40</figcaption>
-</figure>
-</div>
-<p>At the bottom of the window are several buttons. You can completely remove annotations by selecting them and clicking <code>Delete</code>. Use this feature with caution, as there’s no easy way to add the annotation back without <a href="https://smithsonian.github.io/MitoPilot/articles/FAQ.html#how-do-i-restore-annotatations-after-manual-editing">running the sample through the Annotate module again</a>.</p>
-<p>The <code>Linearize</code> button will convert a circular assembly to a linear assembly. This may be useful if the D-loop region was poorly assmebled or annotated.</p>
-<p>You can use the <code>Toggle reviewed</code> button to change the state of the <code>Reviewed</code> column, which may be helpful for tracking the progress of your manual edits. Likewise, we have provided <code>Toggle ID verified</code> and <code>Toggle problematic</code> buttons to help track the status of your samples.</p>
-<p>Annotation editing can be a bit temperamental and you may encounter bugs. Please report any problems on the <a href="https://github.com/Smithsonian/MitoPilot/issues">MitoPilot GitHub issues page</a>.</p>
-<p>Try playing around with the manual editing on your own. There are many different types of warning messages, not all of which can be fixed within MitoPilot.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Warning messages will not disappear, even after you fix the error with manual edits.</p>
-</div>
-</div>
-<p>Once you are done, select all of the samples and click the <code>LOCK</code> button to prepare for the Export module.</p>
+<p><a href="https://www.r-project.org/">R</a> is a free software environment for statistical computing and graphics. MitoPilot does not require the user to be an expert in R, as MitoPilot mostly utilizes a custom graphical user interface (GUI).</p>
+<p>However, if you wish to learn the basics of R, there are many online resources:</p>
+<ul>
+<li><a href="https://github.com/SmithsonianWorkshops/eDNA_Metabarcoding_Workshop_LAB_2025/tree/main/r-intro">Smithsonian LAB R workshop</a></li>
+<li><a href="https://datacarpentry.github.io/genomics-r-intro/">Data Carpentry R workshop</a></li>
+</ul>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

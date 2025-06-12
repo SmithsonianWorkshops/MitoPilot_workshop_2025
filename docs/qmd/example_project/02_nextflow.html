@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>02 - running Nextflow – MitoPilot Workshop 2025</title>
+<title>02 - running MitoPilot modules – MitoPilot Workshop 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/example_project/01_init.html">Example Fish Project</a></li><li class="breadcrumb-item"><a href="../../qmd/example_project/02_nextflow.html">02 - running Nextflow</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/example_project/01_init.html">Example Fish Project</a></li><li class="breadcrumb-item"><a href="../../qmd/example_project/02_nextflow.html">02 - running MitoPilot modules</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -189,14 +189,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/setup/03_install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 - MitoPilot installation</span></a>
+  <a href="../../qmd/setup/03_RIntro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03 - intro to R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/setup/04_load.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - load MitoPilot</span></a>
+  <a href="../../qmd/setup/04_install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04 - MitoPilot installation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qmd/setup/05_load.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05 - load MitoPilot</span></a>
   </div>
 </li>
       </ul>
@@ -219,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../qmd/example_project/02_nextflow.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">02 - running Nextflow</span></a>
+ <span class="menu-text">02 - running MitoPilot modules</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -281,17 +287,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#using-the-gui" id="toc-using-the-gui" class="nav-link active" data-scroll-target="#using-the-gui">Using the GUI</a></li>
-  <li><a href="#using-a-batch-job" id="toc-using-a-batch-job" class="nav-link" data-scroll-target="#using-a-batch-job">Using a batch job</a></li>
+  <li><a href="#running-the-mitopilot-workflow" id="toc-running-the-mitopilot-workflow" class="nav-link active" data-scroll-target="#running-the-mitopilot-workflow">Running the MitoPilot workflow</a>
+  <ul class="collapse">
+  <li><a href="#method-1-using-the-gui" id="toc-method-1-using-the-gui" class="nav-link" data-scroll-target="#method-1-using-the-gui">Method 1: Using the GUI</a></li>
+  <li><a href="#method-2-using-a-batch-job" id="toc-method-2-using-a-batch-job" class="nav-link" data-scroll-target="#method-2-using-a-batch-job">Method 2: using a batch job</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/example_project/01_init.html">Example Fish Project</a></li><li class="breadcrumb-item"><a href="../../qmd/example_project/02_nextflow.html">02 - running Nextflow</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/example_project/01_init.html">Example Fish Project</a></li><li class="breadcrumb-item"><a href="../../qmd/example_project/02_nextflow.html">02 - running MitoPilot modules</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">02 - running Nextflow</h1>
+<h1 class="title">02 - running MitoPilot modules</h1>
 </div>
 
 
@@ -308,8 +317,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Now that our test project is set up, it’s time to run the analysis workflow. MitoPilot utilizes <a href="https://www.nextflow.io/">Nextflow</a> to analyze all of the samples in parallel. Obviously, this is more efficient than a simple serial workflow running one sample at a time.</p>
-<p>To generate the Nextflow command for the MitoPilot Assemble module, simply click the <code>UPDATE</code> button.</p>
+<section id="running-the-mitopilot-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="running-the-mitopilot-workflow">Running the MitoPilot workflow</h2>
+<p>Now that our test project is set up, it’s time to run the analysis workflow. MitoPilot utilizes <a href="https://www.nextflow.io/">Nextflow</a> to analyze all of the samples in parallel. This is far more efficient than running each sample one at a time in a serial workflow.</p>
+<p>To generate the Nextflow command for the Assemble module, click the <code>UPDATE</code> button at the top of the GUI.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../images/13.png" class="img-fluid figure-img"></p>
@@ -317,9 +328,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <p>There are two ways to run this Nextflow command on Hydra.</p>
-<section id="using-the-gui" class="level2">
-<h2 class="anchored" data-anchor-id="using-the-gui">Using the GUI</h2>
-<p>With the Update window open, click the <code>Start Nextflow</code> button. This will run the analysis pipeline within the MitoPilot GUI. This requires you to keep the GUI open while the pipeline is running.</p>
+<section id="method-1-using-the-gui" class="level3">
+<h3 class="anchored" data-anchor-id="method-1-using-the-gui">Method 1: Using the GUI</h3>
+<p>With the <code>Update</code> window open, click the <code>Start Nextflow</code> button to run the analysis pipeline within the MitoPilot GUI. This requires you to keep the GUI open while the pipeline is running.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -340,30 +351,30 @@ Note
 </figure>
 </div>
 <p>And we’re off! You should see Nextflow output being printed the to <code>Progress</code> window. This window will continually update as the pipeline progresses. As long as the gears in the top right are spinning, the pipeline is still running.</p>
-<p>The Assemble pipeline module has 3 steps: preprocessing (filtering) the raw FASTQ files with <a href="https://github.com/OpenGene/fastp">fastp</a>, assembling the mitogenomes using <a href="https://github.com/Kinggerm/GetOrganelle">GetOrganelle</a>, and calculating coverage maps for the assemblies using <a href="https://github.com/BenLangmead/bowtie2">bowtie2</a>.</p>
+<p>The Assemble pipeline module has 3 steps: preprocessing (filtering) the raw FASTQ files with <a href="https://github.com/OpenGene/fastp">fastp</a>, assembling the mitogenomes using <a href="https://github.com/Kinggerm/GetOrganelle">GetOrganelle</a> (or <a href="https://github.com/RemiAllio/MitoFinder">MitoFinder</a>), and calculating coverage maps for the assemblies using <a href="https://github.com/BenLangmead/bowtie2">bowtie2</a>.</p>
 <p>Nextflow distributes the analyses across multiple batch jobs on the Hydra cluster. This can allow you to run hundreds of samples simultaneously. The <code>Progress</code> window will update as samples finish each step.</p>
-<p>You can use your Hydra’s job scheduler to check on the status of MitoPilot jobs. Some samples may finish faster than others.</p>
+<p>You can use Hydra’s job scheduler to check on the status of MitoPilot jobs. Some samples may finish faster than others.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../images/15.png" class="img-fluid figure-img"></p>
 <figcaption>Fig. 15</figcaption>
 </figure>
 </div>
-<p>You may notice that some samples fail at certain steps (though this is unlikely for the test dataset). Often this is due to a memory error, so MitoPilot will retry failed samples with more RAM. The Nextflow log tracks the number of failed samples and retries.</p>
+<p>Some samples may fail at certain steps (though this is unlikely for the test dataset). Failures are often due to running out of memory, so MitoPilot will retry failed samples with more RAM. The Nextflow log tracks the number of failed samples and retries. We describe some common errors <a href="https://smithsonian.github.io/MitoPilot/articles/FAQ.html#how-do-i-fix-the-error-message">here</a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../images/16.png" class="img-fluid figure-img"></p>
 <figcaption>Fig. 16</figcaption>
 </figure>
 </div>
-<p>The test dataset should take a few minutes to finish. When it’s done, your <code>Progress</code> window should look something like this.</p>
+<p>The test dataset should take a few minutes to finish. When it’s done, your <code>Progress</code> window will look something like this.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../images/17.png" class="img-fluid figure-img"></p>
 <figcaption>Fig. 17</figcaption>
 </figure>
 </div>
-<p>If you scroll all the way to the bottom of the <code>Progress</code> window, you can some summary info about the run.</p>
+<p>Scroll all the way to the bottom of the <code>Progress</code> window to find some summary info about the run.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../images/18.png" class="img-fluid figure-img"></p>
@@ -372,9 +383,9 @@ Note
 </div>
 <p>Click <code>Close</code> to return to the samples table.</p>
 </section>
-<section id="using-a-batch-job" class="level2">
-<h2 class="anchored" data-anchor-id="using-a-batch-job">Using a batch job</h2>
-<p>If you have a large number of samples to process (more than a few dozen), we recommend running the assemble and annotate MitoPilot modules as batch jobs.</p>
+<section id="method-2-using-a-batch-job" class="level3">
+<h3 class="anchored" data-anchor-id="method-2-using-a-batch-job">Method 2: using a batch job</h3>
+<p>If you have a large number of samples to process (more than a few dozen), we recommend running the Assemble and Annotate MitoPilot modules as batch jobs.</p>
 <p>You will still need to generate the Nextflow command using the MitoPilot GUI. But instead of clicking the <code>Start Nextflow</code> button, copy the Nextflow command and create a batch submission script.</p>
 <p>We have provided a template below. You may wish to modify the job name (<code>-N</code>) and the log file name (<code>-o</code>).</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/sh</span></span>
@@ -409,10 +420,11 @@ Important
 <p>You must use the options <code>-q lTWFM.sq</code> and <code>-l wfmq</code>. This is a special Hydra queue for workflow managers like Nextflow. You must also include <code>-pe mthread 2</code> in order to have enough available RAM for building the MitoPilot Singularity image.</p>
 </div>
 </div>
-<p>Move the submission script into your MitoPilot project directory. In the above example, <code>/pool/public/genomics/macguigand/MitoPilot/22030FL-06-02/run_02/</code>. Then submit the job using <code>qsub MY_SCRIPT_NAME.sh</code>.</p>
+<p>Move the submission script into your MitoPilot project directory. In the above example, <code>/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025/test_project_01</code>. Then submit the job using <code>qsub MY_SCRIPT_NAME.sh</code>.</p>
 <p>You can monitor the progress of this job using the <code>qstat</code> command and by checking on the log files. Once the job is done, you can relaunch the GUI to inspect the results. The same approach can be used for the Annotate module.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -189,14 +189,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/setup/03_install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 - MitoPilot installation</span></a>
+  <a href="../../qmd/setup/03_RIntro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03 - intro to R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/setup/04_load.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - load MitoPilot</span></a>
+  <a href="../../qmd/setup/04_install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04 - MitoPilot installation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qmd/setup/05_load.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05 - load MitoPilot</span></a>
   </div>
 </li>
       </ul>
@@ -219,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../qmd/example_project/02_nextflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - running Nextflow</span></a>
+ <span class="menu-text">02 - running MitoPilot modules</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -283,8 +289,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#launching-rstudio-server" id="toc-launching-rstudio-server" class="nav-link active" data-scroll-target="#launching-rstudio-server">Launching RStudio server</a>
   <ul class="collapse">
-  <li><a href="#rstudio-galaxy-server-recommended" id="toc-rstudio-galaxy-server-recommended" class="nav-link" data-scroll-target="#rstudio-galaxy-server-recommended">RStudio Galaxy server (recommended)</a></li>
-  <li><a href="#tunneling-to-a-rstudio-server-session" id="toc-tunneling-to-a-rstudio-server-session" class="nav-link" data-scroll-target="#tunneling-to-a-rstudio-server-session">Tunneling to a RStudio server session</a></li>
+  <li><a href="#method-1-rstudio-galaxy-server-recommended" id="toc-method-1-rstudio-galaxy-server-recommended" class="nav-link" data-scroll-target="#method-1-rstudio-galaxy-server-recommended">Method 1: RStudio Galaxy server (recommended)</a></li>
+  <li><a href="#method-2-tunneling-to-a-rstudio-server-session" id="toc-method-2-tunneling-to-a-rstudio-server-session" class="nav-link" data-scroll-target="#method-2-tunneling-to-a-rstudio-server-session">Method 2: tunneling to a RStudio server session</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -315,11 +321,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="launching-rstudio-server">Launching RStudio server</h2>
 <p>We will use RStudio server to run MitoPilot. RStudio server on Hydra functions just like the normal RStudio on your local computer, except that you are accessing it remotely.</p>
 <p>There are two methods to access RStudio server on Hydra.</p>
-<section id="rstudio-galaxy-server-recommended" class="level3">
-<h3 class="anchored" data-anchor-id="rstudio-galaxy-server-recommended">RStudio Galaxy server (recommended)</h3>
+<section id="method-1-rstudio-galaxy-server-recommended" class="level3">
+<h3 class="anchored" data-anchor-id="method-1-rstudio-galaxy-server-recommended">Method 1: RStudio Galaxy server (recommended)</h3>
 <p>The Hydra Team recently launched an interactive R Studio environment that is accessible directly via a browser, at <a href="https://galaxy.si.edu/R4">https://galaxy.si.edu/R4</a>.</p>
 <p>Hydra users can leverage this server to test, debug, and develop R based workflows using the interactive RStudio GUI (currently running R 4.4.3).</p>
-<p>By logging in with your Hydra account credentials, users will have access to the storage under /pool, /scratch and /store. This server offers resources totaling 192 CPUs and 1.5 T of RAM.</p>
+<p>By logging in with your Hydra account credentials, users will have access to the storage under /pool, /scratch, and /store. This server offers resources totaling 192 CPUs and 1.5 T of RAM.</p>
 <p><strong><em>Notes:</em></strong></p>
 <ol type="1">
 <li>This is a shared resource and should be used accordingly. Long running jobs or jobs requiring the entire resources of the server would be more appropriate as a job submission.</li>
@@ -327,8 +333,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>This is a new resource - please be patient as we test this offering with our user community. We will evaluate this test once Hydra is moved to the new datacenter and decide whether it should be kept or altered in any way.</li>
 </ol>
 </section>
-<section id="tunneling-to-a-rstudio-server-session" class="level3">
-<h3 class="anchored" data-anchor-id="tunneling-to-a-rstudio-server-session">Tunneling to a RStudio server session</h3>
+<section id="method-2-tunneling-to-a-rstudio-server-session" class="level3">
+<h3 class="anchored" data-anchor-id="method-2-tunneling-to-a-rstudio-server-session">Method 2: tunneling to a RStudio server session</h3>
 <p>To launch RStudio server on Hydra, run the following.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># avoid package conflicts (may not be necessary for all users)</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate </span>

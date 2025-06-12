@@ -18,8 +18,9 @@ website:
         contents:
         - qmd/setup/01_Hydra.qmd
         - qmd/setup/02_RstudioServer.qmd
-        - qmd/setup/03_install.qmd
-        - qmd/setup/04_load.qmd
+        - qmd/setup/03_RIntro.qmd
+        - qmd/setup/04_install.qmd
+        - qmd/setup/05_load.qmd
       - section: "Example Fish Project"
         contents:
         - qmd/example_project/01_init.qmd

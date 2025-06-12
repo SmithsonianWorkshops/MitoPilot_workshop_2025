@@ -1,18 +1,17 @@
 ---
-title: "04 - load MitoPilot"
+title: "05 - load MitoPilot"
 ---
 
 ## Loading the MitoPilot package
 
-To load the MitoPilot R package, we first need to modify our `PATH` environmental variable. This will allow our RStudio session to find several important programs, including `java`, `nextflow`, and `qsub`.
+To load the MitoPilot R package, we first need to modify our `PATH` environmental variable. This will allow our RStudio session to find and use `java` and `nextflow`.
 
 ```{R eval=F}
 # modify PATH to include:
 #   ~/bin (contains nextflow exe)
 #   java 21.0.2 (required for nextflow)
-#   qsub (required for nextflow to submit jobs)  
-default_path <- "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/rstudio-server/bin/quarto/bin:/usr/lib/rstudio-server/bin/postback"
-new_path <- paste0(Sys.getenv("HOME"), "/bin:/share/apps/tools/java/21.0.2/bin:/cm/shared/apps/uge/8.8.1/bin/lx-amd64/")
+default_path <- "/cm/shared/apps/uge/8.8.1/bin/lx-amd64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/rstudio-server/bin/quarto/bin:/usr/lib/rstudio-server/bin/postback"
+new_path <- paste0(Sys.getenv("HOME"), "/bin:/share/apps/tools/java/21.0.2/bin")
 Sys.setenv(PATH = paste(new_path, default_path, sep = ":"))
 ```
 
@@ -29,4 +28,4 @@ Using Nextflow version 24.10.4 build 5934
 
 You can now utilize all of MitoPilot's functions, such as [initializing a project](https://smithsonian.github.io/MitoPilot/#initializing-a-project) or [opening the R Shiny GUI](https://smithsonian.github.io/MitoPilot/#running-the-pipeline). 
 
-We're now ready to start the [example project](/qmd/example_project/01_init.qmd)!
+Let's get started with the [example project](/qmd/example_project/01_init.qmd)!

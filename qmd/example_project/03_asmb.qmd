@@ -4,11 +4,11 @@ title: "03 - assembly"
 
 ## Inspecting Assembly Results
 
-Once MitoPilot finishes the Assemble workflow, sample table should now be updated with new information.
+Once MitoPilot finishes the Assemble workflow, the sample table should be updated with new information.
 
 ![Fig. 19](/images/19.png)
 
-If you want to locate the results files for a sample, scroll all the way to the right and click `output`. This will open the appropriate folder in the `Files` pane of your RStudio session.
+If you want to locate the results files for a sample, click `output`. This will open the appropriate folder in the `Files` pane of your RStudio session.
 
 ![Fig. 20](/images/20.png)
 
@@ -16,7 +16,7 @@ You can also view the results within the MitoPilot GUI. For example, select SRR2
 
 ![Fig. 21](/images/21.png)
 
-Select the sequence and click the `Fasta` button in the bottom right. This will copy the FASTA formatted mitogenome to your clipboard, which you can paste into your favorite text editor. This could be useful for a quick BLAST search.
+Select the sequence and click the `Fasta` button in the bottom right. This will copy the FASTA formatted mitogenome to your clipboard, which you can paste into your favorite text editor. This could be useful for a quick [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi) search.
 
 ![Fig. 22](/images/22.png)
 
@@ -24,7 +24,7 @@ You can also click the `view` button, which will open a summary figure in a new 
 
 ![Fig. 23](/images/23.png)
 
-Notice that in this figure, read depth drops off dramatically at both ends of the sequence. SRR21843972 was unable to assemble a circular mitogenome due to poor read coverage in this region. To assemble a circular mitogenome, you could try running the Assemble module again with different `GetOrganelle` settings (see their [Wiki](https://github.com/Kinggerm/GetOrganelle/wiki/FAQ)), the `MitoFinder` assembler, or more sequence data.
+Notice that in this figure, read depth drops off dramatically at both ends of the sequence. SRR21843972 was unable to assemble a circular mitogenome due to poor read coverage in this region. To assemble a circular mitogenome, you could try running the Assemble module again with different `GetOrganelle` settings (see their [Wiki](https://github.com/Kinggerm/GetOrganelle/wiki/FAQ)), try the `MitoFinder` assembler, or get more sequence data.
 
 ## Problematic Samples
 
@@ -34,7 +34,7 @@ In this test dataset, there are two problematic samples which returned failed st
 
 One failed sample is SRR22396758 (_Upeneus parvus_). We purposefully truncated the data for this sample to contain only 200 reads. 
 
-With so few reads, this sample failed to meet the `min_depth` threshold and returned a message "Insufficient sequencing depth" in the `Notes` column. When analyzing your own data, you can specify the `min_depth` threshold with the `new_project` function.
+With so few reads, this sample failed to meet the `min_depth` threshold and returned a message "Insufficient sequencing depth" in the `Notes` column. When analyzing your own data, you can specify the `min_depth` threshold with the [`MitoPilot::new_project()`](https://smithsonian.github.io/MitoPilot/reference/new_project.html) function.
 
 The other failed sample is SRR21844202
 (_Fundulus majalis_). This sample had plenty of data and we were able to assemble a mitogenome. However, the message in the `Notes` columns says "Unable to resolve single assembly from reads."

@@ -12,9 +12,9 @@ Let's edit the `Annotate Opts` and increase the memory allocation to 60 GB. In t
 
 ![Fig. 32](/images/32.png)
 
-You can also edit the curation options. For the test dataset, the default `fish_mito` options are fine.
+You can also edit the curation options. For the test dataset, the default `fish_mito` options are fine, but let's increase the memory to 24 Gb.
 
-In the curation options window, you can see all of the complex rules that will be applied when MitoPilot performs automatic curation of the annotation results. For example, here are the allowed stop codons for protein coding genes.
+In the curation options window, you can see all of the complex rules that will be applied when MitoPilot performs automatic curation of the annotation results. For example, here are the allowed stop codons for protein-coding genes.
 
 ![Fig. 33](/images/33.png)
 
@@ -36,19 +36,19 @@ The annotation results for each sample can be examined more closely by clicking 
 
 ![Fig. 36](/images/36.png)
 
-This sample has the expected number of genes and has no warnings. However, the `notes` column shows that MitoPilot still made some tweaks to the annotation during the curation step. For example, the start position of rRNA rrnL was moved 22 bp upstream and the stop codon for NAD2 was trimmed by 2 bp.
+This sample has the expected number of genes and no warnings. However, the `notes` column shows that MitoPilot still made some tweaks to the annotation during the curation step. For example, the start position of rRNA rrnL was moved 22 bp upstream and the stop codon for NAD2 was trimmed by 2 bp.
 
 Nucleotide sequences (and amino acid sequence for PCGs) can be copied to the clipboard using the `nt` (and `aa`) buttons on the far right. This could be helpful if you'd like to manually BLAST some genes.
 
-Clicking on the `Coverage Map` button will show a plot of sequence depth, zooming to the position of the highlighted gene. The colored bars representing the genes are transparent, allowing you to spot overlapping gene models which may be incorrect.
+Clicking on the `Coverage Map` button will show a plot of sequence depth, zooming to the position of the highlighted gene. The colored bars representing the genes are transparent, allowing you to spot overlapping gene models that may need manual adjustment.
 
 ![Fig. 37](/images/37.png)
 
-For protein coding genes, you can click the `Alignment` button to show the protein alignment of your annotated gene against a reference database. Currently, this shows only the top hits (filtered in blast using `-best_hit_score_edge 0.01`) from the curation process, which may be one or more sequences.
+For protein-coding genes, you can click the `Alignment` button to show the protein alignment of your annotated gene against a reference database. Currently, this shows only the top BLAST hits from the curation process, which may be one or more sequences.
 
 ![Fig. 38](/images/38.png)
 
-If you would like to use your own custom BLAST database, you can check the `Local blast` box. MitoPilot will return a message with the instructions: run `options('MitoPilot.local.db' = '/path/to/local/blastp/db')` within your RStudio session. You will need to restart the MitoPilot GUI for this change to take effect.
+If you would like to use your own custom BLAST database, you can check the `Local blast` box. MitoPilot will return a message with instructions to run `options('MitoPilot.local.db' = '/path/to/local/blastp/db')` within your RStudio session. You will need to restart the MitoPilot GUI for this change to take effect.
 
 ## Editing Annotation Results
 
@@ -60,8 +60,7 @@ Try clicking the `+` button next to `START`. You should see that the "cox1 (foca
 
 This is clearly a worse alignment. Click `RESET` to undo your changes.
 
-If the alignment view contains many sequences, manual editing will be slow since MitoPilot has to redo the alignments every time you click a `+` or `-` button. To help speed this up, you can select the `Align fewer refs` box. This will restrict the alignment to the top five BLAST hits.
-
+If the alignment view contains many sequences, manual editing will be slow since MitoPilot has to redo the alignment every time you adjust a codon position. To speed this up, you can select the `Align fewer refs` box. This will restrict the alignment to the top five BLAST hits.
 
 Below the alignment section you will find the `Notes`. Use this section to keep track of your manual edits. Anything you write here will be saved automatically.
 
@@ -76,5 +75,9 @@ You can use the `Toggle reviewed` button to change the state of the `Reviewed` c
 Annotation editing can be a bit temperamental and you may encounter bugs. Please report any problems on the [MitoPilot GitHub issues page](https://github.com/Smithsonian/MitoPilot/issues).
 
 Try playing around with the manual editing on your own. There are many different types of warning messages, not all of which can be fixed within MitoPilot.
+
+::: {.callout-note}
+Warning messages will not disappear, even after you fix the error with manual edits.
+:::
 
 Once you are done, select all of the samples and click the `LOCK` button to prepare for the Export module.

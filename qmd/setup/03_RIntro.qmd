@@ -1,0 +1,10 @@
+---
+title: "03 - intro to R"
+---
+
+[R](https://www.r-project.org/) is a free software environment for statistical computing and graphics. MitoPilot does not require the user to be an expert in R, as MitoPilot mostly utilizes a custom graphical user interface (GUI).
+
+However, if you wish to learn the basics of R, there are many online resources:
+
+- [Smithsonian LAB R workshop](https://github.com/SmithsonianWorkshops/eDNA_Metabarcoding_Workshop_LAB_2025/tree/main/r-intro)
+- [Data Carpentry R workshop](https://datacarpentry.github.io/genomics-r-intro/)

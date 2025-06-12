@@ -1,12 +1,19 @@
 ---
-title: "03 - MitoPilot installation"
+title: "04 - MitoPilot installation"
 ---
 
 ## First-time installation
 
 To install MitoPilot, use the RStudio server window to run the following. This might take a while.
 
-```{R eval=F
+```{R eval=F}
+if (!requireNamespace("remotes", quietly = TRUE)) {
+  install.packages("remotes")
+}
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+  install.packages("BiocManager")
+}
+BiocManager::install("Smithsonian/MitoPilot")
 ```
 
 You may see a warning like this:

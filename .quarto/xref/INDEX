@@ -76,5 +76,14 @@
   },
   "qmd/MitoPilot_intro/MitoPilot-intro.qmd": {
     "MitoPilot-intro.html": "f051f2b4"
+  },
+  "qmd/setup/03_RIntro.qmd": {
+    "03_RIntro.html": "c4077b87"
+  },
+  "qmd/setup/04_install.qmd": {
+    "04_install.html": "5ccea346"
+  },
+  "qmd/setup/05_load.qmd": {
+    "05_load.html": "3b1fe65e"
   }
 }

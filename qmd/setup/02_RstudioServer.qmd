@@ -8,13 +8,13 @@ We will use RStudio server to run MitoPilot. RStudio server on Hydra functions j
 
 There are two methods to access RStudio server on Hydra.
 
-### RStudio Galaxy server (recommended)
+### Method 1: RStudio Galaxy server (recommended)
 
 The Hydra Team recently launched an interactive R Studio environment that is accessible directly via a browser, at [https://galaxy.si.edu/R4](https://galaxy.si.edu/R4).
 
 Hydra users can leverage this server to test, debug, and develop R based workflows using the interactive RStudio GUI (currently running R 4.4.3).
 
-By logging in with your Hydra account credentials, users will have access to the storage under /pool, /scratch and /store. This server offers resources totaling 192 CPUs and 1.5 T of RAM.
+By logging in with your Hydra account credentials, users will have access to the storage under /pool, /scratch, and /store. This server offers resources totaling 192 CPUs and 1.5 T of RAM.
 
 ***Notes:***
 
@@ -22,7 +22,7 @@ By logging in with your Hydra account credentials, users will have access to the
 2. This server is only accessible from trusted computers, not on the public internet. For technical reasons, to access this resource via telework.si.edu, go to [https://galaxy.si.edu](https://galaxy.si.edu) and then choose the "R4 v443" option.
 3. This is a new resource - please be patient as we test this offering with our user community. We will evaluate this test once Hydra is moved to the new datacenter and decide whether it should be kept or altered in any way.
 
-### Tunneling to a RStudio server session
+### Method 2: tunneling to a RStudio server session
 
 To launch RStudio server on Hydra, run the following.
 

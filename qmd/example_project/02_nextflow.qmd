@@ -1,18 +1,20 @@
 ---
-title: "02 - running Nextflow"
+title: "02 - running MitoPilot modules"
 ---
 
-Now that our test project is set up, it's time to run the analysis workflow. MitoPilot utilizes [Nextflow](https://www.nextflow.io/) to analyze all of the samples in parallel. Obviously, this is more efficient than a simple serial workflow running one sample at a time.
+## Running the MitoPilot workflow
 
-To generate the Nextflow command for the MitoPilot Assemble module, simply click the `UPDATE` button.
+Now that our test project is set up, it's time to run the analysis workflow. MitoPilot utilizes [Nextflow](https://www.nextflow.io/) to analyze all of the samples in parallel. This is far more efficient than running each sample one at a time in a serial workflow.
+
+To generate the Nextflow command for the Assemble module, click the `UPDATE` button at the top of the GUI.
 
 ![Fig. 13](/images/13.png)
 
 There are two ways to run this Nextflow command on Hydra.
 
-## Using the GUI
+### Method 1: Using the GUI
 
-With the Update window open, click the `Start Nextflow` button. This will run the analysis pipeline within the MitoPilot GUI. This requires you to keep the GUI open while the pipeline is running.
+With the `Update` window open, click the `Start Nextflow` button to run the analysis pipeline within the MitoPilot GUI. This requires you to keep the GUI open while the pipeline is running.
 
 ::: {.callout-note}
 We recommend only using this method for small numbers of samples. If your internet connection is interrupted, the analysis pipeline will stop. You can resume an interrupted run, but it will waste time and can occasionally cause bugs.
@@ -22,31 +24,31 @@ We recommend only using this method for small numbers of samples. If your intern
 
 And we're off! You should see Nextflow output being printed the to `Progress` window. This window will continually update as the pipeline progresses. As long as the gears in the top right are spinning, the pipeline is still running.
 
-The Assemble pipeline module has 3 steps: preprocessing (filtering) the raw FASTQ files with [fastp](https://github.com/OpenGene/fastp), assembling the mitogenomes using [GetOrganelle](https://github.com/Kinggerm/GetOrganelle), and calculating coverage maps for the assemblies using [bowtie2](https://github.com/BenLangmead/bowtie2).
+The Assemble pipeline module has 3 steps: preprocessing (filtering) the raw FASTQ files with [fastp](https://github.com/OpenGene/fastp), assembling the mitogenomes using [GetOrganelle](https://github.com/Kinggerm/GetOrganelle) (or [MitoFinder](https://github.com/RemiAllio/MitoFinder)), and calculating coverage maps for the assemblies using [bowtie2](https://github.com/BenLangmead/bowtie2).
 
 Nextflow distributes the analyses across multiple batch jobs on the Hydra cluster. This can allow you to run hundreds of samples simultaneously. The `Progress` window will update as samples finish each step.
 
-You can use your Hydra's job scheduler to check on the status of MitoPilot jobs. Some samples may finish faster than others.
+You can use Hydra's job scheduler to check on the status of MitoPilot jobs. Some samples may finish faster than others.
 
 ![Fig. 15](/images/15.png)
 
-You may notice that some samples fail at certain steps (though this is unlikely for the test dataset). Often this is due to a memory error, so MitoPilot will retry failed samples with more RAM. The Nextflow log tracks the number of failed samples and retries.
+Some samples may fail at certain steps (though this is unlikely for the test dataset). Failures are often due to running out of memory, so MitoPilot will retry failed samples with more RAM. The Nextflow log tracks the number of failed samples and retries. We describe some common errors [here](https://smithsonian.github.io/MitoPilot/articles/FAQ.html#how-do-i-fix-the-error-message).
 
 ![Fig. 16](/images/16.png)
 
-The test dataset should take a few minutes to finish. When it's done, your `Progress` window should look something like this.
+The test dataset should take a few minutes to finish. When it's done, your `Progress` window will look something like this.
 
 ![Fig. 17](/images/17.png)
 
-If you scroll all the way to the bottom of the `Progress` window, you can some summary info about the run.
+Scroll all the way to the bottom of the `Progress` window to find some summary info about the run.
 
 ![Fig. 18](/images/18.png)
 
 Click `Close` to return to the samples table.
 
-## Using a batch job
+### Method 2: using a batch job
 
-If you have a large number of samples to process (more than a few dozen), we recommend running the assemble and annotate MitoPilot modules as batch jobs. 
+If you have a large number of samples to process (more than a few dozen), we recommend running the Assemble and Annotate MitoPilot modules as batch jobs. 
 
 You will still need to generate the Nextflow command using the MitoPilot GUI. But instead of clicking the `Start Nextflow` button, copy the Nextflow command and create a batch submission script.
 
@@ -72,13 +74,12 @@ module load tools/java/21.0.2 # required for Nextflow on Hydra
 nextflow -log /pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025/test_project_01/.logs/nextflow.log run /home/macguigand/R/x86_64-redhat-linux-gnu-library/4.4/MitoPilot/nextflow -c /pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025/test_project_01/.config -entry WF1 
 
 echo = `date` job $JOB_NAME done
-
 ```
 
 ::: {.callout-important}
 You must use the options `-q lTWFM.sq` and `-l wfmq`. This is a special Hydra queue for workflow managers like Nextflow. You must also include `-pe mthread 2` in order to have enough available RAM for building the MitoPilot Singularity image.
 :::
 
-Move the submission script into your MitoPilot project directory. In the above example, `/pool/public/genomics/macguigand/MitoPilot/22030FL-06-02/run_02/`. Then submit the job using `qsub MY_SCRIPT_NAME.sh`.
+Move the submission script into your MitoPilot project directory. In the above example, `/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025/test_project_01`. Then submit the job using `qsub MY_SCRIPT_NAME.sh`.
 
 You can monitor the progress of this job using the `qstat` command and by checking on the log files. Once the job is done, you can relaunch the GUI to inspect the results. The same approach can be used for the Annotate module.

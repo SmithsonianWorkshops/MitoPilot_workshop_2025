@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>04 - load MitoPilot – MitoPilot Workshop 2025</title>
+<title>04 - MitoPilot installation – MitoPilot Workshop 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/setup/01_Hydra.html">Setup</a></li><li class="breadcrumb-item"><a href="../../qmd/setup/04_load.html">04 - load MitoPilot</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/setup/01_Hydra.html">Setup</a></li><li class="breadcrumb-item"><a href="../../qmd/setup/04_install.html">04 - MitoPilot installation</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -189,14 +189,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/setup/03_install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 - MitoPilot installation</span></a>
+  <a href="../../qmd/setup/03_RIntro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03 - intro to R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/setup/04_load.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">04 - load MitoPilot</span></a>
+  <a href="../../qmd/setup/04_install.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">04 - MitoPilot installation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qmd/setup/05_load.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05 - load MitoPilot</span></a>
   </div>
 </li>
       </ul>
@@ -219,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../qmd/example_project/02_nextflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - running Nextflow</span></a>
+ <span class="menu-text">02 - running MitoPilot modules</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -281,16 +287,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#loading-the-mitopilot-package" id="toc-loading-the-mitopilot-package" class="nav-link active" data-scroll-target="#loading-the-mitopilot-package">Loading the MitoPilot package</a></li>
+  <li><a href="#first-time-installation" id="toc-first-time-installation" class="nav-link active" data-scroll-target="#first-time-installation">First-time installation</a></li>
+  <li><a href="#updating-mitopilot" id="toc-updating-mitopilot" class="nav-link" data-scroll-target="#updating-mitopilot">Updating MitoPilot</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/setup/01_Hydra.html">Setup</a></li><li class="breadcrumb-item"><a href="../../qmd/setup/04_load.html">04 - load MitoPilot</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/setup/01_Hydra.html">Setup</a></li><li class="breadcrumb-item"><a href="../../qmd/setup/04_install.html">04 - MitoPilot installation</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">04 - load MitoPilot</h1>
+<h1 class="title">04 - MitoPilot installation</h1>
 </div>
 
 
@@ -307,27 +314,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="loading-the-mitopilot-package" class="level2">
-<h2 class="anchored" data-anchor-id="loading-the-mitopilot-package">Loading the MitoPilot package</h2>
-<p>To load the MitoPilot R package, we first need to modify our <code>PATH</code> environmental variable. This will allow our RStudio session to find several important programs, including <code>java</code>, <code>nextflow</code>, and <code>qsub</code>.</p>
+<section id="first-time-installation" class="level2">
+<h2 class="anchored" data-anchor-id="first-time-installation">First-time installation</h2>
+<p>To install MitoPilot, use the RStudio server window to run the following. This might take a while.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># modify PATH to include:</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   ~/bin (contains nextflow exe)</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   java 21.0.2 (required for nextflow)</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   qsub (required for nextflow to submit jobs)  </span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>default_path <span class="ot">&lt;-</span> <span class="st">"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/rstudio-server/bin/quarto/bin:/usr/lib/rstudio-server/bin/postback"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>new_path <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">Sys.getenv</span>(<span class="st">"HOME"</span>), <span class="st">"/bin:/share/apps/tools/java/21.0.2/bin:/cm/shared/apps/uge/8.8.1/bin/lx-amd64/"</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">PATH =</span> <span class="fu">paste</span>(new_path, default_path, <span class="at">sep =</span> <span class="st">":"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"remotes"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"remotes"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"BiocManager"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"BiocManager"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">"Smithsonian/MitoPilot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Next, load the MitoPilot package.</p>
+<p>You may see a warning like this:</p>
+<pre><code>Installation paths not writeable, unable to update packages
+  path: /share/apps/bioinformatics/R/4.4.1/lib64/R/library</code></pre>
+<p>This is not a problem. Some R packages are installed at the Hydra system level and cannot be updated by the user.</p>
+<p>If there were no other error messages, you’re ready to start using MitoPilot!</p>
+</section>
+<section id="updating-mitopilot" class="level2">
+<h2 class="anchored" data-anchor-id="updating-mitopilot">Updating MitoPilot</h2>
+<p>If you need to update MitoPilot, run the following commands in RStudio server.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MitoPilot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">remove.packages</span>(<span class="st">"MitoPilot"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">"Smithsonian/MitoPilot"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">.rs.restartR</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You should see a message confirming that Nextflow is installed and accessible.</p>
-<pre><code>Welcome to {MitoPilot}!
-Using Nextflow version 24.10.4 build 5934</code></pre>
-<p>You can now utilize all of MitoPilot’s functions, such as <a href="https://smithsonian.github.io/MitoPilot/#initializing-a-project">initializing a project</a> or <a href="https://smithsonian.github.io/MitoPilot/#running-the-pipeline">opening the R Shiny GUI</a>.</p>
-<p>We’re now ready to start the <a href="../../qmd/example_project/01_init.html">example project</a>!</p>
+<p>This will remove the old package, install the most recent version, and restart your R session. After updating, you will need to reload the package with <code>library(MitoPilot)</code>.</p>
+<p>We also recommend clearing your Singularity cache with <code>singularity cache clean</code> whenever you update MitoPilot. This will ensure you are using the latest MitoPilot Singularity image.</p>
 
 
 </section>

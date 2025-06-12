@@ -154,14 +154,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/setup/03_install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 - MitoPilot installation</span></a>
+  <a href="../../qmd/setup/03_RIntro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03 - intro to R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/setup/04_load.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - load MitoPilot</span></a>
+  <a href="../../qmd/setup/04_install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04 - MitoPilot installation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qmd/setup/05_load.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05 - load MitoPilot</span></a>
   </div>
 </li>
       </ul>
@@ -184,7 +190,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../qmd/example_project/02_nextflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - running Nextflow</span></a>
+ <span class="menu-text">02 - running MitoPilot modules</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -248,6 +254,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#running-the-export-module" id="toc-running-the-export-module" class="nav-link active" data-scroll-target="#running-the-export-module">Running the Export Module</a></li>
   <li><a href="#exploring-the-final-results" id="toc-exploring-the-final-results" class="nav-link" data-scroll-target="#exploring-the-final-results">Exploring the Final Results</a></li>
+  <li><a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up">Wrap-up</a></li>
   </ul>
 </nav>
     </div>
@@ -315,7 +322,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Each sample can only belong to one group. MitoPilot will produce a warning message if you attempt to re-assign a sample to a new group.</p>
+<p>Each sample can only belong to one group at a time. MitoPilot will produce a warning message if you attempt to re-assign a sample to a new group.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -328,7 +335,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Currently, MitoPilot does not allow you to re-export an existing group name.</p>
+<p>Currently, MitoPilot does not allow you to re-export an group name. You will have to create a new group if you wish to export certain samples again.</p>
 </div>
 </div>
 <p>We can proceed to exporting the data for this group. Click <code>EXPORT DATA</code>, which will open a new window. Only samples that have been added to a group can be exported in this manner.</p>
@@ -339,10 +346,10 @@ Note
 </figure>
 </div>
 <p>If you have multiple groups, you can select the appropriate one from the dropdown menu.</p>
-<p>MitoPilot allows you to create a custom FASTA header for your samples, pulling data from columns the CSV file you supplied for the <code>mapping_fn</code> argument of the <code>MitoPilot::new_project</code> function. This conveniently allows you to include metadata needed for your NCBI GenBank submission. To reference a column, use curly brackets. For example <code>organism={Taxon}</code> will autofill values in the “Taxon” column into the FASTA header.</p>
+<p>MitoPilot allows you to create a custom FASTA header for your samples, pulling data from columns in the CSV file you supplied with the <code>mapping_fn</code> argument of the <code>MitoPilot::new_project</code> function. This conveniently allows you to include metadata required for submission to NCBI GenBank. To reference a column, use curly brackets. For example <code>organism={Taxon}</code> will autofill values in the “Taxon” column into the FASTA header.</p>
 <p>For this test project, we can leave the <code>Fasta Header Template</code> at the default value.</p>
-<p>The <code>Generate Group-level PCG alignment summary</code> will run alignments of all the protein coding genes in your group. For large groups, this can take a while. But it’s useful for a final quality control check.</p>
-<p>Let’s toggle the <code>Export individual genes</code> button. This will generate additional FASTA files and GenBank feature tables for each protein coding gene. This can be helpful if you want to use individual genes for phylogenetic analyses or submit them to GenBank. These gene FASTA files have their own custom header template that you can modify.</p>
+<p>The <code>Generate Group-level PCG alignment summary</code> will run alignments of all the protein-coding genes in your group. For large groups, this can take a while. But it’s useful for a final quality control check.</p>
+<p>Let’s toggle the <code>Export individual genes</code> button. This will generate additional FASTA files and GenBank feature tables for each protein-coding gene. This can be helpful if you want to use individual genes for phylogenetic analyses or submit them to GenBank. These gene FASTA files have their own custom header template that you can modify.</p>
 <p>Click <code>Export</code> to generate the final files. It may take a couple of minutes, but as long as the gears are spinning, MitoPilot is still running.</p>
 <p>Once complete, MitoPilot will print the location of the exported files. By default, that location is <code>YOUR_PROJECT_DIRECTORY/out/export/YOUR_GROUP_NAME</code>.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -355,7 +362,7 @@ Note
 </section>
 <section id="exploring-the-final-results" class="level2">
 <h2 class="anchored" data-anchor-id="exploring-the-final-results">Exploring the Final Results</h2>
-<p>MitoPilot will produce three output files. First, the <code>.html</code> file contains visualizations of each protein coding gene alignment in your export group. This may be useful to quickly identify samples with poor annotations that need additional manual curation.</p>
+<p>MitoPilot will produce three output files. First, the <code>.html</code> file contains visualizations of each protein-coding gene alignment in your export group. This may be useful to quickly identify samples with poor annotations that need additional manual curation.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../images/45.png" class="img-fluid figure-img"></p>
@@ -369,7 +376,7 @@ Note
 <figcaption>Fig. 46</figcaption>
 </figure>
 </div>
-<p>Next are the two files you will need for submission to NCBI GenBank. The <code>.fasta</code> file contains the mitogenome assemblies for each sample, following the header template you specified when exporting the data. MitoPilot attempts to adjust the start position of every assembly to the start of the trnF gene.</p>
+<p>Next are the two files you will need for submission to NCBI GenBank. The <code>.fasta</code> file contains the mitogenome assemblies for each sample, following the header template you specified when exporting the data.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../images/47.png" class="img-fluid figure-img"></p>
@@ -391,13 +398,17 @@ Note
 <figcaption>Fig. 49</figcaption>
 </figure>
 </div>
-<p>Lastly, if you selected the <code>Export individual genes</code> option, there will be another directory <code>genes</code> containing sub-directories for every protein coding gene. In these you will find FASTA files and feature tables for the corresponding gene. There will also be a concatenated FASTA file and feature table containing all protein coding genes, named <code>GROUP_PCGs.fasta/tbl</code>.</p>
+<p>Lastly, if you selected the <code>Export individual genes</code> option, there will be another directory <code>genes</code> containing sub-directories for every protein-coding and rRNA gene. In these you will find FASTA files and feature tables for the corresponding gene. There will also be a concatenated FASTA file and feature table containing all protein-coding genes, named <code>GROUP_PCGs.fasta/tbl</code>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../images/50.png" class="img-fluid figure-img"></p>
 <figcaption>Fig. 50</figcaption>
 </figure>
 </div>
+</section>
+<section id="wrap-up" class="level2">
+<h2 class="anchored" data-anchor-id="wrap-up">Wrap-up</h2>
+<p>Congratulations, you’ve reached the end of the test project tutorial! Hopefully you now have a solid understanding of the MitoPilot interface and can begin to analyze and explore your own mitogenome datasets.</p>
 
 
 </section>
