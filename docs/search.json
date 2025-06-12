@@ -198,7 +198,7 @@
     "href": "qmd/HPC_intro/HPC-intro.html",
     "title": "Intro to Smithsonian HPC",
     "section": "",
-    "text": "MitoPilot is an R package for mitogenome assembly and annotation from genome skimming data. It uses Nexflow and includes a R Shiny web app for project management and final curation of results, which can be exported in NCBI Genbank submission format. MitoPilot comes with extensive documentation.\nIntro slides: Download PDF file.",
+    "text": "Intro slides: Download PDF file.",
     "crumbs": [
       "Intro to Smithsonian HPC"
     ]
@@ -284,7 +284,7 @@
     "href": "qmd/MitoPilot_intro/MitoPilot-intro.html",
     "title": "Intro to MitoPilot",
     "section": "",
-    "text": "Download PDF file.",
+    "text": "MitoPilot is an R package for mitogenome assembly and annotation from genome skimming data. It uses Nexflow and includes a R Shiny web app for project management and final curation of results, which can be exported in NCBI Genbank submission format. MitoPilot comes with extensive documentation.\nIntro slides: Download PDF file.",
     "crumbs": [
       "Intro to MitoPilot"
     ]
