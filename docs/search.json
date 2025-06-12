@@ -1,0 +1,376 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Welcome to the website for the 2025 Smithsonian NMNH MitoPilot workshop!"
+  },
+  {
+    "objectID": "qmd/example_project/03_asmb.html",
+    "href": "qmd/example_project/03_asmb.html",
+    "title": "03 - assembly",
+    "section": "",
+    "text": "Once MitoPilot finishes the Assemble workflow, sample table should now be updated with new information.\n\n\n\nFig. 19\n\n\nIf you want to locate the results files for a sample, scroll all the way to the right and click output. This will open the appropriate folder in the Files pane of your RStudio session.\n\n\n\nFig. 20\n\n\nYou can also view the results within the MitoPilot GUI. For example, select SRR21843972 (Stomias affinis), then click details. This will open a new window with the mitogenome sequence.\n\n\n\nFig. 21\n\n\nSelect the sequence and click the Fasta button in the bottom right. This will copy the FASTA formatted mitogenome to your clipboard, which you can paste into your favorite text editor. This could be useful for a quick BLAST search.\n\n\n\nFig. 22\n\n\nYou can also click the view button, which will open a summary figure in a new tab, including mean read depth, sequence error rate, and GC content.\n\n\n\nFig. 23\n\n\nNotice that in this figure, read depth drops off dramatically at both ends of the sequence. SRR21843972 was unable to assemble a circular mitogenome due to poor read coverage in this region. To assemble a circular mitogenome, you could try running the Assemble module again with different GetOrganelle settings (see their Wiki), the MitoFinder assembler, or more sequence data.",
+    "crumbs": [
+      "Example Fish Project",
+      "03 - assembly"
+    ]
+  },
+  {
+    "objectID": "qmd/example_project/03_asmb.html#inspecting-assembly-results",
+    "href": "qmd/example_project/03_asmb.html#inspecting-assembly-results",
+    "title": "03 - assembly",
+    "section": "",
+    "text": "Once MitoPilot finishes the Assemble workflow, sample table should now be updated with new information.\n\n\n\nFig. 19\n\n\nIf you want to locate the results files for a sample, scroll all the way to the right and click output. This will open the appropriate folder in the Files pane of your RStudio session.\n\n\n\nFig. 20\n\n\nYou can also view the results within the MitoPilot GUI. For example, select SRR21843972 (Stomias affinis), then click details. This will open a new window with the mitogenome sequence.\n\n\n\nFig. 21\n\n\nSelect the sequence and click the Fasta button in the bottom right. This will copy the FASTA formatted mitogenome to your clipboard, which you can paste into your favorite text editor. This could be useful for a quick BLAST search.\n\n\n\nFig. 22\n\n\nYou can also click the view button, which will open a summary figure in a new tab, including mean read depth, sequence error rate, and GC content.\n\n\n\nFig. 23\n\n\nNotice that in this figure, read depth drops off dramatically at both ends of the sequence. SRR21843972 was unable to assemble a circular mitogenome due to poor read coverage in this region. To assemble a circular mitogenome, you could try running the Assemble module again with different GetOrganelle settings (see their Wiki), the MitoFinder assembler, or more sequence data.",
+    "crumbs": [
+      "Example Fish Project",
+      "03 - assembly"
+    ]
+  },
+  {
+    "objectID": "qmd/example_project/03_asmb.html#problematic-samples",
+    "href": "qmd/example_project/03_asmb.html#problematic-samples",
+    "title": "03 - assembly",
+    "section": "Problematic Samples",
+    "text": "Problematic Samples\nIn this test dataset, there are two problematic samples which returned failed states. You can see which samples failed by looking for the exclamation mark state icon. Selecting a sample with that icon and clicking on the STATE button will confirm.\n\n\n\nFig. 24\n\n\nOne failed sample is SRR22396758 (Upeneus parvus). We purposefully truncated the data for this sample to contain only 200 reads.\nWith so few reads, this sample failed to meet the min_depth threshold and returned a message “Insufficient sequencing depth” in the Notes column. When analyzing your own data, you can specify the min_depth threshold with the new_project function.\nThe other failed sample is SRR21844202 (Fundulus majalis). This sample had plenty of data and we were able to assemble a mitogenome. However, the message in the Notes columns says “Unable to resolve single assembly from reads.”\nGetOrganelle produced two alternate assembly paths for this sample. This is usually due to complicated assembly graphs near a repeat region. Please refer to the GetOrganlle paper for more information about multiple assembly paths.\nLet’s take a peek at SRR21844202 (Fundulus majalis). Select the sample, scroll all the way to the right, and click on details.\n\n\n\nFig. 25\n\n\nWe can see two assemblies listed here. Clicking on view will show us the coverage, error, and GC content graphs for each assembly.\nPath #1\n\n\n\nFig. 26\n\n\nPath #2\n\n\n\nFig. 27\n\n\nThe two assembly paths differ slightly around 13,000 bp.\nWe can chose to move forward with just one assembly path by clicking the “ignore” button for one of the assembly paths.\nAlternatively, we can use the consensus sequence. Select both paths and click the Align button in the bottom right. The sequence alignment will pop up, showing us that the two paths have 99.9897% sequence similarity.\nIf we scroll through the alignment, we can see a few base pair differences.\n\n\n\nFig. 28\n\n\nSelecting Trim Consensus will remove any conflicting regions of the aligned assembly paths and produce a shorter consensus sequence of both alignments. Doing so will automatically ignore the original two assembly paths.\n\n\n\nFig. 29\n\n\nClick close and return to the samples table. You will see that the # Paths column for SRR21844202 is highlighted and there is a note indicating that the assembly was edited. This sample has also been automatically changed to a locked state.\n\n\n\nFig. 30\n\n\n\n\n\n\n\n\nImportant\n\n\n\nCarefully consider your options for samples with multiple assembly paths. You may wish to align each assembly against a reference or compare depth of sequencing coverage. There is no one-size-fits-all solution.\n\n\nTo proceed to the Annotate module, we need to lock the successful samples in the Assemble module. Select all of the samples except SRR22396758 (Upeneus parvus) and click the LOCK button. Then use the dropdown menu in the top left to navigate to the Annotate module.\n\n\n\nFig. 31",
+    "crumbs": [
+      "Example Fish Project",
+      "03 - assembly"
+    ]
+  },
+  {
+    "objectID": "qmd/example_project/04_annotation.html",
+    "href": "qmd/example_project/04_annotation.html",
+    "title": "04 - annotation",
+    "section": "",
+    "text": "We can now move on to the Annotate pipeline module. This module consists of an annotation step using Mitos2 and tRNAscan-SE, a taxon-specific curation step to refine the annotation models, and a validation step to flag possible issues or known errors that would be rejected by NCBI GenBank.\nUse the dropdown menu in the top left and select Annotate.\nLet’s edit the Annotate Opts and increase the memory allocation to 60 GB. In this window, you could also edit the Mitos2 and tRNAscan-SE options. In the future, we will allow users to specify custom reference databases for annotation.\n\n\n\nFig. 32\n\n\nYou can also edit the curation options. For the test dataset, the default fish_mito options are fine.\nIn the curation options window, you can see all of the complex rules that will be applied when MitoPilot performs automatic curation of the annotation results. For example, here are the allowed stop codons for protein coding genes.\n\n\n\nFig. 33\n\n\nTo run the Annotate module, you can use either approach described in the previous Nextflow section. Let’s use the GUI method.\n\n\n\nFig. 34\n\n\nOnce all steps are complete, the gears will stop spinning and you’ll see a summary message printed at the bottom of the Progress window. Click Close to return to the sample table.",
+    "crumbs": [
+      "Example Fish Project",
+      "04 - annotation"
+    ]
+  },
+  {
+    "objectID": "qmd/example_project/04_annotation.html#running-the-annotate-module",
+    "href": "qmd/example_project/04_annotation.html#running-the-annotate-module",
+    "title": "04 - annotation",
+    "section": "",
+    "text": "We can now move on to the Annotate pipeline module. This module consists of an annotation step using Mitos2 and tRNAscan-SE, a taxon-specific curation step to refine the annotation models, and a validation step to flag possible issues or known errors that would be rejected by NCBI GenBank.\nUse the dropdown menu in the top left and select Annotate.\nLet’s edit the Annotate Opts and increase the memory allocation to 60 GB. In this window, you could also edit the Mitos2 and tRNAscan-SE options. In the future, we will allow users to specify custom reference databases for annotation.\n\n\n\nFig. 32\n\n\nYou can also edit the curation options. For the test dataset, the default fish_mito options are fine.\nIn the curation options window, you can see all of the complex rules that will be applied when MitoPilot performs automatic curation of the annotation results. For example, here are the allowed stop codons for protein coding genes.\n\n\n\nFig. 33\n\n\nTo run the Annotate module, you can use either approach described in the previous Nextflow section. Let’s use the GUI method.\n\n\n\nFig. 34\n\n\nOnce all steps are complete, the gears will stop spinning and you’ll see a summary message printed at the bottom of the Progress window. Click Close to return to the sample table.",
+    "crumbs": [
+      "Example Fish Project",
+      "04 - annotation"
+    ]
+  },
+  {
+    "objectID": "qmd/example_project/04_annotation.html#exploring-annotation-results",
+    "href": "qmd/example_project/04_annotation.html#exploring-annotation-results",
+    "title": "04 - annotation",
+    "section": "Exploring Annotation Results",
+    "text": "Exploring Annotation Results\nThere are a LOT of results to explore from the Annotate module. The sample table reports some basic stats about the number of protein-coding genes (PCGs), tRNAs, and rRNAs. The missing column reports which mitochondrial genes were not annotated (based on the provided curation model). The extra column notes the number of potentially duplicated genes.\nLastly, the warnings column indicates how many warning flags were raised during the validation step. Samples with many warnings will require more manual curation to ensure that they are not rejected upon submission to NCBI GenBank. Warning messages are explained in further detail here.\n\n\n\nFig. 35\n\n\nThe annotation results for each sample can be examined more closely by clicking the details button. First, let’s examine the details for a good sample, SRR19434536 (Rhinecanthus rectangulus).\n\n\n\nFig. 36\n\n\nThis sample has the expected number of genes and has no warnings. However, the notes column shows that MitoPilot still made some tweaks to the annotation during the curation step. For example, the start position of rRNA rrnL was moved 22 bp upstream and the stop codon for NAD2 was trimmed by 2 bp.\nNucleotide sequences (and amino acid sequence for PCGs) can be copied to the clipboard using the nt (and aa) buttons on the far right. This could be helpful if you’d like to manually BLAST some genes.\nClicking on the Coverage Map button will show a plot of sequence depth, zooming to the position of the highlighted gene. The colored bars representing the genes are transparent, allowing you to spot overlapping gene models which may be incorrect.\n\n\n\nFig. 37\n\n\nFor protein coding genes, you can click the Alignment button to show the protein alignment of your annotated gene against a reference database. Currently, this shows only the top hits (filtered in blast using -best_hit_score_edge 0.01) from the curation process, which may be one or more sequences.\n\n\n\nFig. 38\n\n\nIf you would like to use your own custom BLAST database, you can check the Local blast box. MitoPilot will return a message with the instructions: run options('MitoPilot.local.db' = '/path/to/local/blastp/db') within your RStudio session. You will need to restart the MitoPilot GUI for this change to take effect.",
+    "crumbs": [
+      "Example Fish Project",
+      "04 - annotation"
+    ]
+  },
+  {
+    "objectID": "qmd/example_project/04_annotation.html#editing-annotation-results",
+    "href": "qmd/example_project/04_annotation.html#editing-annotation-results",
+    "title": "04 - annotation",
+    "section": "Editing Annotation Results",
+    "text": "Editing Annotation Results\nMitoPilot offers some basic functions to manually edit your annotation results. Let’s open the alignment for the SRR19434536 (Rhinecanthus rectangulus) “cox1” gene. Clicking the EDIT button brings up a few options to change the start and stop position annotation.\nTry clicking the + button next to START. You should see that the “cox1 (focal)” sequence start position has shifted.\n\n\n\nFig. 39\n\n\nThis is clearly a worse alignment. Click RESET to undo your changes.\nIf the alignment view contains many sequences, manual editing will be slow since MitoPilot has to redo the alignments every time you click a + or - button. To help speed this up, you can select the Align fewer refs box. This will restrict the alignment to the top five BLAST hits.\nBelow the alignment section you will find the Notes. Use this section to keep track of your manual edits. Anything you write here will be saved automatically.\n\n\n\nFig. 40\n\n\nAt the bottom of the window are several buttons. You can completely remove annotations by selecting them and clicking Delete. Use this feature with caution, as there’s no easy way to add the annotation back without running the sample through the Annotate module again.\nThe Linearize button will convert a circular assembly to a linear assembly. This may be useful if the D-loop region was poorly assmebled or annotated.\nYou can use the Toggle reviewed button to change the state of the Reviewed column, which may be helpful for tracking the progress of your manual edits. Likewise, we have provided Toggle ID verified and Toggle problematic buttons to help track the status of your samples.\nAnnotation editing can be a bit temperamental and you may encounter bugs. Please report any problems on the MitoPilot GitHub issues page.\nTry playing around with the manual editing on your own. There are many different types of warning messages, not all of which can be fixed within MitoPilot.\nOnce you are done, select all of the samples and click the LOCK button to prepare for the Export module.",
+    "crumbs": [
+      "Example Fish Project",
+      "04 - annotation"
+    ]
+  },
+  {
+    "objectID": "qmd/example_project/05_export.html",
+    "href": "qmd/example_project/05_export.html",
+    "title": "05 - export",
+    "section": "",
+    "text": "Let’s move to the final step of the pipeline: the Export module. This module allows you to create groups of samples, then generate alignments and files formatted for submission to GenBank.\nUse the dropdown menu in the top left to navigate to the Export module.\nNow let’s create a group of samples. Sort the samples table by clicking on the Taxon column, then select the first five samples and click the GROUP button.\nA new window will appear showing some summary information for the selected samples. Type a name for the group, click Add.., then click Create. You can then click Close to return to the sample table.\n\n\n\nFig. 41\n\n\nThe sample table now shows the group assignment in the Group column.\n\n\n\nFig. 42\n\n\n\n\n\n\n\n\nNote\n\n\n\nYou can assign new samples to an existing group. Simply select the samples you wish to add, click GROUP, then choose the existing group from the dropdown menu.\n\n\n\n\n\n\n\n\nNote\n\n\n\nEach sample can only belong to one group. MitoPilot will produce a warning message if you attempt to re-assign a sample to a new group.\n\n\n\n\n\n\n\n\nNote\n\n\n\nCurrently, MitoPilot does not allow you to re-export an existing group name.\n\n\nWe can proceed to exporting the data for this group. Click EXPORT DATA, which will open a new window. Only samples that have been added to a group can be exported in this manner.\n\n\n\nFig. 43\n\n\nIf you have multiple groups, you can select the appropriate one from the dropdown menu.\nMitoPilot allows you to create a custom FASTA header for your samples, pulling data from columns the CSV file you supplied for the mapping_fn argument of the MitoPilot::new_project function. This conveniently allows you to include metadata needed for your NCBI GenBank submission. To reference a column, use curly brackets. For example organism={Taxon} will autofill values in the “Taxon” column into the FASTA header.\nFor this test project, we can leave the Fasta Header Template at the default value.\nThe Generate Group-level PCG alignment summary will run alignments of all the protein coding genes in your group. For large groups, this can take a while. But it’s useful for a final quality control check.\nLet’s toggle the Export individual genes button. This will generate additional FASTA files and GenBank feature tables for each protein coding gene. This can be helpful if you want to use individual genes for phylogenetic analyses or submit them to GenBank. These gene FASTA files have their own custom header template that you can modify.\nClick Export to generate the final files. It may take a couple of minutes, but as long as the gears are spinning, MitoPilot is still running.\nOnce complete, MitoPilot will print the location of the exported files. By default, that location is YOUR_PROJECT_DIRECTORY/out/export/YOUR_GROUP_NAME.\n\n\n\nFig. 44\n\n\nYou can download these files from Hydra or open them from the RStudio server session.",
+    "crumbs": [
+      "Example Fish Project",
+      "05 - export"
+    ]
+  },
+  {
+    "objectID": "qmd/example_project/05_export.html#running-the-export-module",
+    "href": "qmd/example_project/05_export.html#running-the-export-module",
+    "title": "05 - export",
+    "section": "",
+    "text": "Let’s move to the final step of the pipeline: the Export module. This module allows you to create groups of samples, then generate alignments and files formatted for submission to GenBank.\nUse the dropdown menu in the top left to navigate to the Export module.\nNow let’s create a group of samples. Sort the samples table by clicking on the Taxon column, then select the first five samples and click the GROUP button.\nA new window will appear showing some summary information for the selected samples. Type a name for the group, click Add.., then click Create. You can then click Close to return to the sample table.\n\n\n\nFig. 41\n\n\nThe sample table now shows the group assignment in the Group column.\n\n\n\nFig. 42\n\n\n\n\n\n\n\n\nNote\n\n\n\nYou can assign new samples to an existing group. Simply select the samples you wish to add, click GROUP, then choose the existing group from the dropdown menu.\n\n\n\n\n\n\n\n\nNote\n\n\n\nEach sample can only belong to one group. MitoPilot will produce a warning message if you attempt to re-assign a sample to a new group.\n\n\n\n\n\n\n\n\nNote\n\n\n\nCurrently, MitoPilot does not allow you to re-export an existing group name.\n\n\nWe can proceed to exporting the data for this group. Click EXPORT DATA, which will open a new window. Only samples that have been added to a group can be exported in this manner.\n\n\n\nFig. 43\n\n\nIf you have multiple groups, you can select the appropriate one from the dropdown menu.\nMitoPilot allows you to create a custom FASTA header for your samples, pulling data from columns the CSV file you supplied for the mapping_fn argument of the MitoPilot::new_project function. This conveniently allows you to include metadata needed for your NCBI GenBank submission. To reference a column, use curly brackets. For example organism={Taxon} will autofill values in the “Taxon” column into the FASTA header.\nFor this test project, we can leave the Fasta Header Template at the default value.\nThe Generate Group-level PCG alignment summary will run alignments of all the protein coding genes in your group. For large groups, this can take a while. But it’s useful for a final quality control check.\nLet’s toggle the Export individual genes button. This will generate additional FASTA files and GenBank feature tables for each protein coding gene. This can be helpful if you want to use individual genes for phylogenetic analyses or submit them to GenBank. These gene FASTA files have their own custom header template that you can modify.\nClick Export to generate the final files. It may take a couple of minutes, but as long as the gears are spinning, MitoPilot is still running.\nOnce complete, MitoPilot will print the location of the exported files. By default, that location is YOUR_PROJECT_DIRECTORY/out/export/YOUR_GROUP_NAME.\n\n\n\nFig. 44\n\n\nYou can download these files from Hydra or open them from the RStudio server session.",
+    "crumbs": [
+      "Example Fish Project",
+      "05 - export"
+    ]
+  },
+  {
+    "objectID": "qmd/example_project/05_export.html#exploring-the-final-results",
+    "href": "qmd/example_project/05_export.html#exploring-the-final-results",
+    "title": "05 - export",
+    "section": "Exploring the Final Results",
+    "text": "Exploring the Final Results\nMitoPilot will produce three output files. First, the .html file contains visualizations of each protein coding gene alignment in your export group. This may be useful to quickly identify samples with poor annotations that need additional manual curation.\n\n\n\nFig. 45\n\n\nFor example, the ATP8 annotation for “SRR22396640” clearly stands out when compared with the other samples in this export group.\n\n\n\nFig. 46\n\n\nNext are the two files you will need for submission to NCBI GenBank. The .fasta file contains the mitogenome assemblies for each sample, following the header template you specified when exporting the data. MitoPilot attempts to adjust the start position of every assembly to the start of the trnF gene.\n\n\n\nFig. 47\n\n\nAdditionally there is the .tbl file, a standardized 5-column, tab-delimited feature table containing information about the annotated genes for each mitogenome.\n\n\n\nFig. 48\n\n\nWith a real dataset, you could use these two files for submission to NCBI GenBank.\nThe export directory also contains a sub-directory GFFs with annotations for each sample in GFF3 format. GFF files can be loaded by tools like Geneious for additional manual inspection prior to submission.\n\n\n\nFig. 49\n\n\nLastly, if you selected the Export individual genes option, there will be another directory genes containing sub-directories for every protein coding gene. In these you will find FASTA files and feature tables for the corresponding gene. There will also be a concatenated FASTA file and feature table containing all protein coding genes, named GROUP_PCGs.fasta/tbl.\n\n\n\nFig. 50",
+    "crumbs": [
+      "Example Fish Project",
+      "05 - export"
+    ]
+  },
+  {
+    "objectID": "qmd/custom_project/02_customDB.html",
+    "href": "qmd/custom_project/02_customDB.html",
+    "title": "02 - custom assembly database",
+    "section": "",
+    "text": "Coming soon…",
+    "crumbs": [
+      "Other Clades",
+      "02 - custom assembly database"
+    ]
+  },
+  {
+    "objectID": "qmd/custom_project/01_setup.html",
+    "href": "qmd/custom_project/01_setup.html",
+    "title": "01 - things to consider",
+    "section": "",
+    "text": "Coming soon…",
+    "crumbs": [
+      "Other Clades",
+      "01 - things to consider"
+    ]
+  },
+  {
+    "objectID": "qmd/setup/03_install.html",
+    "href": "qmd/setup/03_install.html",
+    "title": "03 - MitoPilot installation",
+    "section": "",
+    "text": "To install MitoPilot, use the RStudio server window to run the following. This might take a while.\n{R eval=F\nYou may see a warning like this:\nInstallation paths not writeable, unable to update packages\n  path: /share/apps/bioinformatics/R/4.4.1/lib64/R/library\nThis is not a problem. Some R packages are installed at the Hydra system level and cannot be updated by the user.\nIf there were no other error messages, you’re ready to start using MitoPilot!",
+    "crumbs": [
+      "Setup",
+      "03 - MitoPilot installation"
+    ]
+  },
+  {
+    "objectID": "qmd/setup/03_install.html#first-time-installation",
+    "href": "qmd/setup/03_install.html#first-time-installation",
+    "title": "03 - MitoPilot installation",
+    "section": "",
+    "text": "To install MitoPilot, use the RStudio server window to run the following. This might take a while.\n{R eval=F\nYou may see a warning like this:\nInstallation paths not writeable, unable to update packages\n  path: /share/apps/bioinformatics/R/4.4.1/lib64/R/library\nThis is not a problem. Some R packages are installed at the Hydra system level and cannot be updated by the user.\nIf there were no other error messages, you’re ready to start using MitoPilot!",
+    "crumbs": [
+      "Setup",
+      "03 - MitoPilot installation"
+    ]
+  },
+  {
+    "objectID": "qmd/setup/03_install.html#updating-mitopilot",
+    "href": "qmd/setup/03_install.html#updating-mitopilot",
+    "title": "03 - MitoPilot installation",
+    "section": "Updating MitoPilot",
+    "text": "Updating MitoPilot\nIf you need to update MitoPilot, run the following commands in RStudio server.\n\nremove.packages(\"MitoPilot\")\nBiocManager::install(\"Smithsonian/MitoPilot\")\n.rs.restartR()\n\nThis will remove the old package, install the most recent version, and restart your R session. After updating, you will need to reload the package with library(MitoPilot).\nWe also recommend clearing your Singularity cache with singularity cache clean whenever you update MitoPilot. This will ensure you are using the latest MitoPilot Singularity image.",
+    "crumbs": [
+      "Setup",
+      "03 - MitoPilot installation"
+    ]
+  },
+  {
+    "objectID": "qmd/setup/04_load.html",
+    "href": "qmd/setup/04_load.html",
+    "title": "04 - load MitoPilot",
+    "section": "",
+    "text": "To load the MitoPilot R package, we first need to modify our PATH environmental variable. This will allow our RStudio session to find several important programs, including java, nextflow, and qsub.\n\n# modify PATH to include:\n#   ~/bin (contains nextflow exe)\n#   java 21.0.2 (required for nextflow)\n#   qsub (required for nextflow to submit jobs)  \ndefault_path &lt;- \"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/rstudio-server/bin/quarto/bin:/usr/lib/rstudio-server/bin/postback\"\nnew_path &lt;- paste0(Sys.getenv(\"HOME\"), \"/bin:/share/apps/tools/java/21.0.2/bin:/cm/shared/apps/uge/8.8.1/bin/lx-amd64/\")\nSys.setenv(PATH = paste(new_path, default_path, sep = \":\"))\n\nNext, load the MitoPilot package.\n\nlibrary(MitoPilot)\n\nYou should see a message confirming that Nextflow is installed and accessible.\nWelcome to {MitoPilot}!\nUsing Nextflow version 24.10.4 build 5934\nYou can now utilize all of MitoPilot’s functions, such as initializing a project or opening the R Shiny GUI.\nWe’re now ready to start the example project!",
+    "crumbs": [
+      "Setup",
+      "04 - load MitoPilot"
+    ]
+  },
+  {
+    "objectID": "qmd/setup/04_load.html#loading-the-mitopilot-package",
+    "href": "qmd/setup/04_load.html#loading-the-mitopilot-package",
+    "title": "04 - load MitoPilot",
+    "section": "",
+    "text": "To load the MitoPilot R package, we first need to modify our PATH environmental variable. This will allow our RStudio session to find several important programs, including java, nextflow, and qsub.\n\n# modify PATH to include:\n#   ~/bin (contains nextflow exe)\n#   java 21.0.2 (required for nextflow)\n#   qsub (required for nextflow to submit jobs)  \ndefault_path &lt;- \"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/rstudio-server/bin/quarto/bin:/usr/lib/rstudio-server/bin/postback\"\nnew_path &lt;- paste0(Sys.getenv(\"HOME\"), \"/bin:/share/apps/tools/java/21.0.2/bin:/cm/shared/apps/uge/8.8.1/bin/lx-amd64/\")\nSys.setenv(PATH = paste(new_path, default_path, sep = \":\"))\n\nNext, load the MitoPilot package.\n\nlibrary(MitoPilot)\n\nYou should see a message confirming that Nextflow is installed and accessible.\nWelcome to {MitoPilot}!\nUsing Nextflow version 24.10.4 build 5934\nYou can now utilize all of MitoPilot’s functions, such as initializing a project or opening the R Shiny GUI.\nWe’re now ready to start the example project!",
+    "crumbs": [
+      "Setup",
+      "04 - load MitoPilot"
+    ]
+  },
+  {
+    "objectID": "qmd/HPC_intro/HPC-intro.html",
+    "href": "qmd/HPC_intro/HPC-intro.html",
+    "title": "Intro to Smithsonian HPC",
+    "section": "",
+    "text": "MitoPilot is an R package for mitogenome assembly and annotation from genome skimming data. It uses Nexflow and includes a R Shiny web app for project management and final curation of results, which can be exported in NCBI Genbank submission format. MitoPilot comes with extensive documentation.\nIntro slides: Download PDF file.",
+    "crumbs": [
+      "Intro to Smithsonian HPC"
+    ]
+  },
+  {
+    "objectID": "qmd/setup/02_RstudioServer.html",
+    "href": "qmd/setup/02_RstudioServer.html",
+    "title": "02 - RStudio server",
+    "section": "",
+    "text": "We will use RStudio server to run MitoPilot. RStudio server on Hydra functions just like the normal RStudio on your local computer, except that you are accessing it remotely.\nThere are two methods to access RStudio server on Hydra.\n\n\nThe Hydra Team recently launched an interactive R Studio environment that is accessible directly via a browser, at https://galaxy.si.edu/R4.\nHydra users can leverage this server to test, debug, and develop R based workflows using the interactive RStudio GUI (currently running R 4.4.3).\nBy logging in with your Hydra account credentials, users will have access to the storage under /pool, /scratch and /store. This server offers resources totaling 192 CPUs and 1.5 T of RAM.\nNotes:\n\nThis is a shared resource and should be used accordingly. Long running jobs or jobs requiring the entire resources of the server would be more appropriate as a job submission.\nThis server is only accessible from trusted computers, not on the public internet. For technical reasons, to access this resource via telework.si.edu, go to https://galaxy.si.edu and then choose the “R4 v443” option.\nThis is a new resource - please be patient as we test this offering with our user community. We will evaluate this test once Hydra is moved to the new datacenter and decide whether it should be kept or altered in any way.\n\n\n\n\nTo launch RStudio server on Hydra, run the following.\n# avoid package conflicts (may not be necessary for all users)\nconda deactivate \n# load the RStudio server module\nmodule load tools/R/RStudio/server\n# launch RStudio server\nstart-rstudio-server\n\n\n\n\n\n\nNote\n\n\n\nIf this is your first time launching RStudio server, you may be asked to run a different command.\n\n\nYou will see something like this printed to your screen.\nstart-rstudio-server: starting RStudio server on host=login02 and port=8787\n  you need to create a ssh tunnel on your local machine with\n    ssh -N -L 8787:login02:8787 macguigand@hydra-login01.si.edu\n\nPoint your browser to http://localhost:8787 on your local machine.\nUse Control+C in this window to kill the server when done.\n\nTTY detected. Printing informational message about logging configuration. Logging configuration loaded from '/etc/rstudio/logging.conf'. Logging to '/home/macguigand/.local/share/rstudio/log/rserver.log'.\n\n\n\n\n\n\nWhy can’t I connect?\n\n\n\nIf you get a message saying “ERROR system error 98 (Address already in use)”, someone else has a tunnel established with the default port (8787). To fix this, try using a different port, e.g. start-rstudio-server -port 8890. Any port number between 1025-65535 is allowed.\n\n\nLeave this cluster terminal window open, open a new terminal window on your local computer, and run the ssh command printed by start-rstudio-server.\nssh -N -L 8787:login02:8787 macguigand@hydra-login01.si.edu\nEnter your Hydra password when prompted. If nothing happens, this means that you have successfully established a SSH tunnel and can connect to RStudio server.\nLeaving both terminal windows open, enter http://localhost:YOUR_PORT_NUMBER in a web browser. We recommend using Chrome or Firefox. There are some known issues running MitoPilot with Safari.\nEnter your cluster login credentials to access the RStudio server. This should open a full RStudio session in your browser. Any R commands run in this new window will execute on the cluster.",
+    "crumbs": [
+      "Setup",
+      "02 - RStudio server"
+    ]
+  },
+  {
+    "objectID": "qmd/setup/02_RstudioServer.html#launching-rstudio-server",
+    "href": "qmd/setup/02_RstudioServer.html#launching-rstudio-server",
+    "title": "02 - RStudio server",
+    "section": "",
+    "text": "We will use RStudio server to run MitoPilot. RStudio server on Hydra functions just like the normal RStudio on your local computer, except that you are accessing it remotely.\nThere are two methods to access RStudio server on Hydra.\n\n\nThe Hydra Team recently launched an interactive R Studio environment that is accessible directly via a browser, at https://galaxy.si.edu/R4.\nHydra users can leverage this server to test, debug, and develop R based workflows using the interactive RStudio GUI (currently running R 4.4.3).\nBy logging in with your Hydra account credentials, users will have access to the storage under /pool, /scratch and /store. This server offers resources totaling 192 CPUs and 1.5 T of RAM.\nNotes:\n\nThis is a shared resource and should be used accordingly. Long running jobs or jobs requiring the entire resources of the server would be more appropriate as a job submission.\nThis server is only accessible from trusted computers, not on the public internet. For technical reasons, to access this resource via telework.si.edu, go to https://galaxy.si.edu and then choose the “R4 v443” option.\nThis is a new resource - please be patient as we test this offering with our user community. We will evaluate this test once Hydra is moved to the new datacenter and decide whether it should be kept or altered in any way.\n\n\n\n\nTo launch RStudio server on Hydra, run the following.\n# avoid package conflicts (may not be necessary for all users)\nconda deactivate \n# load the RStudio server module\nmodule load tools/R/RStudio/server\n# launch RStudio server\nstart-rstudio-server\n\n\n\n\n\n\nNote\n\n\n\nIf this is your first time launching RStudio server, you may be asked to run a different command.\n\n\nYou will see something like this printed to your screen.\nstart-rstudio-server: starting RStudio server on host=login02 and port=8787\n  you need to create a ssh tunnel on your local machine with\n    ssh -N -L 8787:login02:8787 macguigand@hydra-login01.si.edu\n\nPoint your browser to http://localhost:8787 on your local machine.\nUse Control+C in this window to kill the server when done.\n\nTTY detected. Printing informational message about logging configuration. Logging configuration loaded from '/etc/rstudio/logging.conf'. Logging to '/home/macguigand/.local/share/rstudio/log/rserver.log'.\n\n\n\n\n\n\nWhy can’t I connect?\n\n\n\nIf you get a message saying “ERROR system error 98 (Address already in use)”, someone else has a tunnel established with the default port (8787). To fix this, try using a different port, e.g. start-rstudio-server -port 8890. Any port number between 1025-65535 is allowed.\n\n\nLeave this cluster terminal window open, open a new terminal window on your local computer, and run the ssh command printed by start-rstudio-server.\nssh -N -L 8787:login02:8787 macguigand@hydra-login01.si.edu\nEnter your Hydra password when prompted. If nothing happens, this means that you have successfully established a SSH tunnel and can connect to RStudio server.\nLeaving both terminal windows open, enter http://localhost:YOUR_PORT_NUMBER in a web browser. We recommend using Chrome or Firefox. There are some known issues running MitoPilot with Safari.\nEnter your cluster login credentials to access the RStudio server. This should open a full RStudio session in your browser. Any R commands run in this new window will execute on the cluster.",
+    "crumbs": [
+      "Setup",
+      "02 - RStudio server"
+    ]
+  },
+  {
+    "objectID": "qmd/setup/01_Hydra.html",
+    "href": "qmd/setup/01_Hydra.html",
+    "title": "01 - Hydra cluster setup",
+    "section": "",
+    "text": "You will need an account to access the Smithsonian Hyrda computing cluster. Instructions are available here.",
+    "crumbs": [
+      "Setup",
+      "01 - Hydra cluster setup"
+    ]
+  },
+  {
+    "objectID": "qmd/setup/01_Hydra.html#access-to-the-hydra-cluster",
+    "href": "qmd/setup/01_Hydra.html#access-to-the-hydra-cluster",
+    "title": "01 - Hydra cluster setup",
+    "section": "",
+    "text": "You will need an account to access the Smithsonian Hyrda computing cluster. Instructions are available here.",
+    "crumbs": [
+      "Setup",
+      "01 - Hydra cluster setup"
+    ]
+  },
+  {
+    "objectID": "qmd/setup/01_Hydra.html#first-time-setup",
+    "href": "qmd/setup/01_Hydra.html#first-time-setup",
+    "title": "01 - Hydra cluster setup",
+    "section": "First time setup",
+    "text": "First time setup\nWe have submitted a request to the Hydra team for installation of a Nextflow module. But for now, you will need to install your own copy of Nextflow on the cluster. Login to Hydra and run the following.\n# Nextflow installation instructions\n# from https://www.nextflow.io/docs/latest/install.html\ncd ~\n# load Java module, needed by Nextflow\nmodule load tools/java/21.0.2\n# install Nextflow\ncurl -s https://get.nextflow.io | bash \n# make Nextflow executable\nchmod +x nextflow \nThere will now be an executable nextflow file in your home directory. You should move it to a location that is in your PATH. For example:\n # create bin directory, if needed\nmkdir ~/bin\n# move nextflow to bin directory\nmv ~/nextflow ~/bin/nextflow \n# add bin directory to PATH, in case it's not already there\necho 'export PATH=\"${HOME}/bin:${PATH}\"' &gt;&gt; ~/.bashrc \n# reload your bash configuration file\nsource ~/.bashrc\nThis should allow you to call nextflow from anywhere on the cluster.\n\n\n\n\n\n\nImportant\n\n\n\nYou must load the Hydra Java module (module load tools/java/21.0.2) whenever you wish to use Nextflow.",
+    "crumbs": [
+      "Setup",
+      "01 - Hydra cluster setup"
+    ]
+  },
+  {
+    "objectID": "qmd/full_R_script/R-script.html",
+    "href": "qmd/full_R_script/R-script.html",
+    "title": "MitoPilot R Script",
+    "section": "",
+    "text": "# SI NMNH MitoPilot workshop\n# June 13, 2025\n# https://dmacguigan.github.io/MitoPilot_workshop_2025/\n# author: Dan MacGuigan\n# macguigand@si.edu\n\n###########################################################################\n# Install MitoPilot\n###########################################################################\n\nif (!requireNamespace(\"remotes\", quietly = TRUE)) {\n  install.packages(\"remotes\")\n}\nif (!requireNamespace(\"BiocManager\", quietly = TRUE)) {\n  install.packages(\"BiocManager\")\n}\nBiocManager::install(\"Smithsonian/MitoPilot\")\n\n###########################################################################\n# Update MitoPilot (if needed)\n###########################################################################\n\nremove.packages(\"MitoPilot\")\nBiocManager::install(\"Smithsonian/MitoPilot\")\n.rs.restartR()\n\n###########################################################################\n# Load MitoPilot\n###########################################################################\n\n# modify PATH to include:\n#   ~/bin (contains nextflow exe)\n#   java 21.0.2 (required for nextflow)\n#   qsub (required for nextflow to submit jobs)  \ndefault_path &lt;- \"/cm/shared/apps/uge/8.8.1/bin/lx-amd64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/rstudio-server/bin/quarto/bin:/usr/lib/rstudio-server/bin/postback\"\nnew_path &lt;- paste0(Sys.getenv(\"HOME\"), \"/bin:/share/apps/tools/java/21.0.2/bin\")\nSys.setenv(PATH = paste(new_path, default_path, sep = \":\"))\n\n# load MitoPilot package\nlibrary(MitoPilot)\n\n###########################################################################\n# Initialize test project\n###########################################################################\n\n# specify the directory where your test project will be created\n# if the directory does not exist, MitoPilot will create it\nwd = \"/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01\"\n\n# specify an execution environment, \"local\", \"NMNH_Hydra\", or \"NOAA_SEDNA\"\nex = \"NMNH_Hydra\"\n\n# initialize the test project\nMitoPilot::new_test_project(\n  path = wd,\n  executor = ex,\n  full_size = FALSE,\n  Rproj = FALSE\n)\n\n###########################################################################\n# Launch the MitoPilot GUI\n###########################################################################\n\n# the function to launch the GUI \n# must be called from within your project directory\nwd = \"/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01\"\nsetwd(wd)\nMitoPilot::MitoPilot()",
+    "crumbs": [
+      "MitoPilot R Script"
+    ]
+  },
+  {
+    "objectID": "qmd/custom_project/03_customRuleset.html",
+    "href": "qmd/custom_project/03_customRuleset.html",
+    "title": "03 - custom curation ruleset",
+    "section": "",
+    "text": "Coming soon…",
+    "crumbs": [
+      "Other Clades",
+      "03 - custom curation ruleset"
+    ]
+  },
+  {
+    "objectID": "qmd/MitoPilot_intro/MitoPilot-intro.html",
+    "href": "qmd/MitoPilot_intro/MitoPilot-intro.html",
+    "title": "Intro to MitoPilot",
+    "section": "",
+    "text": "Download PDF file.",
+    "crumbs": [
+      "Intro to MitoPilot"
+    ]
+  },
+  {
+    "objectID": "qmd/example_project/01_init.html",
+    "href": "qmd/example_project/01_init.html",
+    "title": "01 - initialize project",
+    "section": "",
+    "text": "MitoPilot comes pre-packaged with a test project consisting of Illumina data for 13 fish species.\nTo get started, we’ll need to initialize the test project with the R function MitoPilot::new_test_project. This function will download the data and set up a new project directory.\n\n\n\n\n\n\nNote\n\n\n\nTo initialize a MitoPilot with your own data, use the R function MitoPilot::new_project instead. You will need to additional information such as a mapping file and sequence data.\n\n\n\n# load the package\nlibrary(MitoPilot)\n\n# specify the directory where your test project will be created\n# if the directory does not exist, MitoPilot will create it\nwd = \"/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01\"\n\n# specify an execution environment, \"local\", \"NMNH_Hydra\", or \"NOAA_SEDNA\"\nex = \"NMNH_Hydra\"\n\n# initialize the test project\nMitoPilot::new_test_project(\n    path = wd,\n    executor = ex,\n    full_size = FALSE,\n    Rproj = FALSE\n)\n\nIf the test project was successfully initialized, you should see the following message.\nCreating project directory: /pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01\nSRR22396758 - Upeneus parvus                                                                                                                                 \nSRR22396794 - Psychrolutes paradoxus\nSRR22396940 - Psenes pellucidus\nSRR22396740 - Hoplostethus occidentalis\nSRR21844202 - Fundulus majalis\nSRR22396640 - Xyrichtys novacula\nSRR22396732 - Gephyroberyx darwinii\nSRR22396627 - Gigantura indica\nSRR21843972 - Stomias affinis\nSRR22396843 - Conger oceanicus\nSRR22396668 - Erotelis smaragdus\nSRR22396865 - Paraconger caudilimbatus\nSRR19434536 - Rhinecanthus rectangulus\nProject initialized successfully.\nPlease open and review the .config file to ensure all required options are specified.\nThe new project directory contains a hidden file .config, which you can inspect if you wish. This file contains parameters that will be used by Nextflow to run the MitoPilot analysis workflow. All of the default settings in the config should be fine for the test project.",
+    "crumbs": [
+      "Example Fish Project",
+      "01 - initialize project"
+    ]
+  },
+  {
+    "objectID": "qmd/example_project/01_init.html#test-project-setup",
+    "href": "qmd/example_project/01_init.html#test-project-setup",
+    "title": "01 - initialize project",
+    "section": "",
+    "text": "MitoPilot comes pre-packaged with a test project consisting of Illumina data for 13 fish species.\nTo get started, we’ll need to initialize the test project with the R function MitoPilot::new_test_project. This function will download the data and set up a new project directory.\n\n\n\n\n\n\nNote\n\n\n\nTo initialize a MitoPilot with your own data, use the R function MitoPilot::new_project instead. You will need to additional information such as a mapping file and sequence data.\n\n\n\n# load the package\nlibrary(MitoPilot)\n\n# specify the directory where your test project will be created\n# if the directory does not exist, MitoPilot will create it\nwd = \"/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01\"\n\n# specify an execution environment, \"local\", \"NMNH_Hydra\", or \"NOAA_SEDNA\"\nex = \"NMNH_Hydra\"\n\n# initialize the test project\nMitoPilot::new_test_project(\n    path = wd,\n    executor = ex,\n    full_size = FALSE,\n    Rproj = FALSE\n)\n\nIf the test project was successfully initialized, you should see the following message.\nCreating project directory: /pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01\nSRR22396758 - Upeneus parvus                                                                                                                                 \nSRR22396794 - Psychrolutes paradoxus\nSRR22396940 - Psenes pellucidus\nSRR22396740 - Hoplostethus occidentalis\nSRR21844202 - Fundulus majalis\nSRR22396640 - Xyrichtys novacula\nSRR22396732 - Gephyroberyx darwinii\nSRR22396627 - Gigantura indica\nSRR21843972 - Stomias affinis\nSRR22396843 - Conger oceanicus\nSRR22396668 - Erotelis smaragdus\nSRR22396865 - Paraconger caudilimbatus\nSRR19434536 - Rhinecanthus rectangulus\nProject initialized successfully.\nPlease open and review the .config file to ensure all required options are specified.\nThe new project directory contains a hidden file .config, which you can inspect if you wish. This file contains parameters that will be used by Nextflow to run the MitoPilot analysis workflow. All of the default settings in the config should be fine for the test project.",
+    "crumbs": [
+      "Example Fish Project",
+      "01 - initialize project"
+    ]
+  },
+  {
+    "objectID": "qmd/example_project/01_init.html#launching-the-mitopilot-gui",
+    "href": "qmd/example_project/01_init.html#launching-the-mitopilot-gui",
+    "title": "01 - initialize project",
+    "section": "Launching the MitoPilot GUI",
+    "text": "Launching the MitoPilot GUI\nWe can now launch the R Shiny Graphical User Interface (GUI) to examine our test project and start the MitoPilot analysis pipeline.\n\n# the function to launch the GUI \n# must be called from within your project directory\nwd = \"/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01\"\nsetwd(wd)\nMitoPilot::MitoPilot()\n\n\n\n\nFig. 1\n\n\nNice! We can see some basic information about our samples. When initializing your own project, this is pulled from the mapping CSV file.\nThe dropdown menu at the top left switches between the different MitoPilot modules: Assemble, Annotate, and Export. If necessary, the circular arrow button in the top left will refresh the current table.\n\n\n\nFig. 2\n\n\nClicking on a column name will sort the table by that column.\n\n\n\nFig. 3\n\n\nYou can filter samples using the search box in the top right. Most columns can also be filtered using the text boxes at the top of the table.\n\n\n\nFig. 4\n\n\nTo the left of the sample ID column are two icons. The first icon shows whether the sample is locked or unlocked. If a sample is unlocked, it will be included when running the current pipeline module. A locked sample cannot be edited for the current module, but will be made available for the next pipeline module. You can toggle the lock by selecting the sample (check mark), then pressing LOCK at the top of the window. Multiple samples can be locked or unlocked simultaneously.\n\n\n\nFig. 5\n\n\nThe other icon shows the state of the sample. These states vary depending on the analysis module and will be automatically updated when running the pipeline. However, you can also manually change the state of a sample using the STATE button. For example, in the Assemble module you could prevent samples from running through the pipeline by manually setting their states to Hold / Waiting.\n\n\n\nFig. 6",
+    "crumbs": [
+      "Example Fish Project",
+      "01 - initialize project"
+    ]
+  },
+  {
+    "objectID": "qmd/example_project/01_init.html#modifying-pipeline-parameters",
+    "href": "qmd/example_project/01_init.html#modifying-pipeline-parameters",
+    "title": "01 - initialize project",
+    "section": "Modifying Pipeline Parameters",
+    "text": "Modifying Pipeline Parameters\nWithin the GUI, we can modify options for each step of the current pipeline module. Click on one of the default links in the Preprocess Opts column.\n\n\n\nFig. 7\n\n\nHere you can see the default options for pre-processing your raw FASTQ files. We can modify these by clicking the edit checkbox. Let’s change the memory to 20 GB. You could also change the options passed to fastp, but we’ll keep those at the defaults for now.\n\n\n\nFig. 8\n\n\nWe can save these new parameter options by clicking on the Parameter set name box, typing a new name, and clicking Add YOUR NEW NAME... in the dropdown. Finally, click Update in the bottom right to save your selection.\n\n\n\nFig. 9\n\n\nOnce you’ve saved a new parameter set, you can easily access it again using the dropdown menu. In the screenshot below, you can also see another parameter set called “test” that I created.\n\n\n\nFig. 10\n\n\nAfter clicking Update, your table should now show test for all samples in the Preprocess Opts column.\n\n\n\nFig. 11\n\n\nYou can set different parameters for different samples by simply selecting the set you want to change and repeating the above process. But for this test dataset, let’s keep everything consistent.\nLet’s also change the Assembly Opts. Repeat the process above, and creating a new high_mem setting with 6 CPUs and 60 GB of memory.\n\n\n\nFig. 12\n\n\nThe Assembly Opts window has more options to tinker with. With the Assembler dropdown menu, you can choose between GetOrganalle and MitoFinder.\nGetOrganelle is the default assembler for MitoPilot, as it is considerably faster. The downside is that it requires good reference mitogenomes. Thankfully, there are many high-quality fish mitogenomes available. MitoFinder may be a better choice for clades with few reference sequences.\nYou can modify the parameters for GetOrganalle, including the seeds and labels databases. The default fish reference databases are downloaded from the MitoPilot GitHub repository. You could use custom databases by providing the full path to the appropriate FASTA files on your local computer or cluster.\nLikewise, you could provide a custom .gb reference database for MitoFinder. The default option is the Danio rerio reference mitogenome (GenBank NC_002333.2).\nSee our documentation for more info about custom GetOrganalle or MitoFinder databases,\nFor the test project, we’ll stick with GetOrganalle and the default settings.",
+    "crumbs": [
+      "Example Fish Project",
+      "01 - initialize project"
+    ]
+  },
+  {
+    "objectID": "qmd/example_project/02_nextflow.html",
+    "href": "qmd/example_project/02_nextflow.html",
+    "title": "02 - running Nextflow",
+    "section": "",
+    "text": "Now that our test project is set up, it’s time to run the analysis workflow. MitoPilot utilizes Nextflow to analyze all of the samples in parallel. Obviously, this is more efficient than a simple serial workflow running one sample at a time.\nTo generate the Nextflow command for the MitoPilot Assemble module, simply click the UPDATE button.\nThere are two ways to run this Nextflow command on Hydra.",
+    "crumbs": [
+      "Example Fish Project",
+      "02 - running Nextflow"
+    ]
+  },
+  {
+    "objectID": "qmd/example_project/02_nextflow.html#using-the-gui",
+    "href": "qmd/example_project/02_nextflow.html#using-the-gui",
+    "title": "02 - running Nextflow",
+    "section": "Using the GUI",
+    "text": "Using the GUI\nWith the Update window open, click the Start Nextflow button. This will run the analysis pipeline within the MitoPilot GUI. This requires you to keep the GUI open while the pipeline is running.\n\n\n\n\n\n\nNote\n\n\n\nWe recommend only using this method for small numbers of samples. If your internet connection is interrupted, the analysis pipeline will stop. You can resume an interrupted run, but it will waste time and can occasionally cause bugs.\n\n\n\n\n\nFig. 14\n\n\nAnd we’re off! You should see Nextflow output being printed the to Progress window. This window will continually update as the pipeline progresses. As long as the gears in the top right are spinning, the pipeline is still running.\nThe Assemble pipeline module has 3 steps: preprocessing (filtering) the raw FASTQ files with fastp, assembling the mitogenomes using GetOrganelle, and calculating coverage maps for the assemblies using bowtie2.\nNextflow distributes the analyses across multiple batch jobs on the Hydra cluster. This can allow you to run hundreds of samples simultaneously. The Progress window will update as samples finish each step.\nYou can use your Hydra’s job scheduler to check on the status of MitoPilot jobs. Some samples may finish faster than others.\n\n\n\nFig. 15\n\n\nYou may notice that some samples fail at certain steps (though this is unlikely for the test dataset). Often this is due to a memory error, so MitoPilot will retry failed samples with more RAM. The Nextflow log tracks the number of failed samples and retries.\n\n\n\nFig. 16\n\n\nThe test dataset should take a few minutes to finish. When it’s done, your Progress window should look something like this.\n\n\n\nFig. 17\n\n\nIf you scroll all the way to the bottom of the Progress window, you can some summary info about the run.\n\n\n\nFig. 18\n\n\nClick Close to return to the samples table.",
+    "crumbs": [
+      "Example Fish Project",
+      "02 - running Nextflow"
+    ]
+  },
+  {
+    "objectID": "qmd/example_project/02_nextflow.html#using-a-batch-job",
+    "href": "qmd/example_project/02_nextflow.html#using-a-batch-job",
+    "title": "02 - running Nextflow",
+    "section": "Using a batch job",
+    "text": "Using a batch job\nIf you have a large number of samples to process (more than a few dozen), we recommend running the assemble and annotate MitoPilot modules as batch jobs.\nYou will still need to generate the Nextflow command using the MitoPilot GUI. But instead of clicking the Start Nextflow button, copy the Nextflow command and create a batch submission script.\nWe have provided a template below. You may wish to modify the job name (-N) and the log file name (-o).\n#!/bin/sh\n#$ -N MitoPilot_assembly # MODIFY THIS IF DESIRED\n#$ -o MitoPilot_assembly.log # MODIFY THIS IF DESIRED\n#$ -cwd -j y\n#$ -q lTWFM.sq\n#$ -l wfmq\n#$ -pe mthread 2\n#$ -S /bin/sh\n\necho + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME\n\nsource ~/.bashrc\n\nmodule load tools/java/21.0.2 # required for Nextflow on Hydra\n\n# EXAMPLE NEXTFLOW COMMAND\nnextflow -log /pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025/test_project_01/.logs/nextflow.log run /home/macguigand/R/x86_64-redhat-linux-gnu-library/4.4/MitoPilot/nextflow -c /pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025/test_project_01/.config -entry WF1 \n\necho = `date` job $JOB_NAME done\n\n\n\n\n\n\nImportant\n\n\n\nYou must use the options -q lTWFM.sq and -l wfmq. This is a special Hydra queue for workflow managers like Nextflow. You must also include -pe mthread 2 in order to have enough available RAM for building the MitoPilot Singularity image.\n\n\nMove the submission script into your MitoPilot project directory. In the above example, /pool/public/genomics/macguigand/MitoPilot/22030FL-06-02/run_02/. Then submit the job using qsub MY_SCRIPT_NAME.sh.\nYou can monitor the progress of this job using the qstat command and by checking on the log files. Once the job is done, you can relaunch the GUI to inspect the results. The same approach can be used for the Annotate module.",
+    "crumbs": [
+      "Example Fish Project",
+      "02 - running Nextflow"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MitoPilot Workshop 2025",
+    "section": "",
+    "text": "Welcome to the website for the 2025 Smithsonian NMNH MitoPilot workshop!"
+  }
+]

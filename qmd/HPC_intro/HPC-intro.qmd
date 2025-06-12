@@ -2,4 +2,6 @@
 title: "Intro to Smithsonian HPC"
 ---
 
-{{< pdf /pdfs/Hydra_HPC_intro.pdf width=100% height=800 >}}
+[MitoPilot](https://github.com/Smithsonian/MitoPilot) is an R package for mitogenome assembly and annotation from genome skimming data. It uses Nexflow and includes a R Shiny web app for project management and final curation of results, which can be exported in [NCBI Genbank](https://www.ncbi.nlm.nih.gov/genbank/) submission format. MitoPilot comes with extensive [documentation](https://smithsonian.github.io/MitoPilot/).
+
+Intro slides: {{< pdf /pdfs/Hydra_HPC_intro.pdf width=100% height=800 >}}
