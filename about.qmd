@@ -2,6 +2,4 @@
 title: "About"
 ---
 
-Welcome to the website for the 2025 Smithsonian NMNH MitoPilot workshop.
-
-[Complete R script for this workshop](qmd/full_R_script/R-script.qmd).
+Welcome to the website for the 2025 Smithsonian NMNH MitoPilot workshop!

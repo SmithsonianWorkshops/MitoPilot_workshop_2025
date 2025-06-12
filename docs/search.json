@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Welcome to the website for the 2025 Smithsonian NMNH MitoPilot workshop.\nComplete R script for this workshop."
+    "text": "Welcome to the website for the 2025 Smithsonian NMNH MitoPilot workshop!"
   },
   {
     "objectID": "qmd/example_project/03_asmb.html",
@@ -284,7 +284,10 @@
     "href": "qmd/MitoPilot_intro/MitoPilot-intro.html",
     "title": "Intro to MitoPilot",
     "section": "",
-    "text": "Download PDF file."
+    "text": "Download PDF file.",
+    "crumbs": [
+      "Intro to MitoPilot"
+    ]
   },
   {
     "objectID": "qmd/example_project/01_init.html",
@@ -368,6 +371,6 @@
     "href": "index.html",
     "title": "MitoPilot Workshop 2025",
     "section": "",
-    "text": "Welcome to the website for the 2025 Smithsonian NMNH MitoPilot workshop.\nComplete R script for this workshop."
+    "text": "Welcome to the website for the 2025 Smithsonian NMNH MitoPilot workshop!"
   }
 ]

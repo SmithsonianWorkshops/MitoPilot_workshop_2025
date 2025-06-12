@@ -11,6 +11,7 @@ website:
     style: "docked"
     search: true
     contents:
+      - qmd/MitoPilot_intro/MitoPilot-intro.qmd
       - qmd/HPC_intro/HPC-intro.qmd
       - qmd/full_R_script/R-script.qmd
       - section: "Setup"
