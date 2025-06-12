@@ -1,1 +1,1 @@
-[Workshop website](https://dmacguigan.github.io/MitoPilot_workshop_2025/)
+[Workshop website](https://smithsonianworkshops.github.io/MitoPilot_workshop_2025/)

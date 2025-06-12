@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Website for the 2025 Smithsonian NMNH MitoPilot workshop.\nComplete R script for this workshop."
+    "text": "Welcome to the website for the 2025 Smithsonian NMNH MitoPilot workshop.\nComplete R script for this workshop."
   },
   {
     "objectID": "qmd/example_project/03_asmb.html",
@@ -368,6 +368,6 @@
     "href": "index.html",
     "title": "MitoPilot Workshop 2025",
     "section": "",
-    "text": "Website for the 2025 Smithsonian NMNH MitoPilot workshop.\nComplete R script for this workshop."
+    "text": "Welcome to the website for the 2025 Smithsonian NMNH MitoPilot workshop.\nComplete R script for this workshop."
   }
 ]
