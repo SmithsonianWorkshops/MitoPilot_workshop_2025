@@ -229,8 +229,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#running-the-export-module" id="toc-running-the-export-module" class="nav-link active" data-scroll-target="#running-the-export-module">Running the Export Module</a></li>
+  <li><a href="#exploring-the-final-results" id="toc-exploring-the-final-results" class="nav-link" data-scroll-target="#exploring-the-final-results">Exploring the Final Results</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -254,8 +261,134 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="running-the-export-module" class="level2">
+<h2 class="anchored" data-anchor-id="running-the-export-module">Running the Export Module</h2>
+<p>Let’s move to the final step of the pipeline: the Export module. This module allows you to create groups of samples, then generate alignments and files formatted for submission to GenBank.</p>
+<p>Use the dropdown menu in the top left to navigate to the Export module.</p>
+<p>Now let’s create a group of samples. Sort the samples table by clicking on the <code>Taxon</code> column, then select the first five samples and click the <code>GROUP</code> button.</p>
+<p>A new window will appear showing some summary information for the selected samples. Type a name for the group, click <code>Add..</code>, then click <code>Create</code>. You can then click <code>Close</code> to return to the sample table.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/41.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 41</figcaption>
+</figure>
+</div>
+<p>The sample table now shows the group assignment in the <code>Group</code> column.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/42.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 42</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can assign new samples to an existing group. Simply select the samples you wish to add, click <code>GROUP</code>, then choose the existing group from the dropdown menu.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Each sample can only belong to one group. MitoPilot will produce a warning message if you attempt to re-assign a sample to a new group.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Currently, MitoPilot does not allow you to re-export an existing group name.</p>
+</div>
+</div>
+<p>We can proceed to exporting the data for this group. Click <code>EXPORT DATA</code>, which will open a new window. Only samples that have been added to a group can be exported in this manner.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/43.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 43</figcaption>
+</figure>
+</div>
+<p>If you have multiple groups, you can select the appropriate one from the dropdown menu.</p>
+<p>MitoPilot allows you to create a custom FASTA header for your samples, pulling data from columns the CSV file you supplied for the <code>mapping_fn</code> argument of the <code>MitoPilot::new_project</code> function. This conveniently allows you to include metadata needed for your NCBI GenBank submission. To reference a column, use curly brackets. For example <code>organism={Taxon}</code> will autofill values in the “Taxon” column into the FASTA header.</p>
+<p>For this test project, we can leave the <code>Fasta Header Template</code> at the default value.</p>
+<p>The <code>Generate Group-level PCG alignment summary</code> will run alignments of all the protein coding genes in your group. For large groups, this can take a while. But it’s useful for a final quality control check.</p>
+<p>Let’s toggle the <code>Export individual genes</code> button. This will generate additional FASTA files and GenBank feature tables for each protein coding gene. This can be helpful if you want to use individual genes for phylogenetic analyses or submit them to GenBank. These gene FASTA files have their own custom header template that you can modify.</p>
+<p>Click <code>Export</code> to generate the final files. It may take a couple of minutes, but as long as the gears are spinning, MitoPilot is still running.</p>
+<p>Once complete, MitoPilot will print the location of the exported files. By default, that location is <code>YOUR_PROJECT_DIRECTORY/out/export/YOUR_GROUP_NAME</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/44.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 44</figcaption>
+</figure>
+</div>
+<p>You can download these files from Hydra or open them from the RStudio server session.</p>
+</section>
+<section id="exploring-the-final-results" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-the-final-results">Exploring the Final Results</h2>
+<p>MitoPilot will produce three output files. First, the <code>.html</code> file contains visualizations of each protein coding gene alignment in your export group. This may be useful to quickly identify samples with poor annotations that need additional manual curation.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/45.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 45</figcaption>
+</figure>
+</div>
+<p>For example, the ATP8 annotation for “SRR22396640” clearly stands out when compared with the other samples in this export group.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/46.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 46</figcaption>
+</figure>
+</div>
+<p>Next are the two files you will need for submission to NCBI GenBank. The <code>.fasta</code> file contains the mitogenome assemblies for each sample, following the header template you specified when exporting the data. MitoPilot attempts to adjust the start position of every assembly to the start of the trnF gene.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/47.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 47</figcaption>
+</figure>
+</div>
+<p>Additionally there is the <code>.tbl</code> file, a <a href="https://www.ncbi.nlm.nih.gov/genbank/feature_table/">standardized 5-column, tab-delimited feature table</a> containing information about the annotated genes for each mitogenome.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/48.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 48</figcaption>
+</figure>
+</div>
+<p>With a real dataset, you could use these two files for <a href="https://www.ncbi.nlm.nih.gov/genbank/organelle_submit/">submission to NCBI GenBank</a>.</p>
+<p>The export directory also contains a sub-directory <code>GFFs</code> with annotations for each sample in <a href="https://gmod.org/wiki/GFF3">GFF3 format</a>. GFF files can be loaded by tools like <a href="https://www.geneious.com/">Geneious</a> for additional manual inspection prior to submission.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/49.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 49</figcaption>
+</figure>
+</div>
+<p>Lastly, if you selected the <code>Export individual genes</code> option, there will be another directory <code>genes</code> containing sub-directories for every protein coding gene. In these you will find FASTA files and feature tables for the corresponding gene. There will also be a concatenated FASTA file and feature table containing all protein coding genes, named <code>GROUP_PCGs.fasta/tbl</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/50.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 50</figcaption>
+</figure>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
