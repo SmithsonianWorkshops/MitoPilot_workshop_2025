@@ -62,6 +62,7 @@ This is clearly a worse alignment. Click `RESET` to undo your changes.
 
 If the alignment view contains many sequences, manual editing will be slow since MitoPilot has to redo the alignments every time you click a `+` or `-` button. To help speed this up, you can select the `Align fewer refs` box. This will restrict the alignment to the top five BLAST hits.
 
+
 Below the alignment section you will find the `Notes`. Use this section to keep track of your manual edits. Anything you write here will be saved automatically.
 
 ![Fig. 40](/images/40.png)

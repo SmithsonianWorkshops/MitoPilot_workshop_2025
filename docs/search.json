@@ -117,13 +117,24 @@
     ]
   },
   {
+    "objectID": "qmd/custom_project/03_customRuleset.html",
+    "href": "qmd/custom_project/03_customRuleset.html",
+    "title": "03 - custom curation ruleset",
+    "section": "",
+    "text": "Coming soon…",
+    "crumbs": [
+      "Other Clades",
+      "03 - custom curation ruleset"
+    ]
+  },
+  {
     "objectID": "qmd/full_R_script/R-script.html",
     "href": "qmd/full_R_script/R-script.html",
-    "title": "Full R script",
+    "title": "MitoPilot R script",
     "section": "",
-    "text": "# SI NMNH MitoPilot workshop\n# June 13, 2025\n# https://dmacguigan.github.io/MitoPilot_workshop_2025/\n# author: Dan MacGuigan\n# macguigand@si.edu\n\n###########################################################################\n# INSTALL MitoPilot\n###########################################################################\n\nif (!requireNamespace(\"remotes\", quietly = TRUE)) {\n  install.packages(\"remotes\")\n}\nif (!requireNamespace(\"BiocManager\", quietly = TRUE)) {\n  install.packages(\"BiocManager\")\n}\nBiocManager::install(\"Smithsonian/MitoPilot\")\n\n###########################################################################\n# UPDATE MitoPilot (if needed)\n###########################################################################\n\nremove.packages(\"MitoPilot\")\nBiocManager::install(\"Smithsonian/MitoPilot\")\n.rs.restartR()\n\n###########################################################################\n# LOADING MitoPilot\n###########################################################################\n\nlibrary(MitoPilot)",
+    "text": "# SI NMNH MitoPilot workshop\n# June 13, 2025\n# https://dmacguigan.github.io/MitoPilot_workshop_2025/\n# author: Dan MacGuigan\n# macguigand@si.edu\n\n###########################################################################\n# Install MitoPilot\n###########################################################################\n\nif (!requireNamespace(\"remotes\", quietly = TRUE)) {\n  install.packages(\"remotes\")\n}\nif (!requireNamespace(\"BiocManager\", quietly = TRUE)) {\n  install.packages(\"BiocManager\")\n}\nBiocManager::install(\"Smithsonian/MitoPilot\")\n\n###########################################################################\n# Update MitoPilot (if needed)\n###########################################################################\n\nremove.packages(\"MitoPilot\")\nBiocManager::install(\"Smithsonian/MitoPilot\")\n.rs.restartR()\n\n###########################################################################\n# Load MitoPilot\n###########################################################################\n\n# modify PATH to include:\n#   ~/bin (contains nextflow exe)\n#   java 21.0.2 (required for nextflow)\n#   qsub (required for nextflow to submit jobs)  \ndefault_path &lt;- \"/cm/shared/apps/uge/8.8.1/bin/lx-amd64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/rstudio-server/bin/quarto/bin:/usr/lib/rstudio-server/bin/postback\"\nnew_path &lt;- paste0(Sys.getenv(\"HOME\"), \"/bin:/share/apps/tools/java/21.0.2/bin\")\nSys.setenv(PATH = paste(new_path, default_path, sep = \":\"))\n\n# load MitoPilot package\nlibrary(MitoPilot)\n\n###########################################################################\n# Initialize test project\n###########################################################################\n\n# specify the directory where your test project will be created\n# if the directory does not exist, MitoPilot will create it\nwd = \"/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01\"\n\n# specify an execution environment, \"local\", \"NMNH_Hydra\", or \"NOAA_SEDNA\"\nex = \"NMNH_Hydra\"\n\n# initialize the test project\nMitoPilot::new_test_project(\n  path = wd,\n  executor = ex,\n  full_size = FALSE,\n  Rproj = FALSE\n)\n\n###########################################################################\n# Launch the MitoPilot GUI\n###########################################################################\n\n# the function to launch the GUI \n# must be called from within your project directory\nwd = \"/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01\"\nsetwd(wd)\nMitoPilot::MitoPilot()",
     "crumbs": [
-      "Full R script"
+      "MitoPilot R script"
     ]
   },
   {
@@ -182,6 +193,16 @@
     ]
   },
   {
+    "objectID": "qmd/HPC_intro/HPC-intro.html",
+    "href": "qmd/HPC_intro/HPC-intro.html",
+    "title": "Intro to Smithsonian HPC",
+    "section": "",
+    "text": "Download PDF file.",
+    "crumbs": [
+      "Intro to Smithsonian HPC"
+    ]
+  },
+  {
     "objectID": "qmd/setup/04_load.html",
     "href": "qmd/setup/04_load.html",
     "title": "04 - load MitoPilot",
@@ -234,6 +255,28 @@
     "crumbs": [
       "Setup",
       "03 - MitoPilot installation"
+    ]
+  },
+  {
+    "objectID": "qmd/custom_project/01_setup.html",
+    "href": "qmd/custom_project/01_setup.html",
+    "title": "01 - things to consider",
+    "section": "",
+    "text": "Coming soon…",
+    "crumbs": [
+      "Other Clades",
+      "01 - things to consider"
+    ]
+  },
+  {
+    "objectID": "qmd/custom_project/02_customDB.html",
+    "href": "qmd/custom_project/02_customDB.html",
+    "title": "02 - custom assembly database",
+    "section": "",
+    "text": "Coming soon…",
+    "crumbs": [
+      "Other Clades",
+      "02 - custom assembly database"
     ]
   },
   {
@@ -318,6 +361,6 @@
     "href": "index.html",
     "title": "MitoPilot Workshop 2025",
     "section": "",
-    "text": "Website for the 2025 Smithsonian NMNH MitoPilot workshop."
+    "text": "Website for the 2025 Smithsonian NMNH MitoPilot workshop.\nComplete R script for this workshop."
   }
 ]

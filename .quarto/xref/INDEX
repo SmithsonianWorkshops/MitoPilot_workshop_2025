@@ -70,5 +70,8 @@
   },
   "qmd/full_R_script/R-script.qmd": {
     "R-script.html": "dc0a2cd2"
+  },
+  "qmd/HPC_intro/HPC-intro.qmd": {
+    "HPC-intro.html": "cd0b3857"
   }
 }

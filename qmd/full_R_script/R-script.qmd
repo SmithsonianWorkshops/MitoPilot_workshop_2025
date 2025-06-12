@@ -1,5 +1,5 @@
 ---
-title: "Full R script"
+title: "MitoPilot R script"
 ---
 
 ```{R eval=F}
@@ -10,7 +10,7 @@ title: "Full R script"
 # macguigand@si.edu
 
 ###########################################################################
-# INSTALL MitoPilot
+# Install MitoPilot
 ###########################################################################
 
 if (!requireNamespace("remotes", quietly = TRUE)) {
@@ -22,7 +22,7 @@ if (!requireNamespace("BiocManager", quietly = TRUE)) {
 BiocManager::install("Smithsonian/MitoPilot")
 
 ###########################################################################
-# UPDATE MitoPilot (if needed)
+# Update MitoPilot (if needed)
 ###########################################################################
 
 remove.packages("MitoPilot")
@@ -30,9 +30,47 @@ BiocManager::install("Smithsonian/MitoPilot")
 .rs.restartR()
 
 ###########################################################################
-# LOADING MitoPilot
+# Load MitoPilot
 ###########################################################################
 
+# modify PATH to include:
+#   ~/bin (contains nextflow exe)
+#   java 21.0.2 (required for nextflow)
+#   qsub (required for nextflow to submit jobs)  
+default_path <- "/cm/shared/apps/uge/8.8.1/bin/lx-amd64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/rstudio-server/bin/quarto/bin:/usr/lib/rstudio-server/bin/postback"
+new_path <- paste0(Sys.getenv("HOME"), "/bin:/share/apps/tools/java/21.0.2/bin")
+Sys.setenv(PATH = paste(new_path, default_path, sep = ":"))
+
+# load MitoPilot package
 library(MitoPilot)
+
+###########################################################################
+# Initialize test project
+###########################################################################
+
+# specify the directory where your test project will be created
+# if the directory does not exist, MitoPilot will create it
+wd = "/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01"
+
+# specify an execution environment, "local", "NMNH_Hydra", or "NOAA_SEDNA"
+ex = "NMNH_Hydra"
+
+# initialize the test project
+MitoPilot::new_test_project(
+  path = wd,
+  executor = ex,
+  full_size = FALSE,
+  Rproj = FALSE
+)
+
+###########################################################################
+# Launch the MitoPilot GUI
+###########################################################################
+
+# the function to launch the GUI 
+# must be called from within your project directory
+wd = "/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01"
+setwd(wd)
+MitoPilot::MitoPilot()
 
 ```
