@@ -73,5 +73,8 @@
   },
   "qmd/HPC_intro/HPC-intro.qmd": {
     "HPC-intro.html": "cd0b3857"
+  },
+  "qmd/MitoPilot_intro/MitoPilot-intro.qmd": {
+    "MitoPilot-intro.html": "f051f2b4"
   }
 }

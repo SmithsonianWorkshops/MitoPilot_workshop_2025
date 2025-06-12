@@ -1,5 +1,5 @@
 ---
-title: "MitoPilot R script"
+title: "MitoPilot R Script"
 ---
 
 ```{R eval=F}
