@@ -4,12 +4,12 @@ title: "03 - custom curation database"
 
 ## Build custom databases for protein-coding gene curation
 
-By default, MitoPilot uses protein-coding gene sequences from NCBI RefSeq to tweak the start and stop codon positions for your annotations. 
+By default, MitoPilot uses protein-coding gene sequences from NCBI RefSeq to finetune start and stop codon positions of your annotations. 
 
-We have provided a helper function [`MitoPilot::custom_curation_db`](https://smithsonian.github.io/MitoPilot/reference/custom_curation_db.html), which allows you to supplement the RefSeq databases with your own gene sequences. 
+We have provided a helper function [`MitoPilot::custom_curation_db`](https://smithsonian.github.io/MitoPilot/reference/custom_curation_db.html), which allows you to supplement the RefSeq databases with your own protein-coding gene sequences. 
 Using a custom database can greatly improve automatic curation if your focal clade is poorly represented in RefSeq. 
 
-You could gather additional protein-coding genes from many sources, including:
+You could gather additional protein-coding gene sequences from many sources, including:
 
 - GenBank mitogenomes that are not part of RefSeq
 - mitogenomes from other data repositories
