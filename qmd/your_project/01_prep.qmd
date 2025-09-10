@@ -1,0 +1,37 @@
+---
+title: "01 - data prep"
+---
+
+The following pages will walk through an example of how to initialize a MitoPilot project with your own data.
+
+To get started, you will need:
+- a directory containing all of your sequence data
+- a CSV mapping file
+
+First, let's create a directory to house our project. On the command line, run the following:
+
+```bash
+mkdir -p /pool/public/genomics/${USER}/MitoPilot_workshop/my_project
+```
+
+Now we need some sequence data. An example data directory is located on Hydra at `/PATH/TO/DATA`. This directory contains two FASTQ files per sample (the forward and reverse reads).
+
+Let's copy the data to our new project directory.
+
+```bash
+cp -rf /PATH/TO/DATA /pool/public/genomics/${USER}/MitoPilot_workshop/my_project
+```
+
+Next we need to create a CSV mapping file with the following required columns:
+- `ID`: column with a unique identifier for each sample
+- `Taxon`: column containing taxonomic information for each sample, no formatting requirements
+- `R1`: full name of the forward read file
+- `R2`: full name of the reverse read file
+
+Normally you would create this metadata sheet from scratch in Excel, but for the workshop you can copy the provided file:
+```bash
+cp -rf /PATH/TO/map_file.csv /pool/public/genomics/${USER}/MitoPilot_workshop/my_project
+```
+
+This mapping spreadsheet can contain extra columns with additional metadata. In the example file, there is an extra column `Family`. 
+These extra metadata fields can be useful for sorting and grouping samples later on.

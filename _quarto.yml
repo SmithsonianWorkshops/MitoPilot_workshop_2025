@@ -21,18 +21,23 @@ website:
         - qmd/setup/03_RIntro.qmd
         - qmd/setup/04_install.qmd
         - qmd/setup/05_load.qmd
-      - section: "Example Fish Project"
+      - section: "Example Project"
         contents:
         - qmd/example_project/01_init.qmd
         - qmd/example_project/02_nextflow.qmd
         - qmd/example_project/03_asmb.qmd
         - qmd/example_project/04_annotation.qmd
         - qmd/example_project/05_export.qmd
-      - section: "Other Clades"
+      - section: "Starting Your Own Project"
         contents:
-        - qmd/custom_project/01_setup.qmd
-        - qmd/custom_project/02_customDB.qmd
-        - qmd/custom_project/03_customRuleset.qmd
+        - qmd/your_project/01_prep.qmd
+        - qmd/your_project/02_init.qmd
+      - section: "Advanced Usage"
+        contents:
+        - qmd/advanced/01_assemblyOpts.qmd
+        - qmd/advanced/02_customAsmbDB.qmd
+        - qmd/advanced/03_customCurationDB.qmd
+        - qmd/advanced/04_customCurationRuleset.qmd
 
 format:
   html:

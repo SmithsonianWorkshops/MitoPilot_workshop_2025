@@ -1,0 +1,56 @@
+---
+title: "02 - initialize your project"
+---
+
+First we need to specify a number of parameters for the project.
+
+```r
+# directory where your test project will be created
+# if the directory does not exist, MitoPilot will create it
+wd <- "/pool/public/genomics/<<USER>>/MitoPilot_workshop/my_project/run_01"
+
+# full path to your sample mapping CSV file
+# swap <<USER>> for your user ID
+map_file <- "/pool/public/genomics/<<USER>>/MitoPilot_workshop/my_project/run_01/map_file.csv"
+
+# full path to your sequence data directory
+# swap <<USER>> for your user ID
+seq_data <- "/pool/public/genomics/<<USER>>/MitoPilot_workshop/my_project/run_01/seq_data"
+
+# genetic code for your samples
+# see https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi
+genetic_code <- 2
+
+# minimum number of reads required to process a sample
+min_reads <- 1000000
+
+# specify an execution environment, "local", "NMNH_Hydra", or "NOAA_SEDNA"
+ex <- "NMNH_Hydra"
+```
+
+Now we can initialize the project using those parameters.
+
+```r
+# load the MitoPilot package
+library(MitoPilot)
+
+# initialize the test project
+MitoPilot::new_project(
+    path = wd,
+    executor = ex,
+    mapping_fn = map_file,
+    genetic_code = genetic_code,
+    min_depth = min_reads,
+    data_path = seq_data,
+    Rproj = FALSE
+)
+```
+
+Now we're ready to launch the GUI and start processing our samples!
+
+```r
+# the function to launch the GUI 
+# must be called from within your project directory
+setwd(wd)
+MitoPilot::MitoPilot()
+```

@@ -6,12 +6,12 @@ title: "04 - MitoPilot installation"
 
 To install MitoPilot, use the RStudio server window to run the following. This might take a while.
 
-```{R eval=F}
+```r
 if (!requireNamespace("remotes", quietly = TRUE)) {
-  install.packages("remotes")
+    install.packages("remotes")
 }
 if (!requireNamespace("BiocManager", quietly = TRUE)) {
-  install.packages("BiocManager")
+    install.packages("BiocManager")
 }
 BiocManager::install("Smithsonian/MitoPilot")
 ```
@@ -31,7 +31,7 @@ If there were no other error messages, you're ready to start using MitoPilot!
 
 If you need to update MitoPilot, run the following commands in RStudio server.
 
-```{R eval=F}
+```r
 remove.packages("MitoPilot")
 BiocManager::install("Smithsonian/MitoPilot")
 .rs.restartR()

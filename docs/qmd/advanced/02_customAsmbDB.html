@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Intro to MitoPilot – MitoPilot Workshop 2025</title>
+<title>02 - custom assembly database – MitoPilot Workshop 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -93,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/MitoPilot_intro/MitoPilot-intro.html">Intro to MitoPilot</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/advanced/01_assemblyOpts.html">Advanced Usage</a></li><li class="breadcrumb-item"><a href="../../qmd/advanced/02_customAsmbDB.html">02 - custom assembly database</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -115,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/MitoPilot_intro/MitoPilot-intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../qmd/MitoPilot_intro/MitoPilot-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intro to MitoPilot</span></a>
   </div>
 </li>
@@ -253,7 +288,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/advanced/02_customAsmbDB.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/advanced/02_customAsmbDB.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">02 - custom assembly database</span></a>
   </div>
 </li>
@@ -276,15 +311,33 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#why-use-a-custom-assembly-database" id="toc-why-use-a-custom-assembly-database" class="nav-link active" data-scroll-target="#why-use-a-custom-assembly-database">Why use a custom assembly database?</a></li>
+  <li><a href="#build-custom-databases-for-getorganelle" id="toc-build-custom-databases-for-getorganelle" class="nav-link" data-scroll-target="#build-custom-databases-for-getorganelle">Build custom databases for GetOrganelle</a>
+  <ul class="collapse">
+  <li><a href="#getorganelle-databases-on-hydra" id="toc-getorganelle-databases-on-hydra" class="nav-link" data-scroll-target="#getorganelle-databases-on-hydra">GetOrganelle databases on Hydra</a></li>
+  <li><a href="#genbankdownloadutil.sh" id="toc-genbankdownloadutil.sh" class="nav-link" data-scroll-target="#genbankdownloadutil.sh">GenBankDownloadUtil.sh</a></li>
+  <li><a href="#inspecting-custom-databases" id="toc-inspecting-custom-databases" class="nav-link" data-scroll-target="#inspecting-custom-databases">Inspecting custom databases</a></li>
+  <li><a href="#adding-your-own-sequences-to-a-custom-database" id="toc-adding-your-own-sequences-to-a-custom-database" class="nav-link" data-scroll-target="#adding-your-own-sequences-to-a-custom-database">Adding your own sequences to a custom database</a></li>
+  <li><a href="#using-a-custom-getorganelle-database-with-mitopilot" id="toc-using-a-custom-getorganelle-database-with-mitopilot" class="nav-link" data-scroll-target="#using-a-custom-getorganelle-database-with-mitopilot">Using a custom GetOrganelle database with MitoPilot</a></li>
+  </ul></li>
+  <li><a href="#build-custom-databases-for-mitofinder" id="toc-build-custom-databases-for-mitofinder" class="nav-link" data-scroll-target="#build-custom-databases-for-mitofinder">Build custom databases for MitoFinder</a>
+  <ul class="collapse">
+  <li><a href="#using-a-custom-mitofinder-database-with-mitopilot" id="toc-using-a-custom-mitofinder-database-with-mitopilot" class="nav-link" data-scroll-target="#using-a-custom-mitofinder-database-with-mitopilot">Using a custom MitoFinder database with MitoPilot</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/advanced/01_assemblyOpts.html">Advanced Usage</a></li><li class="breadcrumb-item"><a href="../../qmd/advanced/02_customAsmbDB.html">02 - custom assembly database</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Intro to MitoPilot</h1>
+<h1 class="title">02 - custom assembly database</h1>
 </div>
 
 
@@ -301,10 +354,190 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><a href="https://github.com/Smithsonian/MitoPilot">MitoPilot</a> is an R package for mitogenome assembly and annotation from genome skimming data. It uses Nexflow and includes a R Shiny web app for project management and final curation of results, which can be exported in <a href="https://www.ncbi.nlm.nih.gov/genbank/">NCBI Genbank</a> submission format. MitoPilot comes with extensive <a href="https://smithsonian.github.io/MitoPilot/">documentation</a>.</p>
-<p>Intro slides: <object data="/pdfs/MitoPilot_intro.pdf" type="application/pdf" width="100%" height="800"><a href="../../pdfs/MitoPilot_intro.pdf" download="">Download PDF file.</a></object></p>
+<section id="why-use-a-custom-assembly-database" class="level2">
+<h2 class="anchored" data-anchor-id="why-use-a-custom-assembly-database">Why use a custom assembly database?</h2>
+<p>Currently, MitoPilot comes packaged with assembly reference databases for fishes. If you are working on any other taxonomic group, you will need to compile databases of mitochondrial sequences for your clade.</p>
+</section>
+<section id="build-custom-databases-for-getorganelle" class="level2">
+<h2 class="anchored" data-anchor-id="build-custom-databases-for-getorganelle">Build custom databases for GetOrganelle</h2>
+<p>Before proceeding, consider reviewing the GetOrganelle <a href="https://doi.org/10.1186/s13059-020-02154-5">paper</a> and <a href="https://github.com/Kinggerm/GetOrganelle/wiki/FAQ#how-to-assemble-a-target-organelle-genome-using-my-own-reference">documentation</a> to better understand the required database architecture.</p>
+<p>GetOrganelle uses two databases, both in FASTA format:</p>
+<ul>
+<li>A “seed” database containing complete (or partial) mitochondrial genomes</li>
+<li>A “label” database containing individual mitochondrial gene sequences</li>
+</ul>
+<section id="getorganelle-databases-on-hydra" class="level3">
+<h3 class="anchored" data-anchor-id="getorganelle-databases-on-hydra">GetOrganelle databases on Hydra</h3>
+<p>Currently, we have the following custom GetOrganelle databases available on Hydra at <code>/scratch/nmnh_ocean_dna/GetOrganelle_refDBs</code>:</p>
+<ul>
+<li>Anthozoa</li>
+<li>Asteroidea</li>
+<li>Copepoda</li>
+<li>Diptera</li>
+<li>Hexacorallia</li>
+<li>Lepidosauria</li>
+<li>Mammalia</li>
+<li>Metazoa</li>
+<li>Octocorallia</li>
+<li>Testudinata</li>
+</ul>
+<p>Each of these folders contains a subdirectory <code>&lt;&lt;DATE&gt;&gt;/refs_final</code>, inside of which are two files: <code>labelDB.fasta</code> and <code>seedDB.fasta</code>. These files consist of all NCBI RefSeq mitogenomes (seeds) and mitochondrial genes (labels) for group.</p>
+<p>If your group is not listed here, we have provided the following script to assist with this building your own custom database.</p>
+</section>
+<section id="genbankdownloadutil.sh" class="level3">
+<h3 class="anchored" data-anchor-id="genbankdownloadutil.sh"><a href="https://github.com/smithsonian/MitoPilot/blob/main/ref_dbs/getOrganelle/GenBankDownload//GenBankDownloadUtil.sh">GenBankDownloadUtil.sh</a></h3>
+<p>This script will perform a GenBank query for all mitochondrial records matching your search criteria, download those sequences, and sort them into GetOrganlle “seed” and “label” databases.</p>
+<p>Before proceeding, you will need the following dependencies:</p>
+<ul>
+<li><a href="https://www.ncbi.nlm.nih.gov/books/NBK179288/">Entrez Direct tools</a> (tested with v22.8)</li>
+<li><a href="https://www.python.org/downloads/">python</a> (tested with v3.12.2)</li>
+<li><a href="https://biopython.org/">biopython</a> (tested with v1.84)</li>
+</ul>
+<p>On the Smithsonian Hydra cluster, python and biopython are available as a module. Simply run <code>module load bio/biopython/1.83</code>.</p>
+<p>Download the <a href="https://github.com/smithsonian/MitoPilot/blob/main/ref_dbs/getOrganelle/GenBankDownload//GenBankDownloadUtil.sh">GenBankDownloadUtil.sh</a> script to the directory where you want to create the custom databases. You will also need to download <a href="https://github.com/smithsonian/MitoPilot/blob/main/ref_dbs/getOrganelle/GenBankDownload//parseGB.py">parseGB.py</a> to the same directory.</p>
+<p>To run the script, you will need to construct an <a href="https://www.ncbi.nlm.nih.gov/nuccore/advanced">advanced GenBank query</a>. For example, if you want to download all starfish mitochondrial sequences, you could use <code>'"Asteroidea"[Organism]'</code>.</p>
+<p>The script can take multiple search terms. For example, use <code>'"Percidae"[Organism] AND "PRJNA720393"[BioProject]'</code> to download all percid mitochondrial sequences from a specific BioProject.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can restrict your results to only NCBI RefSeq by adding the search term <code>"RefSeq"[Filter]'</code>. RefSeq is a more curated subset of the data on GenBank, allowing you to avoid poor quality mitogenomes.</p>
+</div>
+</div>
+<p>Run the script as follows, providing your custom search terms. Make sure your full query is in single quotes, each search term is in double quotes, and the query type in in square brackets.</p>
+<p><code>bash GenBankDownloadUtil.sh '"my query"[QueryType]'</code></p>
+<p>This may take a while depending on how many GenBank records match your search terms. If working on a computing cluster, we recommend running this script as a batch job. Below is an example submission script for the Hydra cluster.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The submission script below requires the Entrez Direct tools in your PATH (i.e.&nbsp;these tools can be run from any directory).</p>
+</div>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># /bin/sh</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------Parameters---------------------- #</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#$ -S /bin/sh</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#$ -pe mthread 8</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#$ -q sThM.q</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#$ -l mres=640G,h_data=80G,h_vmem=80G,himem</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#$ -cwd</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#$ -j y</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#$ -N customGetOrgDBs</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#$ -o customGetOrgDBs.log</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># script to generate custom seed and label DBs for starfish</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># load python and biopython module</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load bio/biopython/1.83 <span class="co"># need python and biopython too</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># run the script</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> GenBankDownloadUtil.sh <span class="st">'"Asteroidea"[Organism]'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The script will produce several files:</p>
+<ul>
+<li><code>genbank.gb</code> - GenBank file containing all of the matching records</li>
+<li><code>multigene.fasta</code> - FASTA file of sequences that contained multiple gene records, indicating they are either a partial or complete mitogenome</li>
+<li><code>multigene.dedup.fasta</code> - same as <code>multigene.fasta</code>, but with duplicate sequences removed</li>
+<li><code>nogene.fasta</code> - FASTA file of mitochondrial sequences with no annotated genes</li>
+<li><code>nogene.dedup.fasta</code> - same as <code>nogene.fasta</code>, but with duplicate sequences removed</li>
+<li><code>singlegene.fasta</code> - FASTA file of mitochondrial gene sequences</li>
+<li><code>singlegene.dedup.fasta</code> - same as <code>singlelocus.fasta</code>, but with duplicate sequences removed</li>
+</ul>
+<p>For GetOrganelle:</p>
+<ul>
+<li>seed database = <code>multigene.dedup.fasta</code> (plus maybe some sequences from <code>nogene.dedup.fasta</code>)</li>
+<li>label database = <code>singlegene.dedup.fasta</code></li>
+</ul>
+<p>The <code>nogene.fasta</code> file contains un-annotated mitochondrial sequences or mitochondrial sequences from a non-gene region, such as the D-loop (AKA control region). Consider manually inspecting these sequences. You may wish to include some of them in your custom GetOrganelle seed database.</p>
+</section>
+<section id="inspecting-custom-databases" class="level3">
+<h3 class="anchored" data-anchor-id="inspecting-custom-databases">Inspecting custom databases</h3>
+<p>Here are a few helpful one-liners to inspect and manipulate FASTA files.</p>
+<p><strong><em>Count the number of sequences in a FASTA file:</em></strong></p>
+<pre><code>grep -c "&gt;" singlelocus.dedup.fasta</code></pre>
+<p><strong><em>Generate list of FASTA headers:</em></strong></p>
+<pre><code>grep "&gt;" singlelocus.dedup.fasta</code></pre>
+<p><strong><em>Generate list of unique gene names:</em></strong></p>
+<pre><code>grep "&gt;" singlelocus.dedup.fasta | cut -f1 -d" " | sort | uniq</code></pre>
+<p><strong><em>Calculate sequence lengths:</em></strong></p>
+<pre><code>cat my_file.fasta | awk '$0 ~ "&gt;" {if (NR &gt; 1) {print c;} c=0;printf substr($0,2,100) "\t"; } $0 !~ "&gt;" {c+=length($0);} END { print c; }'</code></pre>
+<p><strong><em>Extract specific sequences from a FASTA file with <a href="https://bioinf.shenwei.me/seqkit/">seqkit</a>:</em></strong></p>
+<pre><code># Extract sequences based on names.txt
+# names.txt should contain full sequences headers, one per line, but no "&gt;" at start
+module load bio/seqkit/2.8.1 # ONLY FOR NMNH HYDRA CLUSTER
+seqkit grep -f -n names.txt file.fasta &gt; file_subset.fasta</code></pre>
+<p><strong><em>Remove sequences from a FASTA file with <a href="https://bioinf.shenwei.me/seqkit/">seqkit</a>:</em></strong></p>
+<pre><code># Remove sequences based on name patterns listed in names.txt
+# one pattern per line
+module load bio/seqkit/2.8.1 # ONLY FOR NMNH HYDRA CLUSTER
+seqkit grep -v -f names.txt file.fasta &gt; file_subset.fasta</code></pre>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>GenBankDownloadUtil.sh</code> will rename any sequence with no GenBank “product” (protein, tRNA, or rRNA) as “no_product ACCESSION”. You may wish to remove these sequences, as they often represent poorly annotated genes.</p>
+</div>
+</div>
+</section>
+<section id="adding-your-own-sequences-to-a-custom-database" class="level3">
+<h3 class="anchored" data-anchor-id="adding-your-own-sequences-to-a-custom-database">Adding your own sequences to a custom database</h3>
+<p>To use unpublished mitogenomes in a custom GetOrganelle seed database, you will need to combine multiple FASTA files. GetOrganelle does not require any specific format for the sequence names in the seed database.</p>
+<p>You can easily combine FASTA files with the Linux <code>cat</code> command:</p>
+<pre><code>cat multigene.dedup.fasta my_mitogenomes.fasta more_mitogenomes.fasta &gt; final_seed_db.fasta</code></pre>
+<p>You could also add unpublished individual gene sequences to a custom GetOrganelle label database in a similar manner.</p>
+</section>
+<section id="using-a-custom-getorganelle-database-with-mitopilot" class="level3">
+<h3 class="anchored" data-anchor-id="using-a-custom-getorganelle-database-with-mitopilot">Using a custom GetOrganelle database with MitoPilot</h3>
+<p>To specify custom GetOrganelle assembly databases, you can use the following arguments when setting up a new project with <a href="https://smithsonian.github.io/MitoPilot/reference/new_project.html"><code>MitoPilot::new_project</code></a>.</p>
+<ul>
+<li><code>custom_seeds_db</code>: full path to custom seeds database FASTA file</li>
+<li><code>custom_labels_db</code>: full path to custom labels database FASTA file</li>
+</ul>
+<p>Alternatively, you can supply these file paths in the <code>Assembly Opts.</code> window and the Assemble module.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/advanced/02.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 2</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="build-custom-databases-for-mitofinder" class="level2">
+<h2 class="anchored" data-anchor-id="build-custom-databases-for-mitofinder">Build custom databases for MitoFinder</h2>
+<p>The <a href="https://github.com/RemiAllio/MitoFinder?tab=readme-ov-file#how-to-get-reference-mitochondrial-genomes-from-ncbi">MitoFinder documentation</a> has instructions on how to build a reference database.</p>
+<p>The MitoFinder reference database is simple: a GenBank formatted file (<code>.gb</code>) containing one or more annotated mitogenomes. This file can be downloaded from a GenBank query in a web browser.</p>
+<p>You can provide the path to your MitoFinder database with the <code>mitofinder_db</code> argument of <code>MitoPilot::new_project</code> function when initializing a project. Alternatively, you can specify the MitoFinder database in the assembly options section of the MitoPilot GUI.</p>
+<p>Assembly of contigs with MitoFinder is completely de novo. The MitoFinder reference database is only used to “label” putative mitochondrial contigs. Thus, the species in your reference database can be fairly distant relatives of your samples.</p>
+<section id="using-a-custom-mitofinder-database-with-mitopilot" class="level3">
+<h3 class="anchored" data-anchor-id="using-a-custom-mitofinder-database-with-mitopilot">Using a custom MitoFinder database with MitoPilot</h3>
+<p>To use a custom Mitofinder database, you can supply the path to the GenBank file in the <code>Assembly Opts.</code> window and the Assemble module.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/advanced/03.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 3</figcaption>
+</figure>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

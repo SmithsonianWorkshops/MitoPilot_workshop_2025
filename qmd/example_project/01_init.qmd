@@ -12,16 +12,16 @@ To get started, we need to initialize the test project with the R function `Mito
 To initialize a MitoPilot with your own data, use the R function [`MitoPilot::new_project`](https://smithsonian.github.io/MitoPilot/reference/new_project.html) instead. You will need to provide additional information such as a mapping file and sequence data.
 :::
 
-```{r eval=F}
+```r
 # load the package
 library(MitoPilot)
 
 # specify the directory where your test project will be created
 # if the directory does not exist, MitoPilot will create it
-wd = "/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01"
+wd <- "/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01"
 
 # specify an execution environment, "local", "NMNH_Hydra", or "NOAA_SEDNA"
-ex = "NMNH_Hydra"
+ex <- "NMNH_Hydra"
 
 # initialize the test project
 MitoPilot::new_test_project(
@@ -59,10 +59,10 @@ The new project directory contains a hidden file `.config`, which you can inspec
 
 We can now launch the R Shiny graphical user interface (GUI) to examine our test project and start the MitoPilot analysis pipeline.
 
-```{r eval=F}
+```r
 # the function to launch the GUI 
 # must be called from within your project directory
-wd = "/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01"
+wd <- "/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01"
 setwd(wd)
 MitoPilot::MitoPilot()
 ```

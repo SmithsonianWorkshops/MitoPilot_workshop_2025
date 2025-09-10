@@ -6,7 +6,7 @@ title: "05 - load MitoPilot"
 
 To load the MitoPilot R package, we first need to modify our `PATH` environmental variable. This will allow our RStudio session to find and use `java` and `nextflow`.
 
-```{R eval=F}
+```r
 # modify PATH to include:
 #   ~/bin (contains nextflow exe)
 #   java 21.0.2 (required for nextflow)
@@ -16,7 +16,7 @@ Sys.setenv(PATH = paste(new_path, default_path, sep = ":"))
 ```
 
 Next, load the MitoPilot package. 
-```{R eval=F}
+```r
 library(MitoPilot)
 ```
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Intro to MitoPilot – MitoPilot Workshop 2025</title>
+<title>01 - data prep – MitoPilot Workshop 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -93,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/MitoPilot_intro/MitoPilot-intro.html">Intro to MitoPilot</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/your_project/01_prep.html">Starting Your Own Project</a></li><li class="breadcrumb-item"><a href="../../qmd/your_project/01_prep.html">01 - data prep</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -115,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/MitoPilot_intro/MitoPilot-intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../qmd/MitoPilot_intro/MitoPilot-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intro to MitoPilot</span></a>
   </div>
 </li>
@@ -224,7 +259,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/your_project/01_prep.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/your_project/01_prep.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">01 - data prep</span></a>
   </div>
 </li>
@@ -282,9 +317,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/your_project/01_prep.html">Starting Your Own Project</a></li><li class="breadcrumb-item"><a href="../../qmd/your_project/01_prep.html">01 - data prep</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Intro to MitoPilot</h1>
+<h1 class="title">01 - data prep</h1>
 </div>
 
 
@@ -301,8 +336,17 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><a href="https://github.com/Smithsonian/MitoPilot">MitoPilot</a> is an R package for mitogenome assembly and annotation from genome skimming data. It uses Nexflow and includes a R Shiny web app for project management and final curation of results, which can be exported in <a href="https://www.ncbi.nlm.nih.gov/genbank/">NCBI Genbank</a> submission format. MitoPilot comes with extensive <a href="https://smithsonian.github.io/MitoPilot/">documentation</a>.</p>
-<p>Intro slides: <object data="/pdfs/MitoPilot_intro.pdf" type="application/pdf" width="100%" height="800"><a href="../../pdfs/MitoPilot_intro.pdf" download="">Download PDF file.</a></object></p>
+<p>The following pages will walk through an example of how to initialize a MitoPilot project with your own data.</p>
+<p>To get started, you will need: - a directory containing all of your sequence data - a CSV mapping file</p>
+<p>First, let’s create a directory to house our project. On the command line, run the following:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> /pool/public/genomics/<span class="va">${USER}</span>/MitoPilot_workshop/my_project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now we need some sequence data. An example data directory is located on Hydra at <code>/PATH/TO/DATA</code>. This directory contains two FASTQ files per sample (the forward and reverse reads).</p>
+<p>Let’s copy the data to our new project directory.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-rf</span> /PATH/TO/DATA /pool/public/genomics/<span class="va">${USER}</span>/MitoPilot_workshop/my_project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Next we need to create a CSV mapping file with the following required columns: - <code>ID</code>: column with a unique identifier for each sample - <code>Taxon</code>: column containing taxonomic information for each sample, no formatting requirements - <code>R1</code>: full name of the forward read file - <code>R2</code>: full name of the reverse read file</p>
+<p>Normally you would create this metadata sheet from scratch in Excel, but for the workshop you can copy the provided file:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-rf</span> /PATH/TO/map_file.csv /pool/public/genomics/<span class="va">${USER}</span>/MitoPilot_workshop/my_project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This mapping spreadsheet can contain extra columns with additional metadata. In the example file, there is an extra column <code>Family</code>. These extra metadata fields can be useful for sorting and grouping samples later on.</p>
 
 
 

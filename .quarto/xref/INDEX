@@ -85,5 +85,29 @@
   },
   "qmd/setup/05_load.qmd": {
     "05_load.html": "3b1fe65e"
+  },
+  "qmd/your_project/02_init.qmd": {
+    "02_init.html": "336b9a49"
+  },
+  "qmd/your_project/01_prep.qmd": {
+    "01_prep.html": "910437fd"
+  },
+  "qmd/advanced/01_assemblyOpts.qmd": {
+    "01_assemblyOpts.html": "47c963f6"
+  },
+  "qmd/advanced/03_customRuleset.qmd": {
+    "03_customRuleset.html": "29f0b6f9"
+  },
+  "qmd/advanced/02_customDB.qmd": {
+    "02_customDB.html": "0f3d1f9d"
+  },
+  "qmd/advanced/02_customAsmbDB.qmd": {
+    "02_customAsmbDB.html": "ea5e280a"
+  },
+  "qmd/advanced/03_customCurationDB.qmd": {
+    "03_customCurationDB.html": "21b0a32a"
+  },
+  "qmd/advanced/04_customCurationRuleset.qmd": {
+    "04_customCurationRuleset.html": "c869bcb0"
   }
 }
