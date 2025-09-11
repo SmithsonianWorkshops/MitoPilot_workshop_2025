@@ -14,6 +14,10 @@ website:
       - qmd/MitoPilot_intro/MitoPilot-intro.qmd
       - qmd/HPC_intro/HPC-intro.qmd
       - qmd/full_R_script/R-script.qmd
+      - section: "Scripts"
+        contents:
+        - qmd/scripts/01_bash-script.qmd
+        - qmd/scripts/02_R-script.qmd
       - section: "Setup"
         contents:
         - qmd/setup/01_Hydra.qmd
@@ -23,6 +27,7 @@ website:
         - qmd/setup/05_load.qmd
       - section: "Example Project"
         contents:
+        - qmd/example_project/00_R-script.qmd
         - qmd/example_project/01_init.qmd
         - qmd/example_project/02_nextflow.qmd
         - qmd/example_project/03_asmb.qmd

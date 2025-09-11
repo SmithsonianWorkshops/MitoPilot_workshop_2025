@@ -1,0 +1,32 @@
+---
+title: "01 - bash setup script"
+---
+
+```bash
+#!/bin/bash
+# SI NMNH MitoPilot workshop
+# September 24, 2025
+# https://dmacguigan.github.io/MitoPilot_workshop_2025/
+# author: Dan MacGuigan
+# macguigand@si.edu
+
+# MitoPilot setup script to install dependencies
+
+# Nextflow installation instructions
+# from https://www.nextflow.io/docs/latest/install.html
+cd ~
+# load Java module, needed by Nextflow
+module load tools/java/21.0.2
+# install Nextflow
+curl -s https://get.nextflow.io | bash 
+# make Nextflow executable
+chmod +x nextflow 
+ # create bin directory, if needed
+mkdir ~/bin
+# move nextflow to bin directory
+mv ~/nextflow ~/bin/nextflow 
+# add bin directory to PATH, in case it's not already there
+echo 'export PATH="${HOME}/bin:${PATH}"' >> ~/.bashrc 
+# reload your bash configuration file
+source ~/.bashrc
+```

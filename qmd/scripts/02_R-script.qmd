@@ -1,10 +1,10 @@
 ---
-title: "MitoPilot R Script"
+title: "02 - example project R script"
 ---
 
 ```r
 # SI NMNH MitoPilot workshop
-# June 13, 2025
+# September 24, 2025
 # https://dmacguigan.github.io/MitoPilot_workshop_2025/
 # author: Dan MacGuigan
 # macguigand@si.edu
