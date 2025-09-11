@@ -2,4 +2,41 @@
 title: "04 - custom curation ruleset"
 ---
 
-Coming soon...
+Automated curation and validation of mitogenome annotations is a central goal of MitoPilot. When samples are processed through the Annotate module, annotations are first generated using a combination of [MITOS2](https://gitlab.com/Bernt/MITOS) (for rRNA and PCG annotation) and [tRNAscan-SE](https://github.com/UCSC-LoweLab/tRNAscan-SE) (for tRNA annotation). Following the initial annotation, samples are processed through an automated curation process where modifications are made in attempt to bring the annotations closer to a state that will be considered acceptable for publication by NCBI GenBank. This automated curation process is based on two important inputs to the pipeline, a high-quality reference database of protein coding genes and a set of user configurable parameters.
+
+## Curation Parameters
+
+Currently, curation parameters are specified at project initialization and are applied to all samples within the project. By default, the parameters are set by the function, `params_fish_mito()`. 
+
+Below is a full list of curation parameters.
+
+- hit_threshold [PCG only]: Minimum percent sequencing similarity for a protein-coding gene. Any hits below this threshold will not be used for curation.
+- max_overlap: Maximum proportion of gene length that can overlap with another gene.
+- count: Maximum expected number of gene copies.
+- max_len: Maximum expected length (bp) of the gene.
+- min_len: Minimum expected length (bp) of the gene.
+- overlap: Start (5') and stop (3') rules for overlap between genes. Start is the maximum number of base pairs that can overlap at the 5' end of a gene. Stop is whether the 3' end of a gene can overlap AT ALL with another gene (True/False).
+- start_codons [PCG only]: Acceptable start codons.
+- stop_codons [PCG only]: Acceptable stop codons, including incomplete stop codons.
+
+If a gene fails to meet the specified parameters, it will be flagged with a warning message.
+
+Customization of the parameters can be achieved by directly providing a complete named list, or by passing individual modifications to the `params_fish_mito()` function. For example, the default expected count of trnW genes could be increased to 2 and the default percent similarity of an "acceptable" protein-coding gene match could be reduced to 85 by initializing a new project with:
+
+```r
+new_project(
+    ...,
+    curate_params = params_fish_mito(
+        list(
+            hit_threshold = 85,
+            rules = list(
+                trnW = list(
+                    count = 2
+                )
+            )
+        )
+    )
+)
+```
+
+The full set of default curation parameters can be viewed in the MitoPilot GUI for each sample under `Curation Opts`. At the moments, these values can not be edited for individual samples from within the GUI, but this feature will eventually be added.

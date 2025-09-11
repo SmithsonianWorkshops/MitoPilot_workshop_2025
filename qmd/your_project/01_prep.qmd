@@ -15,15 +15,15 @@ mkdir -p /pool/public/genomics/${USER}/MitoPilot_workshop/my_project
 ```
 
 Now we need some sequence data. 
-We have provided example data consisting of four octocoral species on the workshop GitHub repo.
-This directory contains two FASTQ files per sample (the forward and reverse reads).
+The workshop GitHub repo has some example data, consisting of four octocoral species.
+This directory contains two FASTQ files per sample (the forward and reverse reads). 
 
 Let's copy the data to our new project directory.
 
 ```bash
 cd /pool/public/genomics/${USER}/MitoPilot_workshop/my_project
-wget 
-tar -zxvf 
+wget https://github.com/SmithsonianWorkshops/MitoPilot_workshop_2025/raw/refs/heads/main/sample_data/raw_data.tar.gz
+tar -zxvf raw_data.tar.gz
 ```
 
 Next we need to create a CSV mapping file with the following required columns:
@@ -35,9 +35,9 @@ Next we need to create a CSV mapping file with the following required columns:
 Normally you would create this metadata sheet from scratch in Excel, but for the workshop you can download the provided file:
 ```bash
 cd /pool/public/genomics/${USER}/MitoPilot_workshop/my_project
-wget 
+wget https://raw.githubusercontent.com/SmithsonianWorkshops/MitoPilot_workshop_2025/refs/heads/main/sample_data/map_file.csv
 ```
 
 This mapping spreadsheet can contain extra columns with additional metadata. 
-In the example file, there are also a few extra columns.
+In the example file, there are a few extra columns: `Order`, `Tissue ID`, and `SeqID#`.
 These extra metadata fields can be useful for sorting and grouping samples later on.

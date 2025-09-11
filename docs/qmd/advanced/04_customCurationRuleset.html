@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -282,8 +317,14 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#curation-parameters" id="toc-curation-parameters" class="nav-link active" data-scroll-target="#curation-parameters">Curation Parameters</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -307,9 +348,40 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Coming soon…</p>
+<p>Automated curation and validation of mitogenome annotations is a central goal of MitoPilot. When samples are processed through the Annotate module, annotations are first generated using a combination of <a href="https://gitlab.com/Bernt/MITOS">MITOS2</a> (for rRNA and PCG annotation) and <a href="https://github.com/UCSC-LoweLab/tRNAscan-SE">tRNAscan-SE</a> (for tRNA annotation). Following the initial annotation, samples are processed through an automated curation process where modifications are made in attempt to bring the annotations closer to a state that will be considered acceptable for publication by NCBI GenBank. This automated curation process is based on two important inputs to the pipeline, a high-quality reference database of protein coding genes and a set of user configurable parameters.</p>
+<section id="curation-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="curation-parameters">Curation Parameters</h2>
+<p>Currently, curation parameters are specified at project initialization and are applied to all samples within the project. By default, the parameters are set by the function, <code>params_fish_mito()</code>.</p>
+<p>Below is a full list of curation parameters.</p>
+<ul>
+<li>hit_threshold [PCG only]: Minimum percent sequencing similarity for a protein-coding gene. Any hits below this threshold will not be used for curation.</li>
+<li>max_overlap: Maximum proportion of gene length that can overlap with another gene.</li>
+<li>count: Maximum expected number of gene copies.</li>
+<li>max_len: Maximum expected length (bp) of the gene.</li>
+<li>min_len: Minimum expected length (bp) of the gene.</li>
+<li>overlap: Start (5’) and stop (3’) rules for overlap between genes. Start is the maximum number of base pairs that can overlap at the 5’ end of a gene. Stop is whether the 3’ end of a gene can overlap AT ALL with another gene (True/False).</li>
+<li>start_codons [PCG only]: Acceptable start codons.</li>
+<li>stop_codons [PCG only]: Acceptable stop codons, including incomplete stop codons.</li>
+</ul>
+<p>If a gene fails to meet the specified parameters, it will be flagged with a warning message.</p>
+<p>Customization of the parameters can be achieved by directly providing a complete named list, or by passing individual modifications to the <code>params_fish_mito()</code> function. For example, the default expected count of trnW genes could be increased to 2 and the default percent similarity of an “acceptable” protein-coding gene match could be reduced to 85 by initializing a new project with:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">new_project</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    ...,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">curate_params =</span> <span class="fu">params_fish_mito</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">list</span>(</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">hit_threshold =</span> <span class="dv">85</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">rules =</span> <span class="fu">list</span>(</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">trnW =</span> <span class="fu">list</span>(</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">count =</span> <span class="dv">2</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The full set of default curation parameters can be viewed in the MitoPilot GUI for each sample under <code>Curation Opts</code>. At the moments, these values can not be edited for individual samples from within the GUI, but this feature will eventually be added.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
