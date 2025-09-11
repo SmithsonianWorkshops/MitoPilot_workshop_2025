@@ -3,3 +3,11 @@ title: "About"
 ---
 
 Welcome to the website for the 2025 Smithsonian NMNH MitoPilot workshop!
+
+Our schedule for today:
+
+**9 AM – 12 PM:** Introduction to mitogenomes and MitoPilot, cluster computing basics, MitoPilot installation, running a test project
+**12 PM – 1 PM:** lunch break
+**1 PM – 3 PM:** Finishing the test project, inspecting results, manual curation, export
+**3 PM – 3:30 PM:** break
+**3:30 PM – 5 PM:** How to set up your own project, custom assembly and annotation databases, wrap-up
