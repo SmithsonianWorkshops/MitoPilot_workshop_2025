@@ -13,7 +13,6 @@ website:
     contents:
       - qmd/MitoPilot_intro/MitoPilot-intro.qmd
       - qmd/HPC_intro/HPC-intro.qmd
-      - qmd/full_R_script/R-script.qmd
       - section: "Scripts"
         contents:
         - qmd/scripts/01_bash-script.qmd
