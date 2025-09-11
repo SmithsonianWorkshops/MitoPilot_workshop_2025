@@ -112,5 +112,11 @@
   },
   "qmd/advanced/05_dbUpdate.qmd": {
     "05_dbUpdate.html": "415af359"
+  },
+  "qmd/scripts/01_bash-script.qmd": {
+    "01_bash-script.html": "12a884ca"
+  },
+  "qmd/scripts/02_R-script.qmd": {
+    "02_R-script.html": "513f38b4"
   }
 }

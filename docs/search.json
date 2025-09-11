@@ -128,155 +128,157 @@
     ]
   },
   {
-    "objectID": "qmd/full_R_script/R-script.html",
-    "href": "qmd/full_R_script/R-script.html",
-    "title": "MitoPilot R Script",
+    "objectID": "qmd/scripts/01_bash-script.html",
+    "href": "qmd/scripts/01_bash-script.html",
+    "title": "01 - bash setup script",
     "section": "",
-    "text": "# SI NMNH MitoPilot workshop\n# June 13, 2025\n# https://dmacguigan.github.io/MitoPilot_workshop_2025/\n# author: Dan MacGuigan\n# macguigand@si.edu\n\n###########################################################################\n# Install MitoPilot\n###########################################################################\n\nif (!requireNamespace(\"remotes\", quietly = TRUE)) {\n    install.packages(\"remotes\")\n}\nif (!requireNamespace(\"BiocManager\", quietly = TRUE)) {\n    install.packages(\"BiocManager\")\n}\nBiocManager::install(\"Smithsonian/MitoPilot\")\n\n###########################################################################\n# Update MitoPilot (if needed)\n###########################################################################\n\nremove.packages(\"MitoPilot\")\nBiocManager::install(\"Smithsonian/MitoPilot\")\n.rs.restartR()\n\n###########################################################################\n# Load MitoPilot\n###########################################################################\n\n# modify PATH to include:\n#   ~/bin (contains nextflow exe)\n#   java 21.0.2 (required for nextflow)\ndefault_path &lt;- \"/cm/shared/apps/uge/8.8.1/bin/lx-amd64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/rstudio-server/bin/quarto/bin:/usr/lib/rstudio-server/bin/postback\"\nnew_path &lt;- paste0(Sys.getenv(\"HOME\"), \"/bin:/share/apps/tools/java/21.0.2/bin\")\nSys.setenv(PATH = paste(new_path, default_path, sep = \":\"))\n\n# load MitoPilot package\nlibrary(MitoPilot)\n\n###########################################################################\n# Initialize test project\n###########################################################################\n\n# specify the directory where your test project will be created\n# if the directory does not exist, MitoPilot will create it\nwd &lt;- \"/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01\"\n\n# specify an execution environment, \"local\", \"NMNH_Hydra\", or \"NOAA_SEDNA\"\nex &lt;- \"NMNH_Hydra\"\n\n# initialize the test project\nMitoPilot::new_test_project(\n    path = wd,\n    executor = ex,\n    full_size = FALSE,\n    Rproj = FALSE\n)\n\n###########################################################################\n# Launch the MitoPilot GUI\n###########################################################################\n\n# the function to launch the GUI\n# must be called from within your project directory\nwd &lt;- \"/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01\"\nsetwd(wd)\nMitoPilot::MitoPilot()",
+    "text": "#!/bin/bash\n# SI NMNH MitoPilot workshop\n# September 24, 2025\n# https://dmacguigan.github.io/MitoPilot_workshop_2025/\n# author: Dan MacGuigan\n# macguigand@si.edu\n\n# MitoPilot setup script to install dependencies\n\n# Nextflow installation instructions\n# from https://www.nextflow.io/docs/latest/install.html\ncd ~\n# load Java module, needed by Nextflow\nmodule load tools/java/21.0.2\n# install Nextflow\ncurl -s https://get.nextflow.io | bash \n# make Nextflow executable\nchmod +x nextflow \n # create bin directory, if needed\nmkdir ~/bin\n# move nextflow to bin directory\nmv ~/nextflow ~/bin/nextflow \n# add bin directory to PATH, in case it's not already there\necho 'export PATH=\"${HOME}/bin:${PATH}\"' &gt;&gt; ~/.bashrc \n# reload your bash configuration file\nsource ~/.bashrc",
     "crumbs": [
-      "MitoPilot R Script"
+      "Scripts",
+      "01 - bash setup script"
     ]
   },
   {
-    "objectID": "qmd/setup/03_RIntro.html",
-    "href": "qmd/setup/03_RIntro.html",
-    "title": "03 - intro to R",
+    "objectID": "qmd/setup/01_Hydra.html",
+    "href": "qmd/setup/01_Hydra.html",
+    "title": "01 - Hydra cluster setup",
     "section": "",
-    "text": "R is a free software environment for statistical computing and graphics. MitoPilot does not require the user to be an expert in R, as MitoPilot mostly utilizes a custom graphical user interface (GUI).\nHowever, if you wish to learn the basics of R, there are many online resources:\n\nSmithsonian LAB R workshop\nData Carpentry R workshop",
-    "crumbs": [
-      "Setup",
-      "03 - intro to R"
-    ]
-  },
-  {
-    "objectID": "qmd/setup/04_install.html",
-    "href": "qmd/setup/04_install.html",
-    "title": "04 - MitoPilot installation",
-    "section": "",
-    "text": "To install MitoPilot, use the RStudio server window to run the following. This might take a while.\nif (!requireNamespace(\"remotes\", quietly = TRUE)) {\n    install.packages(\"remotes\")\n}\nif (!requireNamespace(\"BiocManager\", quietly = TRUE)) {\n    install.packages(\"BiocManager\")\n}\nBiocManager::install(\"Smithsonian/MitoPilot\")\nYou may see a warning like this:\nInstallation paths not writeable, unable to update packages\n  path: /share/apps/bioinformatics/R/4.4.1/lib64/R/library\nThis is not a problem. Some R packages are installed at the Hydra system level and cannot be updated by the user.\nIf there were no other error messages, you’re ready to start using MitoPilot!",
+    "text": "You will need an account to access the Smithsonian Hyrda computing cluster. Instructions are available here.",
     "crumbs": [
       "Setup",
-      "04 - MitoPilot installation"
+      "01 - Hydra cluster setup"
     ]
   },
   {
-    "objectID": "qmd/setup/04_install.html#first-time-installation",
-    "href": "qmd/setup/04_install.html#first-time-installation",
-    "title": "04 - MitoPilot installation",
+    "objectID": "qmd/setup/01_Hydra.html#access-to-the-hydra-cluster",
+    "href": "qmd/setup/01_Hydra.html#access-to-the-hydra-cluster",
+    "title": "01 - Hydra cluster setup",
     "section": "",
-    "text": "To install MitoPilot, use the RStudio server window to run the following. This might take a while.\nif (!requireNamespace(\"remotes\", quietly = TRUE)) {\n    install.packages(\"remotes\")\n}\nif (!requireNamespace(\"BiocManager\", quietly = TRUE)) {\n    install.packages(\"BiocManager\")\n}\nBiocManager::install(\"Smithsonian/MitoPilot\")\nYou may see a warning like this:\nInstallation paths not writeable, unable to update packages\n  path: /share/apps/bioinformatics/R/4.4.1/lib64/R/library\nThis is not a problem. Some R packages are installed at the Hydra system level and cannot be updated by the user.\nIf there were no other error messages, you’re ready to start using MitoPilot!",
+    "text": "You will need an account to access the Smithsonian Hyrda computing cluster. Instructions are available here.",
     "crumbs": [
       "Setup",
-      "04 - MitoPilot installation"
+      "01 - Hydra cluster setup"
     ]
   },
   {
-    "objectID": "qmd/setup/04_install.html#updating-mitopilot",
-    "href": "qmd/setup/04_install.html#updating-mitopilot",
-    "title": "04 - MitoPilot installation",
-    "section": "Updating MitoPilot",
-    "text": "Updating MitoPilot\nIf you need to update MitoPilot, run the following commands in RStudio server.\nremove.packages(\"MitoPilot\")\nBiocManager::install(\"Smithsonian/MitoPilot\")\n.rs.restartR()\nThis will remove the old package, install the most recent version, and restart your R session. After updating, you will need to reload the package with library(MitoPilot).\nWe also recommend clearing your Singularity cache with singularity cache clean whenever you update MitoPilot. This will ensure you are using the latest MitoPilot Singularity image.",
+    "objectID": "qmd/setup/01_Hydra.html#first-time-setup",
+    "href": "qmd/setup/01_Hydra.html#first-time-setup",
+    "title": "01 - Hydra cluster setup",
+    "section": "First time setup",
+    "text": "First time setup\nWe have submitted a request to the Hydra team for installation of a Nextflow module. But for now, you will need to install your own copy of Nextflow on the cluster. Login to Hydra and run the following.\n# Nextflow installation instructions\n# from https://www.nextflow.io/docs/latest/install.html\ncd ~\n# load Java module, needed by Nextflow\nmodule load tools/java/21.0.2\n# install Nextflow\ncurl -s https://get.nextflow.io | bash \n# make Nextflow executable\nchmod +x nextflow \nThere will now be an executable nextflow file in your home directory. You should move it to a location that is in your PATH. For example:\n # create bin directory, if needed\nmkdir ~/bin\n# move nextflow to bin directory\nmv ~/nextflow ~/bin/nextflow \n# add bin directory to PATH, in case it's not already there\necho 'export PATH=\"${HOME}/bin:${PATH}\"' &gt;&gt; ~/.bashrc \n# reload your bash configuration file\nsource ~/.bashrc\nThis should allow you to call nextflow from anywhere on the cluster.\n\n\n\n\n\n\nImportant\n\n\n\nYou must load the Hydra Java module (module load tools/java/21.0.2) whenever you wish to use Nextflow.",
     "crumbs": [
       "Setup",
-      "04 - MitoPilot installation"
+      "01 - Hydra cluster setup"
     ]
   },
   {
-    "objectID": "qmd/HPC_intro/HPC-intro.html",
-    "href": "qmd/HPC_intro/HPC-intro.html",
-    "title": "Intro to Smithsonian HPC",
+    "objectID": "qmd/setup/05_load.html",
+    "href": "qmd/setup/05_load.html",
+    "title": "05 - load MitoPilot",
     "section": "",
-    "text": "Intro slides: Download PDF file.",
+    "text": "To load the MitoPilot R package, we first need to modify our PATH environmental variable. This will allow our RStudio session to find and use java and nextflow.\n# modify PATH to include:\n#   ~/bin (contains nextflow exe)\n#   java 21.0.2 (required for nextflow)\ndefault_path &lt;- \"/cm/shared/apps/uge/8.8.1/bin/lx-amd64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/rstudio-server/bin/quarto/bin:/usr/lib/rstudio-server/bin/postback\"\nnew_path &lt;- paste0(Sys.getenv(\"HOME\"), \"/bin:/share/apps/tools/java/21.0.2/bin\")\nSys.setenv(PATH = paste(new_path, default_path, sep = \":\"))\nNext, load the MitoPilot package.\nlibrary(MitoPilot)\nYou should see a message confirming that Nextflow is installed and accessible.\nWelcome to {MitoPilot}!\nUsing Nextflow version 24.10.4 build 5934\nYou can now utilize all of MitoPilot’s functions, such as initializing a project or opening the R Shiny GUI.\nLet’s get started with the example project!",
     "crumbs": [
-      "Intro to Smithsonian HPC"
+      "Setup",
+      "05 - load MitoPilot"
     ]
   },
   {
-    "objectID": "qmd/your_project/02_init.html",
-    "href": "qmd/your_project/02_init.html",
-    "title": "02 - initialize your project",
+    "objectID": "qmd/setup/05_load.html#loading-the-mitopilot-package",
+    "href": "qmd/setup/05_load.html#loading-the-mitopilot-package",
+    "title": "05 - load MitoPilot",
     "section": "",
-    "text": "First we need to specify a number of parameters for the project.\n# directory where your test project will be created\n# if the directory does not exist, MitoPilot will create it\nwd &lt;- \"/pool/public/genomics/&lt;&lt;USER&gt;&gt;/MitoPilot_workshop/my_project/run_01\"\n\n# full path to your sample mapping CSV file\n# swap &lt;&lt;USER&gt;&gt; for your user ID\nmap_file &lt;- \"/pool/public/genomics/&lt;&lt;USER&gt;&gt;/MitoPilot_workshop/my_project/map_file.csv\"\n\n# full path to your sequence data directory\n# swap &lt;&lt;USER&gt;&gt; for your user ID\nseq_data &lt;- \"/pool/public/genomics/&lt;&lt;USER&gt;&gt;/MitoPilot_workshop/my_project/raw_data\"\n\n# genetic code for your samples\n# see https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi\n# for corals, the appropriate translation table is #4\ngenetic_code &lt;- 4\n\n# minimum number of reads required to process a sample\n# default is 2,000,000\n# here we are setting a very low threshold because the example reads have already been filtered extensively\nmin_reads &lt;- 10000\n\n# since this is a coral dataset, we need to use custom GetOrganelle reference databases\n# for more on custom assembly databases, see:\n# https://smithsonianworkshops.github.io/MitoPilot_workshop_2025/qmd/advanced/02_customAsmbDB.html\nlabel_db &lt;- \"/scratch/nmnh_ocean_dna/GetOrganelle_refDBs/2025_07_03/refs_final/labelDB.fasta\"\nseed_db &lt;- \"/scratch/nmnh_ocean_dna/GetOrganelle_refDBs/2025_07_03/refs_final/seedDB.fasta\"\n\n# specify an execution environment, \"local\", \"NMNH_Hydra\", or \"NOAA_SEDNA\"\nex &lt;- \"NMNH_Hydra\"\nNow we can initialize the project using those parameters.\n# load the MitoPilot package\nlibrary(MitoPilot)\n\n# initialize the test project\nMitoPilot::new_project(\n    path = wd,\n    executor = ex,\n    mapping_fn = map_file,\n    genetic_code = genetic_code,\n    min_depth = min_reads,\n    data_path = seq_data,\n    custom_seeds_db = seed_db,\n    custom_labels_db = label_db,\n    Rproj = FALSE\n)\nNow we’re ready to launch the GUI and start processing our samples!\n# the function to launch the GUI \n# must be called from within your project directory\nsetwd(wd)\nMitoPilot::MitoPilot()",
+    "text": "To load the MitoPilot R package, we first need to modify our PATH environmental variable. This will allow our RStudio session to find and use java and nextflow.\n# modify PATH to include:\n#   ~/bin (contains nextflow exe)\n#   java 21.0.2 (required for nextflow)\ndefault_path &lt;- \"/cm/shared/apps/uge/8.8.1/bin/lx-amd64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/rstudio-server/bin/quarto/bin:/usr/lib/rstudio-server/bin/postback\"\nnew_path &lt;- paste0(Sys.getenv(\"HOME\"), \"/bin:/share/apps/tools/java/21.0.2/bin\")\nSys.setenv(PATH = paste(new_path, default_path, sep = \":\"))\nNext, load the MitoPilot package.\nlibrary(MitoPilot)\nYou should see a message confirming that Nextflow is installed and accessible.\nWelcome to {MitoPilot}!\nUsing Nextflow version 24.10.4 build 5934\nYou can now utilize all of MitoPilot’s functions, such as initializing a project or opening the R Shiny GUI.\nLet’s get started with the example project!",
+    "crumbs": [
+      "Setup",
+      "05 - load MitoPilot"
+    ]
+  },
+  {
+    "objectID": "qmd/setup/02_RstudioServer.html",
+    "href": "qmd/setup/02_RstudioServer.html",
+    "title": "02 - RStudio server",
+    "section": "",
+    "text": "We will use RStudio server to run MitoPilot. RStudio server on Hydra functions just like the normal RStudio on your local computer, except that you are accessing it remotely.\nThere are two methods to access RStudio server on Hydra.\n\n\nThe Hydra Team recently launched an interactive R Studio environment that is accessible directly via a browser, at https://galaxy.si.edu/R4.\nHydra users can leverage this server to test, debug, and develop R based workflows using the interactive RStudio GUI (currently running R 4.4.3).\nBy logging in with your Hydra account credentials, users will have access to the storage under /pool, /scratch, and /store. This server offers resources totaling 192 CPUs and 1.5 T of RAM.\nNotes:\n\nThis is a shared resource and should be used accordingly. Long running jobs or jobs requiring the entire resources of the server would be more appropriate as a job submission.\nThis server is only accessible from trusted computers, not on the public internet. For technical reasons, to access this resource via telework.si.edu, go to https://galaxy.si.edu and then choose the “R4 v443” option.\nThis is a new resource - please be patient as we test this offering with our user community. We will evaluate this test once Hydra is moved to the new datacenter and decide whether it should be kept or altered in any way.\n\n\n\n\nTo launch RStudio server on Hydra, run the following.\n# avoid package conflicts (may not be necessary for all users)\nconda deactivate \n# load the RStudio server module\nmodule load tools/R/RStudio/server\n# launch RStudio server\nstart-rstudio-server\n\n\n\n\n\n\nNote\n\n\n\nIf this is your first time launching RStudio server, you may be asked to run a different command.\n\n\nYou will see something like this printed to your screen.\nstart-rstudio-server: starting RStudio server on host=login02 and port=8787\n  you need to create a ssh tunnel on your local machine with\n    ssh -N -L 8787:login02:8787 macguigand@hydra-login01.si.edu\n\nPoint your browser to http://localhost:8787 on your local machine.\nUse Control+C in this window to kill the server when done.\n\nTTY detected. Printing informational message about logging configuration. Logging configuration loaded from '/etc/rstudio/logging.conf'. Logging to '/home/macguigand/.local/share/rstudio/log/rserver.log'.\n\n\n\n\n\n\nWhy can’t I connect?\n\n\n\nIf you get a message saying “ERROR system error 98 (Address already in use)”, someone else has a tunnel established with the default port (8787). To fix this, try using a different port, e.g. start-rstudio-server -port 8890. Any port number between 1025-65535 is allowed.\n\n\nLeave this cluster terminal window open, open a new terminal window on your local computer, and run the ssh command printed by start-rstudio-server.\nssh -N -L 8787:login02:8787 macguigand@hydra-login01.si.edu\nEnter your Hydra password when prompted. If nothing happens, this means that you have successfully established a SSH tunnel and can connect to RStudio server.\nLeaving both terminal windows open, enter http://localhost:YOUR_PORT_NUMBER in a web browser. We recommend using Chrome or Firefox. There are some known issues running MitoPilot with Safari.\nEnter your cluster login credentials to access the RStudio server. This should open a full RStudio session in your browser. Any R commands run in this new window will execute on the cluster.",
+    "crumbs": [
+      "Setup",
+      "02 - RStudio server"
+    ]
+  },
+  {
+    "objectID": "qmd/setup/02_RstudioServer.html#launching-rstudio-server",
+    "href": "qmd/setup/02_RstudioServer.html#launching-rstudio-server",
+    "title": "02 - RStudio server",
+    "section": "",
+    "text": "We will use RStudio server to run MitoPilot. RStudio server on Hydra functions just like the normal RStudio on your local computer, except that you are accessing it remotely.\nThere are two methods to access RStudio server on Hydra.\n\n\nThe Hydra Team recently launched an interactive R Studio environment that is accessible directly via a browser, at https://galaxy.si.edu/R4.\nHydra users can leverage this server to test, debug, and develop R based workflows using the interactive RStudio GUI (currently running R 4.4.3).\nBy logging in with your Hydra account credentials, users will have access to the storage under /pool, /scratch, and /store. This server offers resources totaling 192 CPUs and 1.5 T of RAM.\nNotes:\n\nThis is a shared resource and should be used accordingly. Long running jobs or jobs requiring the entire resources of the server would be more appropriate as a job submission.\nThis server is only accessible from trusted computers, not on the public internet. For technical reasons, to access this resource via telework.si.edu, go to https://galaxy.si.edu and then choose the “R4 v443” option.\nThis is a new resource - please be patient as we test this offering with our user community. We will evaluate this test once Hydra is moved to the new datacenter and decide whether it should be kept or altered in any way.\n\n\n\n\nTo launch RStudio server on Hydra, run the following.\n# avoid package conflicts (may not be necessary for all users)\nconda deactivate \n# load the RStudio server module\nmodule load tools/R/RStudio/server\n# launch RStudio server\nstart-rstudio-server\n\n\n\n\n\n\nNote\n\n\n\nIf this is your first time launching RStudio server, you may be asked to run a different command.\n\n\nYou will see something like this printed to your screen.\nstart-rstudio-server: starting RStudio server on host=login02 and port=8787\n  you need to create a ssh tunnel on your local machine with\n    ssh -N -L 8787:login02:8787 macguigand@hydra-login01.si.edu\n\nPoint your browser to http://localhost:8787 on your local machine.\nUse Control+C in this window to kill the server when done.\n\nTTY detected. Printing informational message about logging configuration. Logging configuration loaded from '/etc/rstudio/logging.conf'. Logging to '/home/macguigand/.local/share/rstudio/log/rserver.log'.\n\n\n\n\n\n\nWhy can’t I connect?\n\n\n\nIf you get a message saying “ERROR system error 98 (Address already in use)”, someone else has a tunnel established with the default port (8787). To fix this, try using a different port, e.g. start-rstudio-server -port 8890. Any port number between 1025-65535 is allowed.\n\n\nLeave this cluster terminal window open, open a new terminal window on your local computer, and run the ssh command printed by start-rstudio-server.\nssh -N -L 8787:login02:8787 macguigand@hydra-login01.si.edu\nEnter your Hydra password when prompted. If nothing happens, this means that you have successfully established a SSH tunnel and can connect to RStudio server.\nLeaving both terminal windows open, enter http://localhost:YOUR_PORT_NUMBER in a web browser. We recommend using Chrome or Firefox. There are some known issues running MitoPilot with Safari.\nEnter your cluster login credentials to access the RStudio server. This should open a full RStudio session in your browser. Any R commands run in this new window will execute on the cluster.",
+    "crumbs": [
+      "Setup",
+      "02 - RStudio server"
+    ]
+  },
+  {
+    "objectID": "qmd/your_project/01_prep.html",
+    "href": "qmd/your_project/01_prep.html",
+    "title": "01 - data prep",
+    "section": "",
+    "text": "The following pages will walk through an example of how to initialize a MitoPilot project with your own data.\nTo get started, you will need: - a directory containing all of your sequence data - a CSV mapping file\nFirst, let’s create a directory to house our project. On the command line, run the following:\nmkdir -p /pool/public/genomics/${USER}/MitoPilot_workshop/my_project\nNow we need some sequence data. The workshop GitHub repo has some example data, consisting of four octocoral species. This directory contains two FASTQ files per sample (the forward and reverse reads).\nLet’s copy the data to our new project directory.\ncd /pool/public/genomics/${USER}/MitoPilot_workshop/my_project\nwget https://github.com/SmithsonianWorkshops/MitoPilot_workshop_2025/raw/refs/heads/main/sample_data/raw_data.tar.gz\ntar -zxvf raw_data.tar.gz\nNext we need to create a CSV mapping file with the following required columns: - ID: column with a unique identifier for each sample - Taxon: column containing taxonomic information for each sample, no formatting requirements - R1: full name of the forward read file - R2: full name of the reverse read file\nNormally you would create this metadata sheet from scratch in Excel, but for the workshop you can download the provided file:\ncd /pool/public/genomics/${USER}/MitoPilot_workshop/my_project\nwget https://raw.githubusercontent.com/SmithsonianWorkshops/MitoPilot_workshop_2025/refs/heads/main/sample_data/map_file.csv\nThis mapping spreadsheet can contain extra columns with additional metadata. In the example file, there are a few extra columns: Order, Tissue ID, and SeqID#. These extra metadata fields can be useful for sorting and grouping samples later on.",
     "crumbs": [
       "Starting Your Own Project",
-      "02 - initialize your project"
+      "01 - data prep"
     ]
   },
   {
-    "objectID": "qmd/advanced/01_assemblyOpts.html",
-    "href": "qmd/advanced/01_assemblyOpts.html",
-    "title": "01 - assembly alternatives",
+    "objectID": "qmd/advanced/04_customCurationRuleset.html",
+    "href": "qmd/advanced/04_customCurationRuleset.html",
+    "title": "04 - custom curation ruleset",
     "section": "",
-    "text": "By default, MitoPilot uses GetOrganelle to assemble the mitochondrial genome. GetOrganelle will only assemble the subset of sequence reads which it identifies as mitochondrial. This makes it a very fast assembler that tends to work best if you have a sufficient reference database (more on that later). However, there may be cases where GetOrganlle produces unsatisfactory results.\nIf you wish to try a different assembly method, we have also implemented MitoFinder in MitoPilot. Unlike GetOrganlle, MitoFinder performs a complete assembly of all your reads using MEGAHIT, MetaSPAdes, or IDBA-UB. This makes it far slower, but can sometimes be more effective for organisms with few or poor reference mitogenomes.\nMitoFinder can be selected as the assembler in the Assembly Opts. window of the Assemble module.\n\n\n\nFig. 1\n\n\nThe defaults for MitoFinder are the MEGAHIT assembler and the Zebrafish (Danio rerio) reference mitochondrial genome. You can easily supply your own reference mitogenome(s) by specifying the full path to a GenBank formatted (.gb) file.",
+    "text": "Automated curation and validation of mitogenome annotations is a central goal of MitoPilot. When samples are processed through the Annotate module, annotations are first generated using a combination of MITOS2 (for rRNA and PCG annotation) and tRNAscan-SE (for tRNA annotation). Following the initial annotation, samples are processed through an automated curation process where modifications are made in attempt to bring the annotations closer to a state that will be considered acceptable for publication by NCBI GenBank. This automated curation process is based on two important inputs to the pipeline, a high-quality reference database of protein coding genes and a set of user configurable parameters.",
     "crumbs": [
       "Advanced Usage",
-      "01 - assembly alternatives"
+      "04 - custom curation ruleset"
     ]
   },
   {
-    "objectID": "qmd/advanced/01_assemblyOpts.html#mitofinder",
-    "href": "qmd/advanced/01_assemblyOpts.html#mitofinder",
-    "title": "01 - assembly alternatives",
+    "objectID": "qmd/advanced/04_customCurationRuleset.html#curation-parameters",
+    "href": "qmd/advanced/04_customCurationRuleset.html#curation-parameters",
+    "title": "04 - custom curation ruleset",
+    "section": "Curation Parameters",
+    "text": "Curation Parameters\nCurrently, curation parameters are specified at project initialization and are applied to all samples within the project. By default, the parameters are set by the function, params_fish_mito().\nBelow is a full list of curation parameters.\n\nhit_threshold [PCG only]: Minimum percent sequencing similarity for a protein-coding gene. Any hits below this threshold will not be used for curation.\nmax_overlap: Maximum proportion of gene length that can overlap with another gene.\ncount: Maximum expected number of gene copies.\nmax_len: Maximum expected length (bp) of the gene.\nmin_len: Minimum expected length (bp) of the gene.\noverlap: Start (5’) and stop (3’) rules for overlap between genes. Start is the maximum number of base pairs that can overlap at the 5’ end of a gene. Stop is whether the 3’ end of a gene can overlap AT ALL with another gene (True/False).\nstart_codons [PCG only]: Acceptable start codons.\nstop_codons [PCG only]: Acceptable stop codons, including incomplete stop codons.\n\nIf a gene fails to meet the specified parameters, it will be flagged with a warning message.\nCustomization of the parameters can be achieved by directly providing a complete named list, or by passing individual modifications to the params_fish_mito() function. For example, the default expected count of trnW genes could be increased to 2 and the default percent similarity of an “acceptable” protein-coding gene match could be reduced to 85 by initializing a new project with:\nnew_project(\n    ...,\n    curate_params = params_fish_mito(\n        list(\n            hit_threshold = 85,\n            rules = list(\n                trnW = list(\n                    count = 2\n                )\n            )\n        )\n    )\n)\nThe full set of default curation parameters can be viewed in the MitoPilot GUI for each sample under Curation Opts. At the moments, these values can not be edited for individual samples from within the GUI, but this feature will eventually be added.",
+    "crumbs": [
+      "Advanced Usage",
+      "04 - custom curation ruleset"
+    ]
+  },
+  {
+    "objectID": "qmd/advanced/03_customCurationDB.html",
+    "href": "qmd/advanced/03_customCurationDB.html",
+    "title": "03 - custom curation database",
     "section": "",
-    "text": "By default, MitoPilot uses GetOrganelle to assemble the mitochondrial genome. GetOrganelle will only assemble the subset of sequence reads which it identifies as mitochondrial. This makes it a very fast assembler that tends to work best if you have a sufficient reference database (more on that later). However, there may be cases where GetOrganlle produces unsatisfactory results.\nIf you wish to try a different assembly method, we have also implemented MitoFinder in MitoPilot. Unlike GetOrganlle, MitoFinder performs a complete assembly of all your reads using MEGAHIT, MetaSPAdes, or IDBA-UB. This makes it far slower, but can sometimes be more effective for organisms with few or poor reference mitogenomes.\nMitoFinder can be selected as the assembler in the Assembly Opts. window of the Assemble module.\n\n\n\nFig. 1\n\n\nThe defaults for MitoFinder are the MEGAHIT assembler and the Zebrafish (Danio rerio) reference mitochondrial genome. You can easily supply your own reference mitogenome(s) by specifying the full path to a GenBank formatted (.gb) file.",
+    "text": "By default, MitoPilot uses protein-coding gene sequences from NCBI RefSeq to finetune start and stop codon positions of your annotations.\nWe have provided a helper function MitoPilot::custom_curation_db, which allows you to supplement the RefSeq databases with your own protein-coding gene sequences. Using a custom database can greatly improve automatic curation if your focal clade is poorly represented in RefSeq.\nYou could gather additional protein-coding gene sequences from many sources, including:\n\nGenBank mitogenomes that are not part of RefSeq\nmitogenomes from other data repositories\nyour own unpublished mitogenomes\n\nMake sure to carefully consider what you are adding to the custom database. You should only use high-confidence sequences, as poor quality reference data will result in poorly curated gene models.\nPlease see the MitoPilot::custom_curation_db documentation for further instructions.\n\n\n\n\n\n\nNote\n\n\n\nMitoPilot only needs a curation database for protein-coding genes. rRNA and tRNA curation does not utilize reference alignment.",
     "crumbs": [
       "Advanced Usage",
-      "01 - assembly alternatives"
+      "03 - custom curation database"
     ]
   },
   {
-    "objectID": "qmd/advanced/01_assemblyOpts.html#importing-external-assemblies",
-    "href": "qmd/advanced/01_assemblyOpts.html#importing-external-assemblies",
-    "title": "01 - assembly alternatives",
-    "section": "Importing External Assemblies",
-    "text": "Importing External Assemblies\nIn some cases, GetOrganelle and MitoFinder can both fail to produce mitochondrial genome assemblies. You may wish to explore other assembly options outside of MitoPilot, such as the Geneious “map to reference” method.\nIf you still want to use MitoPilot for annotation and curation, you can import your own mitogenome assemblies. To do so, you will need to initialize a new MitoPilot project. A single project can only contain either assemblies generated by MitoPilot or assemblies generated by external software.\nTo set up a project with external assemblies, use the new_project_userAsmb function. This function requires the argument assembly_path, which is the full path to the directory containing all of your mitogenome assembly FASTA files. There should be one file (and one assembly) per sample.\nThe new_project_userAsmb function also requires two new columns in the mapping file:\n\nAssembly: mitogenome assembly FASTA file names (one contig/scaffold sequence per sample)\nTopology: assembly topology, “circular” or “linear”\n\nOnce you have created a new project with this function, you can proceed to open the GUI and run MitoPilot. Note that you will still need to run the Assemble module, but it will only be used to map reads and calculate coverage.",
-    "crumbs": [
-      "Advanced Usage",
-      "01 - assembly alternatives"
-    ]
-  },
-  {
-    "objectID": "qmd/advanced/02_customAsmbDB.html",
-    "href": "qmd/advanced/02_customAsmbDB.html",
-    "title": "02 - custom assembly database",
+    "objectID": "qmd/advanced/03_customCurationDB.html#build-custom-databases-for-protein-coding-gene-curation",
+    "href": "qmd/advanced/03_customCurationDB.html#build-custom-databases-for-protein-coding-gene-curation",
+    "title": "03 - custom curation database",
     "section": "",
-    "text": "Currently, MitoPilot comes packaged with assembly reference databases for fishes. If you are working on any other taxonomic group, you will need to compile databases of mitochondrial sequences for your clade.",
+    "text": "By default, MitoPilot uses protein-coding gene sequences from NCBI RefSeq to finetune start and stop codon positions of your annotations.\nWe have provided a helper function MitoPilot::custom_curation_db, which allows you to supplement the RefSeq databases with your own protein-coding gene sequences. Using a custom database can greatly improve automatic curation if your focal clade is poorly represented in RefSeq.\nYou could gather additional protein-coding gene sequences from many sources, including:\n\nGenBank mitogenomes that are not part of RefSeq\nmitogenomes from other data repositories\nyour own unpublished mitogenomes\n\nMake sure to carefully consider what you are adding to the custom database. You should only use high-confidence sequences, as poor quality reference data will result in poorly curated gene models.\nPlease see the MitoPilot::custom_curation_db documentation for further instructions.\n\n\n\n\n\n\nNote\n\n\n\nMitoPilot only needs a curation database for protein-coding genes. rRNA and tRNA curation does not utilize reference alignment.",
     "crumbs": [
       "Advanced Usage",
-      "02 - custom assembly database"
+      "03 - custom curation database"
     ]
   },
   {
-    "objectID": "qmd/advanced/02_customAsmbDB.html#why-use-a-custom-assembly-database",
-    "href": "qmd/advanced/02_customAsmbDB.html#why-use-a-custom-assembly-database",
-    "title": "02 - custom assembly database",
-    "section": "",
-    "text": "Currently, MitoPilot comes packaged with assembly reference databases for fishes. If you are working on any other taxonomic group, you will need to compile databases of mitochondrial sequences for your clade.",
+    "objectID": "qmd/advanced/03_customCurationDB.html#using-a-custom-curation-database-with-mitopilot",
+    "href": "qmd/advanced/03_customCurationDB.html#using-a-custom-curation-database-with-mitopilot",
+    "title": "03 - custom curation database",
+    "section": "Using a custom curation database with MitoPilot",
+    "text": "Using a custom curation database with MitoPilot\nTo use a custom curation database, you need to specify the database directory path in the ref_dir field in the Curate Opts. window of the Annotate module. This path will be printed by the MitoPilot::custom_curation_db function.\nYou should also specify “Metazoa_RefSeq231_custom” or “Chordata_custom” in the ref_db field, depending on which base database you used with the MitoPilot::custom_curation_db function.\n\n\n\nFig. 4",
     "crumbs": [
       "Advanced Usage",
-      "02 - custom assembly database"
-    ]
-  },
-  {
-    "objectID": "qmd/advanced/02_customAsmbDB.html#build-custom-databases-for-getorganelle",
-    "href": "qmd/advanced/02_customAsmbDB.html#build-custom-databases-for-getorganelle",
-    "title": "02 - custom assembly database",
-    "section": "Build custom databases for GetOrganelle",
-    "text": "Build custom databases for GetOrganelle\nBefore proceeding, consider reviewing the GetOrganelle paper and documentation to better understand the required database architecture.\nGetOrganelle uses two databases, both in FASTA format:\n\nA “seed” database containing complete (or partial) mitochondrial genomes\nA “label” database containing individual mitochondrial gene sequences\n\n\nGetOrganelle databases on Hydra\nCurrently, we have the following custom GetOrganelle databases available on Hydra at /scratch/nmnh_ocean_dna/GetOrganelle_refDBs/\n\nAnthozoa\nAsteroidea\nCopepoda\nDiptera\nHexacorallia\nLepidosauria\nMammalia\nMetazoa\nOctocorallia\nTestudinata\n\nEach of these folders contains a subdirectory &lt;&lt;DATE&gt;&gt;/refs_final, inside of which are two files: labelDB.fasta and seedDB.fasta. These files consist of all NCBI RefSeq mitogenomes (seeds) and mitochondrial genes (labels) for the clade.\nIf your group is not listed here, we have provided the following script to assist with building your own custom database.\n\n\nGenBankDownloadUtil.sh\nThis script will perform a GenBank query for all mitochondrial records matching your search criteria, download those sequences, and sort them into GetOrganlle “seed” and “label” databases.\nBefore proceeding, you will need the following dependencies:\n\nEntrez Direct tools (tested with v22.8)\npython (tested with v3.12.2)\nbiopython (tested with v1.84)\n\nOn the Smithsonian Hydra cluster, python and biopython are available as a module. Simply run module load bio/biopython/1.83.\nTo download and install Entrez Direct tools:\nsh -c \"$(curl -fsSL https://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/install-edirect.sh)\"\necho \"export PATH=\\$HOME/edirect:\\$PATH\" &gt;&gt; $HOME/.bash_rc\nNext, download the GenBankDownloadUtil.sh script to the directory where you want to create the custom databases. You will also need to download parseGB.py to the same directory.\nmkdir ~/custom_GetOrg_db_test\ncd ~/custom_GetOrg_db_test\nwget https://raw.githubusercontent.com/smithsonian/MitoPilot/refs/heads/main/ref_dbs/getOrganelle/GenBankDownload/GenBankDownloadUtil.sh\nwget https://raw.githubusercontent.com/smithsonian/MitoPilot/refs/heads/main/ref_dbs/getOrganelle/GenBankDownload/parseGB.py\nTo run the script, you will need to construct an advanced GenBank query. For example, if you want to download all starfish mitochondrial sequences, you could use '\"Asteroidea\"[Organism]'.\nThe script can also accept multiple search terms. For example, use '\"Percidae\"[Organism] AND \"PRJNA720393\"[BioProject]' to download all percid mitochondrial sequences from a specific BioProject.\n\n\n\n\n\n\nNote\n\n\n\nYou can restrict your results to only NCBI RefSeq by adding the search term \"RefSeq\"[Filter]'. RefSeq is a more curated subset of the data on GenBank, allowing you to avoid poor quality mitogenomes.\n\n\nRun the script as follows, providing your custom search terms. Make sure the full query is in single quotes, each search term is in double quotes, and the query type is in square brackets.\nbash GenBankDownloadUtil.sh '\"my query\"[QueryType]'\nThis may take a while depending on how many GenBank records match your search terms. If working on a computing cluster, we recommend running this script as a batch job. Below is an example submission script for the Hydra cluster.\n\n\n\n\n\n\nNote\n\n\n\nThe submission script below requires the Entrez Direct tools in your PATH (i.e. these tools can be run from any directory).\n\n\n# /bin/sh\n# ----------------Parameters---------------------- #\n#$ -S /bin/sh\n#$ -pe mthread 8\n#$ -q sThM.q\n#$ -l mres=640G,h_data=80G,h_vmem=80G,himem\n#$ -cwd\n#$ -j y\n#$ -N customGetOrgDBs\n#$ -o customGetOrgDBs.log\n\n# script to generate custom seed and label DBs for starfish\nsource ~/.bashrc\n\n# load python and biopython module\nmodule load bio/biopython/1.83 # need python and biopython too\n\n# run the script\nbash GenBankDownloadUtil.sh '\"Asteroidea\"[Organism]'\nThe script will produce several files:\n\ngenbank.gb - GenBank file containing all of the matching records\nmultigene.fasta - FASTA file of sequences that contained multiple gene records, indicating they are either a partial or complete mitogenome\nmultigene.dedup.fasta - same as multigene.fasta, but with duplicate sequences removed\nnogene.fasta - FASTA file of mitochondrial sequences with no annotated genes\nnogene.dedup.fasta - same as nogene.fasta, but with duplicate sequences removed\nsinglegene.fasta - FASTA file of mitochondrial gene sequences\nsinglegene.dedup.fasta - same as singlelocus.fasta, but with duplicate sequences removed\n\nThe most relevant files for GetOrganelle are:\n\nseed database = multigene.dedup.fasta (plus maybe some sequences from nogene.dedup.fasta)\nlabel database = singlegene.dedup.fasta\n\nThe nogene.fasta file contains un-annotated mitochondrial sequences or mitochondrial sequences from a non-gene region, such as the D-loop (AKA control region). Consider manually inspecting these sequences. You may wish to include some of them in your custom GetOrganelle seed database.\n\n\nInspecting custom databases\nHere are a few basic methods to inspect and manipulate FASTA files on the command line.\nCount the number of sequences in a FASTA file:\ngrep -c \"&gt;\" singlelocus.dedup.fasta\nGenerate list of FASTA headers:\ngrep \"&gt;\" singlelocus.dedup.fasta\nGenerate list of unique gene names:\ngrep \"&gt;\" singlelocus.dedup.fasta | cut -f1 -d\" \" | sort | uniq\nCalculate sequence lengths:\ncat my_file.fasta | awk '$0 ~ \"&gt;\" {if (NR &gt; 1) {print c;} c=0;printf substr($0,2,100) \"\\t\"; } $0 !~ \"&gt;\" {c+=length($0);} END { print c; }'\nExtract specific sequences from a FASTA file with seqkit:\n# Extract sequences based on names.txt\n# names.txt should contain full sequences headers, one per line, but no \"&gt;\" at start\nmodule load bio/seqkit/2.8.1 # ONLY FOR NMNH HYDRA CLUSTER\nseqkit grep -f -n names.txt file.fasta &gt; file_subset.fasta\nRemove sequences from a FASTA file with seqkit:\n# Remove sequences based on name patterns listed in names.txt\n# one pattern per line\nmodule load bio/seqkit/2.8.1 # ONLY FOR NMNH HYDRA CLUSTER\nseqkit grep -v -f names.txt file.fasta &gt; file_subset.fasta\n\n\n\n\n\n\nNote\n\n\n\nGenBankDownloadUtil.sh will rename any sequence with no GenBank “product” (protein, tRNA, or rRNA) as “no_product ACCESSION”. You may wish to remove these sequences, as they often represent poorly annotated genes.\n\n\n\n\nAdding your own sequences to a custom database\nTo use unpublished mitogenomes in a custom GetOrganelle seed database, you will need to combine multiple FASTA files. GetOrganelle does not require a specific format for the sequence names in the seed database.\nYou can easily combine FASTA files with the Linux cat command:\ncat multigene.dedup.fasta my_mitogenomes.fasta even_more_mitogenomes.fasta &gt; final_seed_db.fasta\nYou could add unpublished individual gene sequences to a custom GetOrganelle label database in a similar manner.\n\n\nUsing a custom GetOrganelle database with MitoPilot\nTo use custom GetOrganelle assembly databases, you can specify the following arguments when setting up a new project with MitoPilot::new_project.\n\ncustom_seeds_db: full path to custom seeds database FASTA file\ncustom_labels_db: full path to custom labels database FASTA file\n\nAlternatively, you can supply these file paths in the Assembly Opts. window of the Assemble module.\n\n\n\nFig. 2",
-    "crumbs": [
-      "Advanced Usage",
-      "02 - custom assembly database"
-    ]
-  },
-  {
-    "objectID": "qmd/advanced/02_customAsmbDB.html#build-custom-databases-for-mitofinder",
-    "href": "qmd/advanced/02_customAsmbDB.html#build-custom-databases-for-mitofinder",
-    "title": "02 - custom assembly database",
-    "section": "Build custom databases for MitoFinder",
-    "text": "Build custom databases for MitoFinder\nThe MitoFinder documentation has instructions on how to build a reference database.\nThe MitoFinder reference database is simple: a GenBank formatted file (.gb) containing one or more annotated mitogenomes. This file can be downloaded from a GenBank query in a web browser.\nAssembly of contigs with MitoFinder is completely de novo. The MitoFinder reference database is only used to “label” putative mitochondrial contigs. Thus, the species in your reference database can be fairly distant relatives of your samples.\n\nUsing a custom MitoFinder database with MitoPilot\nTo use a custom Mitofinder database, you can supply the path to the GenBank file in the Assembly Opts. window of the Assemble module.\n\n\n\nFig. 3",
-    "crumbs": [
-      "Advanced Usage",
-      "02 - custom assembly database"
+      "03 - custom curation database"
     ]
   },
   {
@@ -324,146 +326,145 @@
     ]
   },
   {
-    "objectID": "qmd/advanced/03_customCurationDB.html",
-    "href": "qmd/advanced/03_customCurationDB.html",
-    "title": "03 - custom curation database",
+    "objectID": "qmd/advanced/02_customAsmbDB.html",
+    "href": "qmd/advanced/02_customAsmbDB.html",
+    "title": "02 - custom assembly database",
     "section": "",
-    "text": "By default, MitoPilot uses protein-coding gene sequences from NCBI RefSeq to finetune start and stop codon positions of your annotations.\nWe have provided a helper function MitoPilot::custom_curation_db, which allows you to supplement the RefSeq databases with your own protein-coding gene sequences. Using a custom database can greatly improve automatic curation if your focal clade is poorly represented in RefSeq.\nYou could gather additional protein-coding gene sequences from many sources, including:\n\nGenBank mitogenomes that are not part of RefSeq\nmitogenomes from other data repositories\nyour own unpublished mitogenomes\n\nMake sure to carefully consider what you are adding to the custom database. You should only use high-confidence sequences, as poor quality reference data will result in poorly curated gene models.\nPlease see the MitoPilot::custom_curation_db documentation for further instructions.\n\n\n\n\n\n\nNote\n\n\n\nMitoPilot only needs a curation database for protein-coding genes. rRNA and tRNA curation does not utilize reference alignment.",
+    "text": "Currently, MitoPilot comes packaged with assembly reference databases for fishes. If you are working on any other taxonomic group, you will need to compile databases of mitochondrial sequences for your clade.",
     "crumbs": [
       "Advanced Usage",
-      "03 - custom curation database"
+      "02 - custom assembly database"
     ]
   },
   {
-    "objectID": "qmd/advanced/03_customCurationDB.html#build-custom-databases-for-protein-coding-gene-curation",
-    "href": "qmd/advanced/03_customCurationDB.html#build-custom-databases-for-protein-coding-gene-curation",
-    "title": "03 - custom curation database",
+    "objectID": "qmd/advanced/02_customAsmbDB.html#why-use-a-custom-assembly-database",
+    "href": "qmd/advanced/02_customAsmbDB.html#why-use-a-custom-assembly-database",
+    "title": "02 - custom assembly database",
     "section": "",
-    "text": "By default, MitoPilot uses protein-coding gene sequences from NCBI RefSeq to finetune start and stop codon positions of your annotations.\nWe have provided a helper function MitoPilot::custom_curation_db, which allows you to supplement the RefSeq databases with your own protein-coding gene sequences. Using a custom database can greatly improve automatic curation if your focal clade is poorly represented in RefSeq.\nYou could gather additional protein-coding gene sequences from many sources, including:\n\nGenBank mitogenomes that are not part of RefSeq\nmitogenomes from other data repositories\nyour own unpublished mitogenomes\n\nMake sure to carefully consider what you are adding to the custom database. You should only use high-confidence sequences, as poor quality reference data will result in poorly curated gene models.\nPlease see the MitoPilot::custom_curation_db documentation for further instructions.\n\n\n\n\n\n\nNote\n\n\n\nMitoPilot only needs a curation database for protein-coding genes. rRNA and tRNA curation does not utilize reference alignment.",
+    "text": "Currently, MitoPilot comes packaged with assembly reference databases for fishes. If you are working on any other taxonomic group, you will need to compile databases of mitochondrial sequences for your clade.",
     "crumbs": [
       "Advanced Usage",
-      "03 - custom curation database"
+      "02 - custom assembly database"
     ]
   },
   {
-    "objectID": "qmd/advanced/03_customCurationDB.html#using-a-custom-curation-database-with-mitopilot",
-    "href": "qmd/advanced/03_customCurationDB.html#using-a-custom-curation-database-with-mitopilot",
-    "title": "03 - custom curation database",
-    "section": "Using a custom curation database with MitoPilot",
-    "text": "Using a custom curation database with MitoPilot\nTo use a custom curation database, you need to specify the database directory path in the ref_dir field in the Curate Opts. window of the Annotate module. This path will be printed by the MitoPilot::custom_curation_db function.\nYou should also specify “Metazoa_RefSeq231_custom” or “Chordata_custom” in the ref_db field, depending on which base database you used with the MitoPilot::custom_curation_db function.\n\n\n\nFig. 4",
+    "objectID": "qmd/advanced/02_customAsmbDB.html#build-custom-databases-for-getorganelle",
+    "href": "qmd/advanced/02_customAsmbDB.html#build-custom-databases-for-getorganelle",
+    "title": "02 - custom assembly database",
+    "section": "Build custom databases for GetOrganelle",
+    "text": "Build custom databases for GetOrganelle\nBefore proceeding, consider reviewing the GetOrganelle paper and documentation to better understand the required database architecture.\nGetOrganelle uses two databases, both in FASTA format:\n\nA “seed” database containing complete (or partial) mitochondrial genomes\nA “label” database containing individual mitochondrial gene sequences\n\n\nGetOrganelle databases on Hydra\nCurrently, we have the following custom GetOrganelle databases available on Hydra at /scratch/nmnh_ocean_dna/GetOrganelle_refDBs/\n\nAnthozoa\nAsteroidea\nCopepoda\nDiptera\nHexacorallia\nLepidosauria\nMammalia\nMetazoa\nOctocorallia\nTestudinata\n\nEach of these folders contains a subdirectory &lt;&lt;DATE&gt;&gt;/refs_final, inside of which are two files: labelDB.fasta and seedDB.fasta. These files consist of all NCBI RefSeq mitogenomes (seeds) and mitochondrial genes (labels) for the clade.\nIf your group is not listed here, we have provided the following script to assist with building your own custom database.\n\n\nGenBankDownloadUtil.sh\nThis script will perform a GenBank query for all mitochondrial records matching your search criteria, download those sequences, and sort them into GetOrganlle “seed” and “label” databases.\nBefore proceeding, you will need the following dependencies:\n\nEntrez Direct tools (tested with v22.8)\npython (tested with v3.12.2)\nbiopython (tested with v1.84)\n\nOn the Smithsonian Hydra cluster, python and biopython are available as a module. Simply run module load bio/biopython/1.83.\nTo download and install Entrez Direct tools:\nsh -c \"$(curl -fsSL https://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/install-edirect.sh)\"\necho \"export PATH=\\$HOME/edirect:\\$PATH\" &gt;&gt; $HOME/.bash_rc\nNext, download the GenBankDownloadUtil.sh script to the directory where you want to create the custom databases. You will also need to download parseGB.py to the same directory.\nmkdir ~/custom_GetOrg_db_test\ncd ~/custom_GetOrg_db_test\nwget https://raw.githubusercontent.com/smithsonian/MitoPilot/refs/heads/main/ref_dbs/getOrganelle/GenBankDownload/GenBankDownloadUtil.sh\nwget https://raw.githubusercontent.com/smithsonian/MitoPilot/refs/heads/main/ref_dbs/getOrganelle/GenBankDownload/parseGB.py\nTo run the script, you will need to construct an advanced GenBank query. For example, if you want to download all starfish mitochondrial sequences, you could use '\"Asteroidea\"[Organism]'.\nThe script can also accept multiple search terms. For example, use '\"Percidae\"[Organism] AND \"PRJNA720393\"[BioProject]' to download all percid mitochondrial sequences from a specific BioProject.\n\n\n\n\n\n\nNote\n\n\n\nYou can restrict your results to only NCBI RefSeq by adding the search term \"RefSeq\"[Filter]'. RefSeq is a more curated subset of the data on GenBank, allowing you to avoid poor quality mitogenomes.\n\n\nRun the script as follows, providing your custom search terms. Make sure the full query is in single quotes, each search term is in double quotes, and the query type is in square brackets.\nbash GenBankDownloadUtil.sh '\"my query\"[QueryType]'\nThis may take a while depending on how many GenBank records match your search terms. If working on a computing cluster, we recommend running this script as a batch job. Below is an example submission script for the Hydra cluster.\n\n\n\n\n\n\nNote\n\n\n\nThe submission script below requires the Entrez Direct tools in your PATH (i.e. these tools can be run from any directory).\n\n\n# /bin/sh\n# ----------------Parameters---------------------- #\n#$ -S /bin/sh\n#$ -pe mthread 8\n#$ -q sThM.q\n#$ -l mres=640G,h_data=80G,h_vmem=80G,himem\n#$ -cwd\n#$ -j y\n#$ -N customGetOrgDBs\n#$ -o customGetOrgDBs.log\n\n# script to generate custom seed and label DBs for starfish\nsource ~/.bashrc\n\n# load python and biopython module\nmodule load bio/biopython/1.83 # need python and biopython too\n\n# run the script\nbash GenBankDownloadUtil.sh '\"Asteroidea\"[Organism]'\nThe script will produce several files:\n\ngenbank.gb - GenBank file containing all of the matching records\nmultigene.fasta - FASTA file of sequences that contained multiple gene records, indicating they are either a partial or complete mitogenome\nmultigene.dedup.fasta - same as multigene.fasta, but with duplicate sequences removed\nnogene.fasta - FASTA file of mitochondrial sequences with no annotated genes\nnogene.dedup.fasta - same as nogene.fasta, but with duplicate sequences removed\nsinglegene.fasta - FASTA file of mitochondrial gene sequences\nsinglegene.dedup.fasta - same as singlelocus.fasta, but with duplicate sequences removed\n\nThe most relevant files for GetOrganelle are:\n\nseed database = multigene.dedup.fasta (plus maybe some sequences from nogene.dedup.fasta)\nlabel database = singlegene.dedup.fasta\n\nThe nogene.fasta file contains un-annotated mitochondrial sequences or mitochondrial sequences from a non-gene region, such as the D-loop (AKA control region). Consider manually inspecting these sequences. You may wish to include some of them in your custom GetOrganelle seed database.\n\n\nInspecting custom databases\nHere are a few basic methods to inspect and manipulate FASTA files on the command line.\nCount the number of sequences in a FASTA file:\ngrep -c \"&gt;\" singlelocus.dedup.fasta\nGenerate list of FASTA headers:\ngrep \"&gt;\" singlelocus.dedup.fasta\nGenerate list of unique gene names:\ngrep \"&gt;\" singlelocus.dedup.fasta | cut -f1 -d\" \" | sort | uniq\nCalculate sequence lengths:\ncat my_file.fasta | awk '$0 ~ \"&gt;\" {if (NR &gt; 1) {print c;} c=0;printf substr($0,2,100) \"\\t\"; } $0 !~ \"&gt;\" {c+=length($0);} END { print c; }'\nExtract specific sequences from a FASTA file with seqkit:\n# Extract sequences based on names.txt\n# names.txt should contain full sequences headers, one per line, but no \"&gt;\" at start\nmodule load bio/seqkit/2.8.1 # ONLY FOR NMNH HYDRA CLUSTER\nseqkit grep -f -n names.txt file.fasta &gt; file_subset.fasta\nRemove sequences from a FASTA file with seqkit:\n# Remove sequences based on name patterns listed in names.txt\n# one pattern per line\nmodule load bio/seqkit/2.8.1 # ONLY FOR NMNH HYDRA CLUSTER\nseqkit grep -v -f names.txt file.fasta &gt; file_subset.fasta\n\n\n\n\n\n\nNote\n\n\n\nGenBankDownloadUtil.sh will rename any sequence with no GenBank “product” (protein, tRNA, or rRNA) as “no_product ACCESSION”. You may wish to remove these sequences, as they often represent poorly annotated genes.\n\n\n\n\nAdding your own sequences to a custom database\nTo use unpublished mitogenomes in a custom GetOrganelle seed database, you will need to combine multiple FASTA files. GetOrganelle does not require a specific format for the sequence names in the seed database.\nYou can easily combine FASTA files with the Linux cat command:\ncat multigene.dedup.fasta my_mitogenomes.fasta even_more_mitogenomes.fasta &gt; final_seed_db.fasta\nYou could add unpublished individual gene sequences to a custom GetOrganelle label database in a similar manner.\n\n\nUsing a custom GetOrganelle database with MitoPilot\nTo use custom GetOrganelle assembly databases, you can specify the following arguments when setting up a new project with MitoPilot::new_project.\n\ncustom_seeds_db: full path to custom seeds database FASTA file\ncustom_labels_db: full path to custom labels database FASTA file\n\nAlternatively, you can supply these file paths in the Assembly Opts. window of the Assemble module.\n\n\n\nFig. 2",
     "crumbs": [
       "Advanced Usage",
-      "03 - custom curation database"
+      "02 - custom assembly database"
     ]
   },
   {
-    "objectID": "qmd/advanced/04_customCurationRuleset.html",
-    "href": "qmd/advanced/04_customCurationRuleset.html",
-    "title": "04 - custom curation ruleset",
+    "objectID": "qmd/advanced/02_customAsmbDB.html#build-custom-databases-for-mitofinder",
+    "href": "qmd/advanced/02_customAsmbDB.html#build-custom-databases-for-mitofinder",
+    "title": "02 - custom assembly database",
+    "section": "Build custom databases for MitoFinder",
+    "text": "Build custom databases for MitoFinder\nThe MitoFinder documentation has instructions on how to build a reference database.\nThe MitoFinder reference database is simple: a GenBank formatted file (.gb) containing one or more annotated mitogenomes. This file can be downloaded from a GenBank query in a web browser.\nAssembly of contigs with MitoFinder is completely de novo. The MitoFinder reference database is only used to “label” putative mitochondrial contigs. Thus, the species in your reference database can be fairly distant relatives of your samples.\n\nUsing a custom MitoFinder database with MitoPilot\nTo use a custom Mitofinder database, you can supply the path to the GenBank file in the Assembly Opts. window of the Assemble module.\n\n\n\nFig. 3",
+    "crumbs": [
+      "Advanced Usage",
+      "02 - custom assembly database"
+    ]
+  },
+  {
+    "objectID": "qmd/advanced/01_assemblyOpts.html",
+    "href": "qmd/advanced/01_assemblyOpts.html",
+    "title": "01 - assembly alternatives",
     "section": "",
-    "text": "Automated curation and validation of mitogenome annotations is a central goal of MitoPilot. When samples are processed through the Annotate module, annotations are first generated using a combination of MITOS2 (for rRNA and PCG annotation) and tRNAscan-SE (for tRNA annotation). Following the initial annotation, samples are processed through an automated curation process where modifications are made in attempt to bring the annotations closer to a state that will be considered acceptable for publication by NCBI GenBank. This automated curation process is based on two important inputs to the pipeline, a high-quality reference database of protein coding genes and a set of user configurable parameters.",
+    "text": "By default, MitoPilot uses GetOrganelle to assemble the mitochondrial genome. GetOrganelle will only assemble the subset of sequence reads which it identifies as mitochondrial. This makes it a very fast assembler that tends to work best if you have a sufficient reference database (more on that later). However, there may be cases where GetOrganlle produces unsatisfactory results.\nIf you wish to try a different assembly method, we have also implemented MitoFinder in MitoPilot. Unlike GetOrganlle, MitoFinder performs a complete assembly of all your reads using MEGAHIT, MetaSPAdes, or IDBA-UB. This makes it far slower, but can sometimes be more effective for organisms with few or poor reference mitogenomes.\nMitoFinder can be selected as the assembler in the Assembly Opts. window of the Assemble module.\n\n\n\nFig. 1\n\n\nThe defaults for MitoFinder are the MEGAHIT assembler and the Zebrafish (Danio rerio) reference mitochondrial genome. You can easily supply your own reference mitogenome(s) by specifying the full path to a GenBank formatted (.gb) file.",
     "crumbs": [
       "Advanced Usage",
-      "04 - custom curation ruleset"
+      "01 - assembly alternatives"
     ]
   },
   {
-    "objectID": "qmd/advanced/04_customCurationRuleset.html#curation-parameters",
-    "href": "qmd/advanced/04_customCurationRuleset.html#curation-parameters",
-    "title": "04 - custom curation ruleset",
-    "section": "Curation Parameters",
-    "text": "Curation Parameters\nCurrently, curation parameters are specified at project initialization and are applied to all samples within the project. By default, the parameters are set by the function, params_fish_mito().\nBelow is a full list of curation parameters.\n\nhit_threshold [PCG only]: Minimum percent sequencing similarity for a protein-coding gene. Any hits below this threshold will not be used for curation.\nmax_overlap: Maximum proportion of gene length that can overlap with another gene.\ncount: Maximum expected number of gene copies.\nmax_len: Maximum expected length (bp) of the gene.\nmin_len: Minimum expected length (bp) of the gene.\noverlap: Start (5’) and stop (3’) rules for overlap between genes. Start is the maximum number of base pairs that can overlap at the 5’ end of a gene. Stop is whether the 3’ end of a gene can overlap AT ALL with another gene (True/False).\nstart_codons [PCG only]: Acceptable start codons.\nstop_codons [PCG only]: Acceptable stop codons, including incomplete stop codons.\n\nIf a gene fails to meet the specified parameters, it will be flagged with a warning message.\nCustomization of the parameters can be achieved by directly providing a complete named list, or by passing individual modifications to the params_fish_mito() function. For example, the default expected count of trnW genes could be increased to 2 and the default percent similarity of an “acceptable” protein-coding gene match could be reduced to 85 by initializing a new project with:\nnew_project(\n    ...,\n    curate_params = params_fish_mito(\n        list(\n            hit_threshold = 85,\n            rules = list(\n                trnW = list(\n                    count = 2\n                )\n            )\n        )\n    )\n)\nThe full set of default curation parameters can be viewed in the MitoPilot GUI for each sample under Curation Opts. At the moments, these values can not be edited for individual samples from within the GUI, but this feature will eventually be added.",
-    "crumbs": [
-      "Advanced Usage",
-      "04 - custom curation ruleset"
-    ]
-  },
-  {
-    "objectID": "qmd/your_project/01_prep.html",
-    "href": "qmd/your_project/01_prep.html",
-    "title": "01 - data prep",
+    "objectID": "qmd/advanced/01_assemblyOpts.html#mitofinder",
+    "href": "qmd/advanced/01_assemblyOpts.html#mitofinder",
+    "title": "01 - assembly alternatives",
     "section": "",
-    "text": "The following pages will walk through an example of how to initialize a MitoPilot project with your own data.\nTo get started, you will need: - a directory containing all of your sequence data - a CSV mapping file\nFirst, let’s create a directory to house our project. On the command line, run the following:\nmkdir -p /pool/public/genomics/${USER}/MitoPilot_workshop/my_project\nNow we need some sequence data. The workshop GitHub repo has some example data, consisting of four octocoral species. This directory contains two FASTQ files per sample (the forward and reverse reads).\nLet’s copy the data to our new project directory.\ncd /pool/public/genomics/${USER}/MitoPilot_workshop/my_project\nwget https://github.com/SmithsonianWorkshops/MitoPilot_workshop_2025/raw/refs/heads/main/sample_data/raw_data.tar.gz\ntar -zxvf raw_data.tar.gz\nNext we need to create a CSV mapping file with the following required columns: - ID: column with a unique identifier for each sample - Taxon: column containing taxonomic information for each sample, no formatting requirements - R1: full name of the forward read file - R2: full name of the reverse read file\nNormally you would create this metadata sheet from scratch in Excel, but for the workshop you can download the provided file:\ncd /pool/public/genomics/${USER}/MitoPilot_workshop/my_project\nwget https://raw.githubusercontent.com/SmithsonianWorkshops/MitoPilot_workshop_2025/refs/heads/main/sample_data/map_file.csv\nThis mapping spreadsheet can contain extra columns with additional metadata. In the example file, there are a few extra columns: Order, Tissue ID, and SeqID#. These extra metadata fields can be useful for sorting and grouping samples later on.",
+    "text": "By default, MitoPilot uses GetOrganelle to assemble the mitochondrial genome. GetOrganelle will only assemble the subset of sequence reads which it identifies as mitochondrial. This makes it a very fast assembler that tends to work best if you have a sufficient reference database (more on that later). However, there may be cases where GetOrganlle produces unsatisfactory results.\nIf you wish to try a different assembly method, we have also implemented MitoFinder in MitoPilot. Unlike GetOrganlle, MitoFinder performs a complete assembly of all your reads using MEGAHIT, MetaSPAdes, or IDBA-UB. This makes it far slower, but can sometimes be more effective for organisms with few or poor reference mitogenomes.\nMitoFinder can be selected as the assembler in the Assembly Opts. window of the Assemble module.\n\n\n\nFig. 1\n\n\nThe defaults for MitoFinder are the MEGAHIT assembler and the Zebrafish (Danio rerio) reference mitochondrial genome. You can easily supply your own reference mitogenome(s) by specifying the full path to a GenBank formatted (.gb) file.",
+    "crumbs": [
+      "Advanced Usage",
+      "01 - assembly alternatives"
+    ]
+  },
+  {
+    "objectID": "qmd/advanced/01_assemblyOpts.html#importing-external-assemblies",
+    "href": "qmd/advanced/01_assemblyOpts.html#importing-external-assemblies",
+    "title": "01 - assembly alternatives",
+    "section": "Importing External Assemblies",
+    "text": "Importing External Assemblies\nIn some cases, GetOrganelle and MitoFinder can both fail to produce mitochondrial genome assemblies. You may wish to explore other assembly options outside of MitoPilot, such as the Geneious “map to reference” method.\nIf you still want to use MitoPilot for annotation and curation, you can import your own mitogenome assemblies. To do so, you will need to initialize a new MitoPilot project. A single project can only contain either assemblies generated by MitoPilot or assemblies generated by external software.\nTo set up a project with external assemblies, use the new_project_userAsmb function. This function requires the argument assembly_path, which is the full path to the directory containing all of your mitogenome assembly FASTA files. There should be one file (and one assembly) per sample.\nThe new_project_userAsmb function also requires two new columns in the mapping file:\n\nAssembly: mitogenome assembly FASTA file names (one contig/scaffold sequence per sample)\nTopology: assembly topology, “circular” or “linear”\n\nOnce you have created a new project with this function, you can proceed to open the GUI and run MitoPilot. Note that you will still need to run the Assemble module, but it will only be used to map reads and calculate coverage.",
+    "crumbs": [
+      "Advanced Usage",
+      "01 - assembly alternatives"
+    ]
+  },
+  {
+    "objectID": "qmd/your_project/02_init.html",
+    "href": "qmd/your_project/02_init.html",
+    "title": "02 - initialize your project",
+    "section": "",
+    "text": "First we need to specify a number of parameters for the project.\n# directory where your test project will be created\n# if the directory does not exist, MitoPilot will create it\nwd &lt;- \"/pool/public/genomics/&lt;&lt;USER&gt;&gt;/MitoPilot_workshop/my_project/run_01\"\n\n# full path to your sample mapping CSV file\n# swap &lt;&lt;USER&gt;&gt; for your user ID\nmap_file &lt;- \"/pool/public/genomics/&lt;&lt;USER&gt;&gt;/MitoPilot_workshop/my_project/map_file.csv\"\n\n# full path to your sequence data directory\n# swap &lt;&lt;USER&gt;&gt; for your user ID\nseq_data &lt;- \"/pool/public/genomics/&lt;&lt;USER&gt;&gt;/MitoPilot_workshop/my_project/raw_data\"\n\n# genetic code for your samples\n# see https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi\n# for corals, the appropriate translation table is #4\ngenetic_code &lt;- 4\n\n# minimum number of reads required to process a sample\n# default is 2,000,000\n# here we are setting a very low threshold because the example reads have already been filtered extensively\nmin_reads &lt;- 10000\n\n# since this is a coral dataset, we need to use custom GetOrganelle reference databases\n# for more on custom assembly databases, see:\n# https://smithsonianworkshops.github.io/MitoPilot_workshop_2025/qmd/advanced/02_customAsmbDB.html\nlabel_db &lt;- \"/scratch/nmnh_ocean_dna/GetOrganelle_refDBs/2025_07_03/refs_final/labelDB.fasta\"\nseed_db &lt;- \"/scratch/nmnh_ocean_dna/GetOrganelle_refDBs/2025_07_03/refs_final/seedDB.fasta\"\n\n# specify an execution environment, \"local\", \"NMNH_Hydra\", or \"NOAA_SEDNA\"\nex &lt;- \"NMNH_Hydra\"\nNow we can initialize the project using those parameters.\n# load the MitoPilot package\nlibrary(MitoPilot)\n\n# initialize the test project\nMitoPilot::new_project(\n    path = wd,\n    executor = ex,\n    mapping_fn = map_file,\n    genetic_code = genetic_code,\n    min_depth = min_reads,\n    data_path = seq_data,\n    custom_seeds_db = seed_db,\n    custom_labels_db = label_db,\n    Rproj = FALSE\n)\nNow we’re ready to launch the GUI and start processing our samples!\n# the function to launch the GUI \n# must be called from within your project directory\nsetwd(wd)\nMitoPilot::MitoPilot()",
     "crumbs": [
       "Starting Your Own Project",
-      "01 - data prep"
+      "02 - initialize your project"
     ]
   },
   {
-    "objectID": "qmd/setup/02_RstudioServer.html",
-    "href": "qmd/setup/02_RstudioServer.html",
-    "title": "02 - RStudio server",
+    "objectID": "qmd/HPC_intro/HPC-intro.html",
+    "href": "qmd/HPC_intro/HPC-intro.html",
+    "title": "Intro to Smithsonian HPC",
     "section": "",
-    "text": "We will use RStudio server to run MitoPilot. RStudio server on Hydra functions just like the normal RStudio on your local computer, except that you are accessing it remotely.\nThere are two methods to access RStudio server on Hydra.\n\n\nThe Hydra Team recently launched an interactive R Studio environment that is accessible directly via a browser, at https://galaxy.si.edu/R4.\nHydra users can leverage this server to test, debug, and develop R based workflows using the interactive RStudio GUI (currently running R 4.4.3).\nBy logging in with your Hydra account credentials, users will have access to the storage under /pool, /scratch, and /store. This server offers resources totaling 192 CPUs and 1.5 T of RAM.\nNotes:\n\nThis is a shared resource and should be used accordingly. Long running jobs or jobs requiring the entire resources of the server would be more appropriate as a job submission.\nThis server is only accessible from trusted computers, not on the public internet. For technical reasons, to access this resource via telework.si.edu, go to https://galaxy.si.edu and then choose the “R4 v443” option.\nThis is a new resource - please be patient as we test this offering with our user community. We will evaluate this test once Hydra is moved to the new datacenter and decide whether it should be kept or altered in any way.\n\n\n\n\nTo launch RStudio server on Hydra, run the following.\n# avoid package conflicts (may not be necessary for all users)\nconda deactivate \n# load the RStudio server module\nmodule load tools/R/RStudio/server\n# launch RStudio server\nstart-rstudio-server\n\n\n\n\n\n\nNote\n\n\n\nIf this is your first time launching RStudio server, you may be asked to run a different command.\n\n\nYou will see something like this printed to your screen.\nstart-rstudio-server: starting RStudio server on host=login02 and port=8787\n  you need to create a ssh tunnel on your local machine with\n    ssh -N -L 8787:login02:8787 macguigand@hydra-login01.si.edu\n\nPoint your browser to http://localhost:8787 on your local machine.\nUse Control+C in this window to kill the server when done.\n\nTTY detected. Printing informational message about logging configuration. Logging configuration loaded from '/etc/rstudio/logging.conf'. Logging to '/home/macguigand/.local/share/rstudio/log/rserver.log'.\n\n\n\n\n\n\nWhy can’t I connect?\n\n\n\nIf you get a message saying “ERROR system error 98 (Address already in use)”, someone else has a tunnel established with the default port (8787). To fix this, try using a different port, e.g. start-rstudio-server -port 8890. Any port number between 1025-65535 is allowed.\n\n\nLeave this cluster terminal window open, open a new terminal window on your local computer, and run the ssh command printed by start-rstudio-server.\nssh -N -L 8787:login02:8787 macguigand@hydra-login01.si.edu\nEnter your Hydra password when prompted. If nothing happens, this means that you have successfully established a SSH tunnel and can connect to RStudio server.\nLeaving both terminal windows open, enter http://localhost:YOUR_PORT_NUMBER in a web browser. We recommend using Chrome or Firefox. There are some known issues running MitoPilot with Safari.\nEnter your cluster login credentials to access the RStudio server. This should open a full RStudio session in your browser. Any R commands run in this new window will execute on the cluster.",
+    "text": "Intro slides: Download PDF file.",
     "crumbs": [
-      "Setup",
-      "02 - RStudio server"
+      "Intro to Smithsonian HPC"
     ]
   },
   {
-    "objectID": "qmd/setup/02_RstudioServer.html#launching-rstudio-server",
-    "href": "qmd/setup/02_RstudioServer.html#launching-rstudio-server",
-    "title": "02 - RStudio server",
+    "objectID": "qmd/setup/04_install.html",
+    "href": "qmd/setup/04_install.html",
+    "title": "04 - MitoPilot installation",
     "section": "",
-    "text": "We will use RStudio server to run MitoPilot. RStudio server on Hydra functions just like the normal RStudio on your local computer, except that you are accessing it remotely.\nThere are two methods to access RStudio server on Hydra.\n\n\nThe Hydra Team recently launched an interactive R Studio environment that is accessible directly via a browser, at https://galaxy.si.edu/R4.\nHydra users can leverage this server to test, debug, and develop R based workflows using the interactive RStudio GUI (currently running R 4.4.3).\nBy logging in with your Hydra account credentials, users will have access to the storage under /pool, /scratch, and /store. This server offers resources totaling 192 CPUs and 1.5 T of RAM.\nNotes:\n\nThis is a shared resource and should be used accordingly. Long running jobs or jobs requiring the entire resources of the server would be more appropriate as a job submission.\nThis server is only accessible from trusted computers, not on the public internet. For technical reasons, to access this resource via telework.si.edu, go to https://galaxy.si.edu and then choose the “R4 v443” option.\nThis is a new resource - please be patient as we test this offering with our user community. We will evaluate this test once Hydra is moved to the new datacenter and decide whether it should be kept or altered in any way.\n\n\n\n\nTo launch RStudio server on Hydra, run the following.\n# avoid package conflicts (may not be necessary for all users)\nconda deactivate \n# load the RStudio server module\nmodule load tools/R/RStudio/server\n# launch RStudio server\nstart-rstudio-server\n\n\n\n\n\n\nNote\n\n\n\nIf this is your first time launching RStudio server, you may be asked to run a different command.\n\n\nYou will see something like this printed to your screen.\nstart-rstudio-server: starting RStudio server on host=login02 and port=8787\n  you need to create a ssh tunnel on your local machine with\n    ssh -N -L 8787:login02:8787 macguigand@hydra-login01.si.edu\n\nPoint your browser to http://localhost:8787 on your local machine.\nUse Control+C in this window to kill the server when done.\n\nTTY detected. Printing informational message about logging configuration. Logging configuration loaded from '/etc/rstudio/logging.conf'. Logging to '/home/macguigand/.local/share/rstudio/log/rserver.log'.\n\n\n\n\n\n\nWhy can’t I connect?\n\n\n\nIf you get a message saying “ERROR system error 98 (Address already in use)”, someone else has a tunnel established with the default port (8787). To fix this, try using a different port, e.g. start-rstudio-server -port 8890. Any port number between 1025-65535 is allowed.\n\n\nLeave this cluster terminal window open, open a new terminal window on your local computer, and run the ssh command printed by start-rstudio-server.\nssh -N -L 8787:login02:8787 macguigand@hydra-login01.si.edu\nEnter your Hydra password when prompted. If nothing happens, this means that you have successfully established a SSH tunnel and can connect to RStudio server.\nLeaving both terminal windows open, enter http://localhost:YOUR_PORT_NUMBER in a web browser. We recommend using Chrome or Firefox. There are some known issues running MitoPilot with Safari.\nEnter your cluster login credentials to access the RStudio server. This should open a full RStudio session in your browser. Any R commands run in this new window will execute on the cluster.",
+    "text": "To install MitoPilot, use the RStudio server window to run the following. This might take a while.\nif (!requireNamespace(\"remotes\", quietly = TRUE)) {\n    install.packages(\"remotes\")\n}\nif (!requireNamespace(\"BiocManager\", quietly = TRUE)) {\n    install.packages(\"BiocManager\")\n}\nBiocManager::install(\"Smithsonian/MitoPilot\")\nYou may see a warning like this:\nInstallation paths not writeable, unable to update packages\n  path: /share/apps/bioinformatics/R/4.4.1/lib64/R/library\nThis is not a problem. Some R packages are installed at the Hydra system level and cannot be updated by the user.\nIf there were no other error messages, you’re ready to start using MitoPilot!",
     "crumbs": [
       "Setup",
-      "02 - RStudio server"
+      "04 - MitoPilot installation"
     ]
   },
   {
-    "objectID": "qmd/setup/05_load.html",
-    "href": "qmd/setup/05_load.html",
-    "title": "05 - load MitoPilot",
+    "objectID": "qmd/setup/04_install.html#first-time-installation",
+    "href": "qmd/setup/04_install.html#first-time-installation",
+    "title": "04 - MitoPilot installation",
     "section": "",
-    "text": "To load the MitoPilot R package, we first need to modify our PATH environmental variable. This will allow our RStudio session to find and use java and nextflow.\n# modify PATH to include:\n#   ~/bin (contains nextflow exe)\n#   java 21.0.2 (required for nextflow)\ndefault_path &lt;- \"/cm/shared/apps/uge/8.8.1/bin/lx-amd64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/rstudio-server/bin/quarto/bin:/usr/lib/rstudio-server/bin/postback\"\nnew_path &lt;- paste0(Sys.getenv(\"HOME\"), \"/bin:/share/apps/tools/java/21.0.2/bin\")\nSys.setenv(PATH = paste(new_path, default_path, sep = \":\"))\nNext, load the MitoPilot package.\nlibrary(MitoPilot)\nYou should see a message confirming that Nextflow is installed and accessible.\nWelcome to {MitoPilot}!\nUsing Nextflow version 24.10.4 build 5934\nYou can now utilize all of MitoPilot’s functions, such as initializing a project or opening the R Shiny GUI.\nLet’s get started with the example project!",
+    "text": "To install MitoPilot, use the RStudio server window to run the following. This might take a while.\nif (!requireNamespace(\"remotes\", quietly = TRUE)) {\n    install.packages(\"remotes\")\n}\nif (!requireNamespace(\"BiocManager\", quietly = TRUE)) {\n    install.packages(\"BiocManager\")\n}\nBiocManager::install(\"Smithsonian/MitoPilot\")\nYou may see a warning like this:\nInstallation paths not writeable, unable to update packages\n  path: /share/apps/bioinformatics/R/4.4.1/lib64/R/library\nThis is not a problem. Some R packages are installed at the Hydra system level and cannot be updated by the user.\nIf there were no other error messages, you’re ready to start using MitoPilot!",
     "crumbs": [
       "Setup",
-      "05 - load MitoPilot"
+      "04 - MitoPilot installation"
     ]
   },
   {
-    "objectID": "qmd/setup/05_load.html#loading-the-mitopilot-package",
-    "href": "qmd/setup/05_load.html#loading-the-mitopilot-package",
-    "title": "05 - load MitoPilot",
+    "objectID": "qmd/setup/04_install.html#updating-mitopilot",
+    "href": "qmd/setup/04_install.html#updating-mitopilot",
+    "title": "04 - MitoPilot installation",
+    "section": "Updating MitoPilot",
+    "text": "Updating MitoPilot\nIf you need to update MitoPilot, run the following commands in RStudio server.\nremove.packages(\"MitoPilot\")\nBiocManager::install(\"Smithsonian/MitoPilot\")\n.rs.restartR()\nThis will remove the old package, install the most recent version, and restart your R session. After updating, you will need to reload the package with library(MitoPilot).\nWe also recommend clearing your Singularity cache with singularity cache clean whenever you update MitoPilot. This will ensure you are using the latest MitoPilot Singularity image.",
+    "crumbs": [
+      "Setup",
+      "04 - MitoPilot installation"
+    ]
+  },
+  {
+    "objectID": "qmd/setup/03_RIntro.html",
+    "href": "qmd/setup/03_RIntro.html",
+    "title": "03 - intro to R",
     "section": "",
-    "text": "To load the MitoPilot R package, we first need to modify our PATH environmental variable. This will allow our RStudio session to find and use java and nextflow.\n# modify PATH to include:\n#   ~/bin (contains nextflow exe)\n#   java 21.0.2 (required for nextflow)\ndefault_path &lt;- \"/cm/shared/apps/uge/8.8.1/bin/lx-amd64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/rstudio-server/bin/quarto/bin:/usr/lib/rstudio-server/bin/postback\"\nnew_path &lt;- paste0(Sys.getenv(\"HOME\"), \"/bin:/share/apps/tools/java/21.0.2/bin\")\nSys.setenv(PATH = paste(new_path, default_path, sep = \":\"))\nNext, load the MitoPilot package.\nlibrary(MitoPilot)\nYou should see a message confirming that Nextflow is installed and accessible.\nWelcome to {MitoPilot}!\nUsing Nextflow version 24.10.4 build 5934\nYou can now utilize all of MitoPilot’s functions, such as initializing a project or opening the R Shiny GUI.\nLet’s get started with the example project!",
+    "text": "R is a free software environment for statistical computing and graphics. MitoPilot does not require the user to be an expert in R, as MitoPilot mostly utilizes a custom graphical user interface (GUI).\nHowever, if you wish to learn the basics of R, there are many online resources:\n\nSmithsonian LAB R workshop\nData Carpentry R workshop",
     "crumbs": [
       "Setup",
-      "05 - load MitoPilot"
-    ]
-  },
-  {
-    "objectID": "qmd/setup/01_Hydra.html",
-    "href": "qmd/setup/01_Hydra.html",
-    "title": "01 - Hydra cluster setup",
-    "section": "",
-    "text": "You will need an account to access the Smithsonian Hyrda computing cluster. Instructions are available here.",
-    "crumbs": [
-      "Setup",
-      "01 - Hydra cluster setup"
-    ]
-  },
-  {
-    "objectID": "qmd/setup/01_Hydra.html#access-to-the-hydra-cluster",
-    "href": "qmd/setup/01_Hydra.html#access-to-the-hydra-cluster",
-    "title": "01 - Hydra cluster setup",
-    "section": "",
-    "text": "You will need an account to access the Smithsonian Hyrda computing cluster. Instructions are available here.",
-    "crumbs": [
-      "Setup",
-      "01 - Hydra cluster setup"
-    ]
-  },
-  {
-    "objectID": "qmd/setup/01_Hydra.html#first-time-setup",
-    "href": "qmd/setup/01_Hydra.html#first-time-setup",
-    "title": "01 - Hydra cluster setup",
-    "section": "First time setup",
-    "text": "First time setup\nWe have submitted a request to the Hydra team for installation of a Nextflow module. But for now, you will need to install your own copy of Nextflow on the cluster. Login to Hydra and run the following.\n# Nextflow installation instructions\n# from https://www.nextflow.io/docs/latest/install.html\ncd ~\n# load Java module, needed by Nextflow\nmodule load tools/java/21.0.2\n# install Nextflow\ncurl -s https://get.nextflow.io | bash \n# make Nextflow executable\nchmod +x nextflow \nThere will now be an executable nextflow file in your home directory. You should move it to a location that is in your PATH. For example:\n # create bin directory, if needed\nmkdir ~/bin\n# move nextflow to bin directory\nmv ~/nextflow ~/bin/nextflow \n# add bin directory to PATH, in case it's not already there\necho 'export PATH=\"${HOME}/bin:${PATH}\"' &gt;&gt; ~/.bashrc \n# reload your bash configuration file\nsource ~/.bashrc\nThis should allow you to call nextflow from anywhere on the cluster.\n\n\n\n\n\n\nImportant\n\n\n\nYou must load the Hydra Java module (module load tools/java/21.0.2) whenever you wish to use Nextflow.",
-    "crumbs": [
-      "Setup",
-      "01 - Hydra cluster setup"
+      "03 - intro to R"
     ]
   },
   {
@@ -474,6 +475,17 @@
     "text": "MitoPilot is an R package for mitogenome assembly and annotation from genome skimming data. It uses Nexflow and includes a R Shiny web app for project management and final curation of results, which can be exported in NCBI Genbank submission format. MitoPilot comes with extensive documentation.\nIntro slides: Download PDF file.",
     "crumbs": [
       "Intro to MitoPilot"
+    ]
+  },
+  {
+    "objectID": "qmd/scripts/02_R-script.html",
+    "href": "qmd/scripts/02_R-script.html",
+    "title": "02 - example project R script",
+    "section": "",
+    "text": "# SI NMNH MitoPilot workshop\n# September 24, 2025\n# https://dmacguigan.github.io/MitoPilot_workshop_2025/\n# author: Dan MacGuigan\n# macguigand@si.edu\n\n###########################################################################\n# Install MitoPilot\n###########################################################################\n\nif (!requireNamespace(\"remotes\", quietly = TRUE)) {\n    install.packages(\"remotes\")\n}\nif (!requireNamespace(\"BiocManager\", quietly = TRUE)) {\n    install.packages(\"BiocManager\")\n}\nBiocManager::install(\"Smithsonian/MitoPilot\")\n\n###########################################################################\n# Update MitoPilot (if needed)\n###########################################################################\n\nremove.packages(\"MitoPilot\")\nBiocManager::install(\"Smithsonian/MitoPilot\")\n.rs.restartR()\n\n###########################################################################\n# Load MitoPilot\n###########################################################################\n\n# modify PATH to include:\n#   ~/bin (contains nextflow exe)\n#   java 21.0.2 (required for nextflow)\ndefault_path &lt;- \"/cm/shared/apps/uge/8.8.1/bin/lx-amd64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/rstudio-server/bin/quarto/bin:/usr/lib/rstudio-server/bin/postback\"\nnew_path &lt;- paste0(Sys.getenv(\"HOME\"), \"/bin:/share/apps/tools/java/21.0.2/bin\")\nSys.setenv(PATH = paste(new_path, default_path, sep = \":\"))\n\n# load MitoPilot package\nlibrary(MitoPilot)\n\n###########################################################################\n# Initialize test project\n###########################################################################\n\n# specify the directory where your test project will be created\n# if the directory does not exist, MitoPilot will create it\nwd &lt;- \"/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01\"\n\n# specify an execution environment, \"local\", \"NMNH_Hydra\", or \"NOAA_SEDNA\"\nex &lt;- \"NMNH_Hydra\"\n\n# initialize the test project\nMitoPilot::new_test_project(\n    path = wd,\n    executor = ex,\n    full_size = FALSE,\n    Rproj = FALSE\n)\n\n###########################################################################\n# Launch the MitoPilot GUI\n###########################################################################\n\n# the function to launch the GUI\n# must be called from within your project directory\nwd &lt;- \"/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01\"\nsetwd(wd)\nMitoPilot::MitoPilot()",
+    "crumbs": [
+      "Scripts",
+      "02 - example project R script"
     ]
   },
   {
