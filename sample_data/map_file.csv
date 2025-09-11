@@ -1,0 +1,5 @@
+ID,R1,R2,Taxon,Order,Tissue ID,SeqID#
+SAMN38332794,SAMN38332794_R1_filtered.fastq.gz,SAMN38332794_R2_filtered.fastq.gz,Nicella sp.,Scleralcyonacea,SH12092,S068
+SAMN38332793,SAMN38332793_R1_filtered.fastq.gz,SAMN38332793_R2_filtered.fastq.gz,Nicella sp.,Scleralcyonacea,SH12091,S067
+SAMN38332784,SAMN38332784_R1_filtered.fastq.gz,SAMN38332784_R2_filtered.fastq.gz,Chironepthya sp.,Malacalcyonacea,SH11965A,S058
+SAMN38332789,SAMN38332789_R1_filtered.fastq.gz,SAMN38332789_R2_filtered.fastq.gz,Lateothela grandiflora ,Malacalcyonacea,SH12081,S063

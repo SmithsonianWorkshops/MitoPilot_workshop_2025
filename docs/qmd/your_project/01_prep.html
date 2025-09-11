@@ -304,6 +304,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">04 - custom curation ruleset</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qmd/advanced/05_dbUpdate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05 - adding or editing sample info</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -340,13 +346,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To get started, you will need: - a directory containing all of your sequence data - a CSV mapping file</p>
 <p>First, let’s create a directory to house our project. On the command line, run the following:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> /pool/public/genomics/<span class="va">${USER}</span>/MitoPilot_workshop/my_project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Now we need some sequence data. An example data directory is located on Hydra at <code>/PATH/TO/DATA</code>. This directory contains two FASTQ files per sample (the forward and reverse reads).</p>
+<p>Now we need some sequence data. We have provided example data consisting of four octocoral species on the workshop GitHub repo. This directory contains two FASTQ files per sample (the forward and reverse reads).</p>
 <p>Let’s copy the data to our new project directory.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-rf</span> /PATH/TO/DATA /pool/public/genomics/<span class="va">${USER}</span>/MitoPilot_workshop/my_project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /pool/public/genomics/<span class="va">${USER}</span>/MitoPilot_workshop/my_project</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-zxvf</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Next we need to create a CSV mapping file with the following required columns: - <code>ID</code>: column with a unique identifier for each sample - <code>Taxon</code>: column containing taxonomic information for each sample, no formatting requirements - <code>R1</code>: full name of the forward read file - <code>R2</code>: full name of the reverse read file</p>
-<p>Normally you would create this metadata sheet from scratch in Excel, but for the workshop you can copy the provided file:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-rf</span> /PATH/TO/map_file.csv /pool/public/genomics/<span class="va">${USER}</span>/MitoPilot_workshop/my_project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This mapping spreadsheet can contain extra columns with additional metadata. In the example file, there is an extra column <code>Family</code>. These extra metadata fields can be useful for sorting and grouping samples later on.</p>
+<p>Normally you would create this metadata sheet from scratch in Excel, but for the workshop you can download the provided file:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /pool/public/genomics/<span class="va">${USER}</span>/MitoPilot_workshop/my_project</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This mapping spreadsheet can contain extra columns with additional metadata. In the example file, there are also a few extra columns. These extra metadata fields can be useful for sorting and grouping samples later on.</p>
 
 
 

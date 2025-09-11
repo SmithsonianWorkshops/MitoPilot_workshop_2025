@@ -14,7 +14,7 @@ There are two ways to run this Nextflow command on Hydra.
 
 ### Method 1: Using the GUI
 
-With the `Update` window open, click the `Start Nextflow` button to run the analysis pipeline within the MitoPilot GUI. This requires you to keep the GUI open while the pipeline is running.
+With the `Update` window open, click the `Run from App` button to run the analysis pipeline within the MitoPilot GUI. This requires you to keep the GUI open while the pipeline is running.
 
 ::: {.callout-note}
 We recommend only using this method for small numbers of samples. If your internet connection is interrupted, the analysis pipeline will stop. You can resume an interrupted run, but it will waste time and can occasionally cause bugs.
@@ -50,9 +50,14 @@ Click `Close` to return to the samples table.
 
 If you have a large number of samples to process (more than a few dozen), we recommend running the Assemble and Annotate MitoPilot modules as batch jobs. 
 
-You will still need to generate the Nextflow command using the MitoPilot GUI. But instead of clicking the `Start Nextflow` button, copy the Nextflow command and create a batch submission script.
+For users working on the Smithsonian Hydra cluster, you will notice there is an additional button in the `Update` window: `Submit as Job`. 
+Clicking this will automatically submit your MitoPilot workflow as a job to the cluster.
 
-We have provided a template below. You may wish to modify the job name (`-N`) and the log file name (`-o`).
+ADD IMAGES HERE
+
+If you are not working on Hydra, the `Submit as Job` button will not be an option.
+Instead, you can copy the Nextflow command in the `Update` window and embed it within a job submission script.
+Below is an example submission script for Hydra.
 
 ```bash
 #!/bin/sh
@@ -75,11 +80,5 @@ nextflow -log /pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025/test
 
 echo = `date` job $JOB_NAME done
 ```
-
-::: {.callout-important}
-You must use the options `-q lTWFM.sq` and `-l wfmq`. This is a special Hydra queue for workflow managers like Nextflow. You must also include `-pe mthread 2` in order to have enough available RAM for building the MitoPilot Singularity image.
-:::
-
-Move the submission script into your MitoPilot project directory. In the above example, `/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025/test_project_01`. Then submit the job using `qsub MY_SCRIPT_NAME.sh`.
 
 You can monitor the progress of this job using the `qstat` command and by checking on the log files. Once the job is done, you can relaunch the GUI to inspect the results. The same approach can be used for the Annotate module.

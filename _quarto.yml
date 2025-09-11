@@ -38,6 +38,7 @@ website:
         - qmd/advanced/02_customAsmbDB.qmd
         - qmd/advanced/03_customCurationDB.qmd
         - qmd/advanced/04_customCurationRuleset.qmd
+        - qmd/advanced/05_dbUpdate.qmd
 
 format:
   html:

@@ -14,12 +14,16 @@ First, let's create a directory to house our project. On the command line, run t
 mkdir -p /pool/public/genomics/${USER}/MitoPilot_workshop/my_project
 ```
 
-Now we need some sequence data. An example data directory is located on Hydra at `/PATH/TO/DATA`. This directory contains two FASTQ files per sample (the forward and reverse reads).
+Now we need some sequence data. 
+We have provided example data consisting of four octocoral species on the workshop GitHub repo.
+This directory contains two FASTQ files per sample (the forward and reverse reads).
 
 Let's copy the data to our new project directory.
 
 ```bash
-cp -rf /PATH/TO/DATA /pool/public/genomics/${USER}/MitoPilot_workshop/my_project
+cd /pool/public/genomics/${USER}/MitoPilot_workshop/my_project
+wget 
+tar -zxvf 
 ```
 
 Next we need to create a CSV mapping file with the following required columns:
@@ -28,10 +32,12 @@ Next we need to create a CSV mapping file with the following required columns:
 - `R1`: full name of the forward read file
 - `R2`: full name of the reverse read file
 
-Normally you would create this metadata sheet from scratch in Excel, but for the workshop you can copy the provided file:
+Normally you would create this metadata sheet from scratch in Excel, but for the workshop you can download the provided file:
 ```bash
-cp -rf /PATH/TO/map_file.csv /pool/public/genomics/${USER}/MitoPilot_workshop/my_project
+cd /pool/public/genomics/${USER}/MitoPilot_workshop/my_project
+wget 
 ```
 
-This mapping spreadsheet can contain extra columns with additional metadata. In the example file, there is an extra column `Family`. 
+This mapping spreadsheet can contain extra columns with additional metadata. 
+In the example file, there are also a few extra columns.
 These extra metadata fields can be useful for sorting and grouping samples later on.

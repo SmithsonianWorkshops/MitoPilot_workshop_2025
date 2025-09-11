@@ -11,18 +11,27 @@ wd <- "/pool/public/genomics/<<USER>>/MitoPilot_workshop/my_project/run_01"
 
 # full path to your sample mapping CSV file
 # swap <<USER>> for your user ID
-map_file <- "/pool/public/genomics/<<USER>>/MitoPilot_workshop/my_project/run_01/map_file.csv"
+map_file <- "/pool/public/genomics/<<USER>>/MitoPilot_workshop/my_project/map_file.csv"
 
 # full path to your sequence data directory
 # swap <<USER>> for your user ID
-seq_data <- "/pool/public/genomics/<<USER>>/MitoPilot_workshop/my_project/run_01/seq_data"
+seq_data <- "/pool/public/genomics/<<USER>>/MitoPilot_workshop/my_project/raw_data"
 
 # genetic code for your samples
 # see https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi
-genetic_code <- 2
+# for corals, the appropriate translation table is #4
+genetic_code <- 4
 
 # minimum number of reads required to process a sample
-min_reads <- 1000000
+# default is 2,000,000
+# here we are setting a very low threshold because the example reads have already been filtered extensively
+min_reads <- 10000
+
+# since this is a coral dataset, we need to use custom GetOrganelle reference databases
+# for more on custom assembly databases, see:
+# https://smithsonianworkshops.github.io/MitoPilot_workshop_2025/qmd/advanced/02_customAsmbDB.html
+label_db <- "/scratch/nmnh_ocean_dna/GetOrganelle_refDBs/2025_07_03/refs_final/labelDB.fasta"
+seed_db <- "/scratch/nmnh_ocean_dna/GetOrganelle_refDBs/2025_07_03/refs_final/seedDB.fasta"
 
 # specify an execution environment, "local", "NMNH_Hydra", or "NOAA_SEDNA"
 ex <- "NMNH_Hydra"
@@ -42,6 +51,8 @@ MitoPilot::new_project(
     genetic_code = genetic_code,
     min_depth = min_reads,
     data_path = seq_data,
+    custom_seeds_db = seed_db,
+    custom_labels_db = label_db,
     Rproj = FALSE
 )
 ```

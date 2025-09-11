@@ -1,0 +1,53 @@
+---
+title: "05 - adding or editing sample info"
+---
+
+MitoPilot databases can be modified using several R helper functions. 
+These functions will automatically create backups of the database in case you need to revert your changes. 
+For more information, please see the manual pages for these functions.
+
+::: {.callout-important}
+You must close any existing connections (e.g. the MitoPilot GUI) prior to modifying the database.
+:::
+
+## Updating sample metadata
+
+[`update_sample_metadata()`](https://smithsonian.github.io/MitoPilot/reference/update_sample_metadata.html)
+
+Update the metadata for an existing project database. 
+Cannot update ID, R1, or R2, but can add new metadata columns. 
+
+Arguments:
+
+- path: path to the project directory (default = current working directory)
+- update_mapping_fn: path to the update mapping CSV file. Must contain columns "ID" and "Taxon"
+- mapping_id: column name of the update mapping file to use as the primary key. Default = "ID"
+- mapping_taxon: column name of the update mapping file containing a Taxonomic identifier (eg, species name). Default = "Taxon"
+
+## Updating sample sequence data
+
+[`update_sample_seqdata()`](https://smithsonian.github.io/MitoPilot/reference/update_sample_seqdata.html)
+
+Update the sequence data files for samples in an existing project database. 
+After updating, user should rerun these samples, starting with the Assemble module. 
+
+Arguments:
+
+- path: path to the project directory (default = current working directory)
+- update_mapping_fn: path to the update mapping CSV file. Must contain columns "ID", "R1", and "R2"
+- mapping_id: column name of the update mapping file to use as the primary key. Default = "ID"
+
+## Adding samples to a project
+
+[`add_samples()`](https://smithsonian.github.io/MitoPilot/reference/add_samples.html)
+
+Add new samples to an existing project database. All samples will inherit the default processing options. 
+
+Arguments:
+
+- path: path to the project directory (default = current working directory)
+- update_mapping_fn: path to the update mapping CSV file. Must contain columns "ID", "Taxon, "R1", and "R2"
+- mapping_id: column name of the update mapping file to use as the primary key. Default = "ID"
+- mapping_taxon: column name of the update mapping file containing a Taxonomic identifier (eg, species name). Default = "Taxon"
+
+

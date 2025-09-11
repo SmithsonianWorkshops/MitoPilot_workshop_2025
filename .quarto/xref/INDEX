@@ -109,5 +109,8 @@
   },
   "qmd/advanced/04_customCurationRuleset.qmd": {
     "04_customCurationRuleset.html": "c869bcb0"
+  },
+  "qmd/advanced/05_dbUpdate.qmd": {
+    "05_dbUpdate.html": "415af359"
   }
 }

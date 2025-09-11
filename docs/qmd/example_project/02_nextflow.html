@@ -304,6 +304,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">04 - custom curation ruleset</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../qmd/advanced/05_dbUpdate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05 - adding or editing sample info</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -359,7 +365,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>There are two ways to run this Nextflow command on Hydra.</p>
 <section id="method-1-using-the-gui" class="level3">
 <h3 class="anchored" data-anchor-id="method-1-using-the-gui">Method 1: Using the GUI</h3>
-<p>With the <code>Update</code> window open, click the <code>Start Nextflow</code> button to run the analysis pipeline within the MitoPilot GUI. This requires you to keep the GUI open while the pipeline is running.</p>
+<p>With the <code>Update</code> window open, click the <code>Run from App</code> button to run the analysis pipeline within the MitoPilot GUI. This requires you to keep the GUI open while the pipeline is running.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -415,8 +421,9 @@ Note
 <section id="method-2-using-a-batch-job" class="level3">
 <h3 class="anchored" data-anchor-id="method-2-using-a-batch-job">Method 2: using a batch job</h3>
 <p>If you have a large number of samples to process (more than a few dozen), we recommend running the Assemble and Annotate MitoPilot modules as batch jobs.</p>
-<p>You will still need to generate the Nextflow command using the MitoPilot GUI. But instead of clicking the <code>Start Nextflow</code> button, copy the Nextflow command and create a batch submission script.</p>
-<p>We have provided a template below. You may wish to modify the job name (<code>-N</code>) and the log file name (<code>-o</code>).</p>
+<p>For users working on the Smithsonian Hydra cluster, you will notice there is an additional button in the <code>Update</code> window: <code>Submit as Job</code>. Clicking this will automatically submit your MitoPilot workflow as a job to the cluster.</p>
+<p>ADD IMAGES HERE</p>
+<p>If you are not working on Hydra, the <code>Submit as Job</code> button will not be an option. Instead, you can copy the Nextflow command in the <code>Update</code> window and embed it within a job submission script. Below is an example submission script for Hydra.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/sh</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#$ -N MitoPilot_assembly # MODIFY THIS IF DESIRED</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#$ -o MitoPilot_assembly.log # MODIFY THIS IF DESIRED</span></span>
@@ -436,20 +443,6 @@ Note
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ex">nextflow</span> <span class="at">-log</span> /pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025/test_project_01/.logs/nextflow.log run /home/macguigand/R/x86_64-redhat-linux-gnu-library/4.4/MitoPilot/nextflow <span class="at">-c</span> /pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025/test_project_01/.config <span class="at">-entry</span> WF1 </span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> = <span class="kw">`</span><span class="fu">date</span><span class="kw">`</span> job <span class="va">$JOB_NAME</span> done</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You must use the options <code>-q lTWFM.sq</code> and <code>-l wfmq</code>. This is a special Hydra queue for workflow managers like Nextflow. You must also include <code>-pe mthread 2</code> in order to have enough available RAM for building the MitoPilot Singularity image.</p>
-</div>
-</div>
-<p>Move the submission script into your MitoPilot project directory. In the above example, <code>/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025/test_project_01</code>. Then submit the job using <code>qsub MY_SCRIPT_NAME.sh</code>.</p>
 <p>You can monitor the progress of this job using the <code>qstat</code> command and by checking on the log files. Once the job is done, you can relaunch the GUI to inspect the results. The same approach can be used for the Annotate module.</p>
 
 
