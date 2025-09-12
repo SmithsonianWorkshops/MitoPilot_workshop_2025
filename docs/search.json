@@ -472,7 +472,7 @@
     "href": "qmd/MitoPilot_intro/MitoPilot-intro.html",
     "title": "Intro to MitoPilot",
     "section": "",
-    "text": "MitoPilot is an R package for mitogenome assembly and annotation from genome skimming data. It uses Nexflow and includes a R Shiny web app for project management and final curation of results, which can be exported in NCBI Genbank submission format. MitoPilot comes with extensive documentation.\nIntro slides: Download PDF file.",
+    "text": "Brief primer on mitochondrial genomes: Download PDF file.\nMitoPilot is an R package for mitogenome assembly and annotation from genome skimming data. It uses Nexflow and includes a R Shiny web app for project management and final curation of results, which can be exported in NCBI Genbank submission format. MitoPilot comes with extensive documentation.\nMitoPilot intro slides: Download PDF file.",
     "crumbs": [
       "Intro to MitoPilot"
     ]
@@ -559,6 +559,6 @@
     "href": "index.html",
     "title": "MitoPilot Workshop 2025",
     "section": "",
-    "text": "Welcome to the website for the 2025 Smithsonian NMNH MitoPilot workshop!\nOur schedule for today:\n\n9 AM – 12 PM: Introduction to mitogenomes and MitoPilot, cluster computing basics, MitoPilot installation, running a test project\n12 PM – 1 PM: lunch break\n1 PM – 3 PM: Finishing the test project, inspecting results, manual curation, export\n3 PM – 3:30 PM: break\n3:30 PM – 5 PM: How to set up your own project, custom assembly and annotation databases, wrap-up"
+    "text": "Welcome to the website for the 2025 Smithsonian NMNH MitoPilot workshop!\nOur schedule for today:\n\n9 AM – 12 PM: Introduction to mitogenomes and MitoPilot, cluster computing basics, MitoPilot installation, running a test project\n12 PM – 1 PM: Lunch break\n1 PM – 3 PM: Finishing the test project, inspecting results, manual curation, export\n3 PM – 3:30 PM: Break\n3:30 PM – 5 PM: How to set up your own project, custom assembly and annotation databases, wrap-up"
   }
 ]

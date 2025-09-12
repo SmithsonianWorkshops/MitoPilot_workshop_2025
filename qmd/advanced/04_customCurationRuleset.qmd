@@ -10,14 +10,14 @@ Currently, curation parameters are specified at project initialization and are a
 
 Below is a full list of curation parameters.
 
-- hit_threshold [PCG only]: Minimum percent sequencing similarity for a protein-coding gene. Any hits below this threshold will not be used for curation.
-- max_overlap: Maximum proportion of gene length that can overlap with another gene.
-- count: Maximum expected number of gene copies.
-- max_len: Maximum expected length (bp) of the gene.
-- min_len: Minimum expected length (bp) of the gene.
-- overlap: Start (5') and stop (3') rules for overlap between genes. Start is the maximum number of base pairs that can overlap at the 5' end of a gene. Stop is whether the 3' end of a gene can overlap AT ALL with another gene (True/False).
-- start_codons [PCG only]: Acceptable start codons.
-- stop_codons [PCG only]: Acceptable stop codons, including incomplete stop codons.
+- **hit_threshold** [PCG only]: Minimum percent sequencing similarity for a protein-coding gene. Any hits below this threshold will not be used for curation.
+- **max_overlap**: Maximum proportion of gene length that can overlap with another gene.
+- **count**: Maximum expected number of gene copies.
+- **max_len**: Maximum expected length (bp) of the gene.
+- **min_len**: Minimum expected length (bp) of the gene.
+- **overlap**: Start (5') and stop (3') rules for overlap between genes. Start is the maximum number of base pairs that can overlap at the 5' end of a gene. Stop is whether the 3' end of a gene can overlap AT ALL with another gene (True/False).
+- **start_codons** [PCG only]: Acceptable start codons.
+- **stop_codons** [PCG only]: Acceptable stop codons, including incomplete stop codons.
 
 If a gene fails to meet the specified parameters, it will be flagged with a warning message.
 
