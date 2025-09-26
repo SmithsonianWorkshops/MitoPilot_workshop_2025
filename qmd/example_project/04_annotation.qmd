@@ -8,17 +8,19 @@ We can now move on to the Annotate pipeline module. This module consists of an a
 
 Use the dropdown menu in the top left and select `Annotate`.
 
-Let's edit the `Annotate Opts` and increase the memory allocation to 60 GB. In this window, you could also edit the Mitos2 and tRNAscan-SE options. In the future, we will allow users to specify custom reference databases for annotation.
+Let's edit the `Annotate Opts` and increase the memory allocation to 60 GB. In this window, you could also edit the Mitos2 and tRNAscan-SE options. 
+
+In the future, we will allow users to specify custom reference databases for annotation. Here we will use the Chordata reference database. However, the Metazoa database generally works well for many taxa.
 
 ![Fig. 32](/images/32.png)
 
-You can also edit the curation options. For the test dataset, the default `fish_mito` options are fine, but let's increase the memory to 24 Gb.
+You can also edit the `Curate Opts`. For the test dataset, most of the default options are fine, but let's increase the memory to 24 Gb.
 
 In the curation options window, you can see all of the complex rules that will be applied when MitoPilot performs automatic curation of the annotation results. For example, here are the allowed stop codons for protein-coding genes.
 
 ![Fig. 33](/images/33.png)
 
-To run the Annotate module, you can use either approach described in the previous [Nextflow](02_nextflow.qmd) section. Let's use the GUI method.
+To run the Annotate module, you can use any of the approaches described in the previous [Nextflow](02_nextflow.qmd) section. Let's use the GUI method.
 
 ![Fig. 34](/images/34.png)
 
@@ -26,9 +28,13 @@ Once all steps are complete, the gears will stop spinning and you'll see a summa
 
 ## Exploring Annotation Results
 
-There are a LOT of results to explore from the Annotate module. The sample table reports some basic stats about the number of protein-coding genes (PCGs), tRNAs, and rRNAs. The `missing` column reports which mitochondrial genes were not annotated (based on the provided curation model). The `extra` column notes the number of potentially duplicated genes.
+There are a LOT of results to explore from the Annotate module. The sample table reports some basic stats about the number of protein-coding genes (PCGs), tRNAs, and rRNAs. The `missing` column reports which mitochondrial genes were not annotated (based on the provided curation model). The `extra` column notes which genes are potentially duplicated.
 
 Lastly, the `warnings` column indicates how many warning flags were raised during the validation step. Samples with many warnings will require more manual curation to ensure that they are not rejected upon submission to NCBI GenBank. Warning messages are explained in further detail [here](https://smithsonian.github.io/MitoPilot/articles/Fish-Mitogenome-Curation.html).
+
+![Fig. 35](/images/35.png)
+
+You can filter warnings using the dropdown menu at the lop left. The number in the `warnings` column will update to reflect the selected warning messages. This may be useful for isolating batches of samples that all were flagged with similar warnings.
 
 ![Fig. 35](/images/35.png)
 

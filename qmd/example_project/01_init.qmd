@@ -18,7 +18,7 @@ library(MitoPilot)
 
 # specify the directory where your test project will be created
 # if the directory does not exist, MitoPilot will create it
-wd <- "/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01"
+wd <- "/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-09-24/test_project_01"
 
 # specify an execution environment, "local", "NMNH_Hydra", or "NOAA_SEDNA"
 ex <- "NMNH_Hydra"
@@ -62,7 +62,7 @@ We can now launch the R Shiny graphical user interface (GUI) to examine our test
 ```r
 # the function to launch the GUI 
 # must be called from within your project directory
-wd <- "/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-06-13/test_project_01"
+wd <- "/pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-09-24/test_project_01"
 setwd(wd)
 MitoPilot::MitoPilot()
 ```

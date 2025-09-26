@@ -19,7 +19,7 @@ if (!requireNamespace("remotes", quietly = TRUE)) {
 if (!requireNamespace("BiocManager", quietly = TRUE)) {
     install.packages("BiocManager")
 }
-BiocManager::install("Smithsonian/MitoPilot")
+BiocManager::install("Smithsonian/MitoPilot", ask = FALSE) # "ask = FALSE" to automatically install dependencies
 
 ###########################################################################
 # Update MitoPilot (if needed)
@@ -33,6 +33,7 @@ BiocManager::install("Smithsonian/MitoPilot")
 # Load MitoPilot
 ###########################################################################
 
+# ONLY NEEDED FOR HYDRA CLUSTER
 # modify PATH to include:
 #   ~/bin (contains nextflow exe)
 #   java 21.0.2 (required for nextflow)

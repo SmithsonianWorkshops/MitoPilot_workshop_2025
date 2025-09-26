@@ -10,9 +10,12 @@ website:
   sidebar:
     style: "docked"
     search: true
+    collapse-level: 1
     contents:
-      - qmd/MitoPilot_intro/MitoPilot-intro.qmd
-      - qmd/HPC_intro/HPC-intro.qmd
+      - section: "Introduction"
+        contents:
+        - qmd/MitoPilot_intro/MitoPilot-intro.qmd
+        - qmd/HPC_intro/HPC-intro.qmd
       - section: "Scripts"
         contents:
         - qmd/scripts/01_bash-script.qmd

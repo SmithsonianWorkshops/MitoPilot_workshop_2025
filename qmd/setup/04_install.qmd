@@ -4,7 +4,7 @@ title: "04 - MitoPilot installation"
 
 ## First-time installation
 
-To install MitoPilot, use the RStudio server window to run the following. This might take a while.
+To install MitoPilot, run the following commands within RStudio (in the R console, not the terminal). First time installation will take a while.
 
 ```r
 if (!requireNamespace("remotes", quietly = TRUE)) {
@@ -13,7 +13,7 @@ if (!requireNamespace("remotes", quietly = TRUE)) {
 if (!requireNamespace("BiocManager", quietly = TRUE)) {
     install.packages("BiocManager")
 }
-BiocManager::install("Smithsonian/MitoPilot")
+BiocManager::install("Smithsonian/MitoPilot", ask = FALSE) # "ask = FALSE" to automatically install dependencies
 ```
 
 You may see a warning like this:
@@ -37,6 +37,6 @@ BiocManager::install("Smithsonian/MitoPilot")
 .rs.restartR()
 ```
 
-This will remove the old package, install the most recent version, and restart your R session. After updating, you will need to reload the package with `library(MitoPilot)`.
+This will remove the old MitoPilot package, install the most recent version, and restart your R session. After updating, you will need to reload the package with `library(MitoPilot)`.
 
 We also recommend clearing your Singularity cache with `singularity cache clean` whenever you update MitoPilot. This will ensure you are using the latest MitoPilot Singularity image. 

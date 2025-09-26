@@ -10,7 +10,7 @@ There are two methods to access RStudio server on Hydra.
 
 ### Method 1: RStudio Galaxy server (recommended)
 
-The Hydra Team recently launched an interactive R Studio environment that is accessible directly via a browser, at [https://galaxy.si.edu/R4](https://galaxy.si.edu/R4).
+The Hydra Team recently launched an interactive R Studio environment that is accessible directly via a browser, at [https://galaxy.si.edu/R4](https://galaxy.si.edu/R4). More info is available [here](https://confluence.si.edu/display/HPC/Dedicated+RStudio+Server).
 
 Hydra users can leverage this server to test, debug, and develop R based workflows using the interactive RStudio GUI (currently running R 4.4.3).
 

@@ -1,5 +1,5 @@
 ---
-title: "Intro to MitoPilot"
+title: "Mitogenomes and MitoPilot"
 ---
 
 Brief primer on mitochondrial genomes: {{< pdf /pdfs/Mitogenome_intro.pdf width=100% height=800 >}}

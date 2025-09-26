@@ -8,7 +8,11 @@ You will need an account to access the Smithsonian Hyrda computing cluster. Inst
 
 ## First time setup
 
-We have submitted a request to the Hydra team for installation of a Nextflow module. But for now, you will need to install your own copy of Nextflow on the cluster. Login to Hydra and run the following.
+We have submitted a request to the Hydra team for installation of a Nextflow module. But for now, you will need to install your own copy of Nextflow on the cluster. Login to Hydra and run the following commands.
+
+:::{.callout-note}
+If you are working on Hydra via the RStudio Server node, you can run these commands in the terminal window, located in the bottom left panel.
+:::
 
 ```bash
 # Nextflow installation instructions
@@ -25,7 +29,7 @@ chmod +x nextflow
 There will now be an executable `nextflow` file in your home directory. You should move it to a location that is in your `PATH`. For example:
 
 ```bash
- # create bin directory, if needed
+# create bin directory, if needed
 mkdir ~/bin
 # move nextflow to bin directory
 mv ~/nextflow ~/bin/nextflow 
@@ -35,7 +39,7 @@ echo 'export PATH="${HOME}/bin:${PATH}"' >> ~/.bashrc
 source ~/.bashrc
 ```
  
-This should allow you to call `nextflow` from anywhere on the cluster.
+This should allow you to run `nextflow` from anywhere on the cluster.
 
 :::{.callout-important}
 You must load the Hydra Java module (`module load tools/java/21.0.2`) whenever you wish to use Nextflow.

@@ -2,11 +2,26 @@
 title: "04 - custom curation ruleset"
 ---
 
-Automated curation and validation of mitogenome annotations is a central goal of MitoPilot. When samples are processed through the Annotate module, annotations are first generated using a combination of [MITOS2](https://gitlab.com/Bernt/MITOS) (for rRNA and PCG annotation) and [tRNAscan-SE](https://github.com/UCSC-LoweLab/tRNAscan-SE) (for tRNA annotation). Following the initial annotation, samples are processed through an automated curation process where modifications are made in attempt to bring the annotations closer to a state that will be considered acceptable for publication by NCBI GenBank. This automated curation process is based on two important inputs to the pipeline, a high-quality reference database of protein coding genes and a set of user configurable parameters.
+Automated curation and validation of mitogenome annotations is a central goal of MitoPilot. When samples are processed through the Annotate module, annotations are first generated using a combination of [MITOS2](https://gitlab.com/Bernt/MITOS) and [tRNAscan-SE](https://github.com/UCSC-LoweLab/tRNAscan-SE). 
+
+Following the initial annotation, samples are processed through an automated curation process where modifications are made in attempt to bring the annotations closer to a state that will be considered acceptable for publication by NCBI GenBank. This automated curation process is based on two important inputs to the pipeline, a high-quality reference database of protein coding genes and a set of user configurable parameters.
+
+MitoPilot currently has curation/validation rulesets for the following groups of organisms:
+
+- fishes
+- starfish
+- octocorals
+- dipterans
+- turtles (testing in progress)
+- copepods (testing in progress)
+- mammals (untested)
+- lepidosaurs (untested)
 
 ## Curation Parameters
 
-Currently, curation parameters are specified at project initialization and are applied to all samples within the project. By default, the parameters are set by the function, `params_fish_mito()`. 
+Curation parameters are set in the `Curation Opts` section of the Annotate module.
+
+![Fig. 5](/images/advanced/05.png)
 
 Below is a full list of curation parameters.
 

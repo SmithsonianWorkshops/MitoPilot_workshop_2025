@@ -2,11 +2,16 @@
 title: "05 - load MitoPilot"
 ---
 
-## Loading the MitoPilot package
+## Setting environmental variables
 
-To load the MitoPilot R package, we first need to modify our `PATH` environmental variable. This will allow our RStudio session to find and use `java` and `nextflow`.
+To load the MitoPilot R package, we first need to modify our `PATH` environmental variable. This will allow our RStudio session to find and use `java` and `nextflow`. 
+
+:::{.callout-note}
+This step is only necessary if you are running MitoPilot on the Hydra cluster. If you are running MitoPilot on your local computer, you do not need to do this.
+:::
 
 ```r
+# ONLY NEEDED FOR HYDRA CLUSTER
 # modify PATH to include:
 #   ~/bin (contains nextflow exe)
 #   java 21.0.2 (required for nextflow)
@@ -14,8 +19,10 @@ default_path <- "/cm/shared/apps/uge/8.8.1/bin/lx-amd64:/usr/local/sbin:/usr/loc
 new_path <- paste0(Sys.getenv("HOME"), "/bin:/share/apps/tools/java/21.0.2/bin")
 Sys.setenv(PATH = paste(new_path, default_path, sep = ":"))
 ```
+## Loading the MitoPilot package
 
-Next, load the MitoPilot package. 
+Next we need to load the MitoPilot package. 
+
 ```r
 library(MitoPilot)
 ```
