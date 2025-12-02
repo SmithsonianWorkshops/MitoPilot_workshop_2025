@@ -53,7 +53,9 @@ If you have a large number of samples to process (more than a few dozen), we rec
 For users working on the Smithsonian Hydra cluster, you will notice there is an additional button in the `Update` window: `Submit as Job`. 
 Clicking this will automatically submit your MitoPilot workflow as a job to the cluster.
 
-ADD IMAGES HERE
+::: {.callout-note}
+Currently, the `Submit as Job` button is only available for the Smithsonian Hydra cluster.
+:::
 
 You can monitor the progress of this job using the `qstat` command and by checking on the log files. 
 Once the job is done, you can relaunch the GUI to inspect the results. 
