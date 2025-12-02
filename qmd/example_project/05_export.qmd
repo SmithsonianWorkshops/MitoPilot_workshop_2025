@@ -12,11 +12,11 @@ Now let's create a group of samples. Sort the samples table by clicking on the `
 
 A new window will appear showing some summary information for the selected samples. Type a name for the group, click `Add..`, then click `Create`. You can then click `Close` to return to the sample table.
 
-![Fig. 41](/images/41.png)
+![Fig. 42](/images/42.png)
 
 The sample table now shows the group assignment in the `Group` column.
 
-![Fig. 42](/images/42.png)
+![Fig. 43](/images/43.png)
 
 ::: {.callout-note}
 You can assign new samples to an existing group. Simply select the samples you wish to add, click `GROUP`, then choose the existing group from the dropdown menu.
@@ -32,7 +32,7 @@ Currently, MitoPilot does not allow you to re-export an group name. You will hav
 
 We can proceed to exporting the data for this group. Click `EXPORT DATA`, which will open a new window. Only samples that have been added to a group can be exported in this manner.
 
-![Fig. 43](/images/43.png)
+![Fig. 44](/images/44.png)
 
 If you have multiple groups, you can select the appropriate one from the dropdown menu.
 
@@ -48,7 +48,7 @@ Click `Export` to generate the final files. It may take a couple of minutes, but
 
 Once complete, MitoPilot will print the location of the exported files. By default, that location is `YOUR_PROJECT_DIRECTORY/out/export/YOUR_GROUP_NAME`. 
 
-![Fig. 44](/images/44.png)
+![Fig. 45](/images/45.png)
 
 You can download these files from Hydra or open them from the RStudio server session.
 
@@ -56,29 +56,29 @@ You can download these files from Hydra or open them from the RStudio server ses
 
 MitoPilot will produce three output files. First, the `.html` file contains visualizations of each protein-coding gene alignment in your export group. This may be useful to quickly identify samples with poor annotations that need additional manual curation.
 
-![Fig. 45](/images/45.png)
+![Fig. 46](/images/46.png)
 
 For example, the ATP8 annotation for "SRR22396640" clearly stands out when compared with the other samples in this export group.
 
-![Fig. 46](/images/46.png)
+![Fig. 47](/images/47.png)
 
 Next are the two files you will need for submission to NCBI GenBank. The `.fasta` file contains the mitogenome assemblies for each sample, following the header template you specified when exporting the data.
 
-![Fig. 47](/images/47.png)
+![Fig. 48](/images/48.png)
 
 Additionally there is the `.tbl` file, a [standardized 5-column, tab-delimited feature table](https://www.ncbi.nlm.nih.gov/genbank/feature_table/) containing information about the annotated genes for each mitogenome.
 
-![Fig. 48](/images/48.png)
+![Fig. 49](/images/49.png)
 
 With a real dataset, you could use these two files for [submission to NCBI GenBank](https://www.ncbi.nlm.nih.gov/genbank/organelle_submit/).
 
 The export directory also contains a sub-directory `GFFs` with annotations for each sample in [GFF3 format](https://gmod.org/wiki/GFF3). GFF files can be loaded by tools like [Geneious](https://www.geneious.com/) for additional manual inspection prior to submission.
 
-![Fig. 49](/images/49.png)
+![Fig. 50](/images/50.png)
 
 Lastly, if you selected the `Export individual genes` option, there will be another directory `genes` containing sub-directories for every protein-coding and rRNA gene. In these you will find FASTA files and feature tables for the corresponding gene. There will also be a concatenated FASTA file and feature table containing all protein-coding genes, named `GROUP_PCGs.fasta/tbl`.  
 
-![Fig. 50](/images/50.png)
+![Fig. 51](/images/51.png)
 
 ## Wrap-up
 

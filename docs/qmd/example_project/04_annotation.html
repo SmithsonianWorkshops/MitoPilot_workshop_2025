@@ -385,15 +385,15 @@ ul.task-list li input[type="checkbox"] {
 <p>You can filter warnings using the dropdown menu at the lop left. The number in the <code>warnings</code> column will update to reflect the selected warning messages. This may be useful for isolating batches of samples that all were flagged with similar warnings.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../images/35.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 35</figcaption>
+<p><img src="../../images/36.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 36</figcaption>
 </figure>
 </div>
 <p>The annotation results for each sample can be examined more closely by clicking the <code>details</code> button. First, let’s examine the details for a good sample, SRR19434536 (<em>Rhinecanthus rectangulus</em>).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../images/36.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 36</figcaption>
+<p><img src="../../images/37.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 37</figcaption>
 </figure>
 </div>
 <p>This sample has the expected number of genes and no warnings. However, the <code>notes</code> column shows that MitoPilot still made some tweaks to the annotation during the curation step. For example, the start position of rRNA rrnL was moved 22 bp upstream and the stop codon for NAD2 was trimmed by 2 bp.</p>
@@ -401,15 +401,15 @@ ul.task-list li input[type="checkbox"] {
 <p>Clicking on the <code>Coverage Map</code> button will show a plot of sequence depth, zooming to the position of the highlighted gene. The colored bars representing the genes are transparent, allowing you to spot overlapping gene models that may need manual adjustment.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../images/37.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 37</figcaption>
+<p><img src="../../images/38.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 38</figcaption>
 </figure>
 </div>
 <p>For protein-coding genes, you can click the <code>Alignment</code> button to show the protein alignment of your annotated gene against a reference database. Currently, this shows only the top BLAST hits from the curation process, which may be one or more sequences.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../images/38.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 38</figcaption>
+<p><img src="../../images/39.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 39</figcaption>
 </figure>
 </div>
 <p>If you would like to use your own custom BLAST database, you can check the <code>Local blast</code> box. MitoPilot will return a message with instructions to run <code>options('MitoPilot.local.db' = '/path/to/local/blastp/db')</code> within your RStudio session. You will need to restart the MitoPilot GUI for this change to take effect.</p>
@@ -420,8 +420,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Try clicking the <code>+</code> button next to <code>START</code>. You should see that the “cox1 (focal)” sequence start position has shifted.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../images/39.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 39</figcaption>
+<p><img src="../../images/40.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 40</figcaption>
 </figure>
 </div>
 <p>This is clearly a worse alignment. Click <code>RESET</code> to undo your changes.</p>
@@ -429,8 +429,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Below the alignment section you will find the <code>Notes</code>. Use this section to keep track of your manual edits. Anything you write here will be saved automatically.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../images/40.png" class="img-fluid figure-img"></p>
-<figcaption>Fig. 40</figcaption>
+<p><img src="../../images/41.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. 41</figcaption>
 </figure>
 </div>
 <p>At the bottom of the window are several buttons. You can completely remove annotations by selecting them and clicking <code>Delete</code>. Use this feature with caution, as there’s no easy way to add the annotation back without <a href="https://smithsonian.github.io/MitoPilot/articles/FAQ.html#how-do-i-restore-annotatations-after-manual-editing">running the sample through the Annotate module again</a>.</p>

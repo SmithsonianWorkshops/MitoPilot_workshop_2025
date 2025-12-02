@@ -36,11 +36,11 @@ Lastly, the `warnings` column indicates how many warning flags were raised durin
 
 You can filter warnings using the dropdown menu at the lop left. The number in the `warnings` column will update to reflect the selected warning messages. This may be useful for isolating batches of samples that all were flagged with similar warnings.
 
-![Fig. 35](/images/35.png)
+![Fig. 36](/images/36.png)
 
 The annotation results for each sample can be examined more closely by clicking the `details` button. First, let's examine the details for a good sample, SRR19434536 (_Rhinecanthus rectangulus_).
 
-![Fig. 36](/images/36.png)
+![Fig. 37](/images/37.png)
 
 This sample has the expected number of genes and no warnings. However, the `notes` column shows that MitoPilot still made some tweaks to the annotation during the curation step. For example, the start position of rRNA rrnL was moved 22 bp upstream and the stop codon for NAD2 was trimmed by 2 bp.
 
@@ -48,11 +48,11 @@ Nucleotide sequences (and amino acid sequence for PCGs) can be copied to the cli
 
 Clicking on the `Coverage Map` button will show a plot of sequence depth, zooming to the position of the highlighted gene. The colored bars representing the genes are transparent, allowing you to spot overlapping gene models that may need manual adjustment.
 
-![Fig. 37](/images/37.png)
+![Fig. 38](/images/38.png)
 
 For protein-coding genes, you can click the `Alignment` button to show the protein alignment of your annotated gene against a reference database. Currently, this shows only the top BLAST hits from the curation process, which may be one or more sequences.
 
-![Fig. 38](/images/38.png)
+![Fig. 39](/images/39.png)
 
 If you would like to use your own custom BLAST database, you can check the `Local blast` box. MitoPilot will return a message with instructions to run `options('MitoPilot.local.db' = '/path/to/local/blastp/db')` within your RStudio session. You will need to restart the MitoPilot GUI for this change to take effect.
 
@@ -62,7 +62,7 @@ MitoPilot offers some basic functions to manually edit your annotation results. 
 
 Try clicking the `+` button next to `START`. You should see that the "cox1 (focal)" sequence start position has shifted.
 
-![Fig. 39](/images/39.png)
+![Fig. 40](/images/40.png)
 
 This is clearly a worse alignment. Click `RESET` to undo your changes.
 
@@ -70,7 +70,7 @@ If the alignment view contains many sequences, manual editing will be slow since
 
 Below the alignment section you will find the `Notes`. Use this section to keep track of your manual edits. Anything you write here will be saved automatically.
 
-![Fig. 40](/images/40.png)
+![Fig. 41](/images/41.png)
 
 At the bottom of the window are several buttons. You can completely remove annotations by selecting them and clicking `Delete`. Use this feature with caution, as there's no easy way to add the annotation back without [running the sample through the Annotate module again](https://smithsonian.github.io/MitoPilot/articles/FAQ.html#how-do-i-restore-annotatations-after-manual-editing).
 
