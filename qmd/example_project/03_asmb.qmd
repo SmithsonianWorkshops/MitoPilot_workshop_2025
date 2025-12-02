@@ -1,5 +1,5 @@
 ---
-title: "03 - assembly"
+title: "03 - assembly results"
 ---
 
 ## Inspecting Assembly Results

@@ -1,5 +1,5 @@
 ---
-title: "02 - running MitoPilot modules"
+title: "02 - assembly workflow"
 ---
 
 ## Running the MitoPilot workflow
