@@ -30,8 +30,8 @@ min_reads <- 10000
 # since this is a coral dataset, we need to use custom GetOrganelle reference databases
 # for more on custom assembly databases, see:
 # https://smithsonianworkshops.github.io/MitoPilot_workshop_2025/qmd/advanced/02_customAsmbDB.html
-label_db <- "/scratch/nmnh_ocean_dna/GetOrganelle_refDBs/2025_07_03/refs_final/labelDB.fasta"
-seed_db <- "/scratch/nmnh_ocean_dna/GetOrganelle_refDBs/2025_07_03/refs_final/seedDB.fasta"
+label_db <- "/scratch/nmnh_ocean_dna/GetOrganelle_refDBs/Octocorallia/2025_07_03/refs_final/labelDB.fasta"
+seed_db <- "/scratch/nmnh_ocean_dna/GetOrganelle_refDBs/Octocorallia/2025_07_03/refs_final/seedDB.fasta"
 
 # specify an execution environment, "local", "NMNH_Hydra", or "NOAA_SEDNA"
 ex <- "NMNH_Hydra"
