@@ -5,7 +5,7 @@ title: "01 - bash setup script"
 ```bash
 #!/bin/bash
 # SI NMNH MitoPilot workshop
-# September 24, 2025
+# December 11, 2025
 # https://dmacguigan.github.io/MitoPilot_workshop_2025/
 # author: Dan MacGuigan
 # macguigand@si.edu
