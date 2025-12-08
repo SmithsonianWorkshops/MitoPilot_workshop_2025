@@ -2,6 +2,8 @@
 title: "02 - initialize your project"
 ---
 
+Let's create a new R script for this project. In RStudio, select `File > New File > R Script` and save it to your new project directory.
+
 First we need to load the MitoPilot package.
 
 ```r

@@ -4,7 +4,15 @@ title: "04 - MitoPilot installation"
 
 ## First-time installation
 
-To install MitoPilot, run the following commands within RStudio (in the R console, not the terminal). First time installation will take a while.
+It's best practice to save R code to a script rather than copying and pasting directly to the R console. In a terminal, run the following command to set up a new directory for the test project.
+
+```bash
+mkdir -p /pool/public/genomics/${USER}/MitoPilot_workshop/test_project
+```
+
+Now create a new R script. In RStudio, select `File > New File > R Script` and save it to the new project directory. Use this script to save your R code for the test project.
+
+To install MitoPilot, run the following commands within RStudio. First time installation will take a while.
 
 ```r
 if (!requireNamespace("remotes", quietly = TRUE)) {

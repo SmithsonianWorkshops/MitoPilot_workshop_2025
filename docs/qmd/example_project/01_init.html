@@ -400,18 +400,19 @@ Note
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the directory where your test project will be created</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># if the directory does not exist, MitoPilot will create it</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>wd <span class="ot">&lt;-</span> <span class="st">"/pool/public/genomics/&lt;&lt;USER&gt;&gt;/MitoPilot_workshop/test_project/run_01"</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># specify an execution environment, "local", "NMNH_Hydra", or "NOAA_SEDNA"</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ex <span class="ot">&lt;-</span> <span class="st">"NMNH_Hydra"</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize the test project</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>MitoPilot<span class="sc">::</span><span class="fu">new_test_project</span>(</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">path =</span> wd,</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">executor =</span> ex,</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">full_size =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">Rproj =</span> <span class="cn">FALSE</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># swap &lt;&lt;USER&gt;&gt; for your user ID</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>wd <span class="ot">&lt;-</span> <span class="st">"/pool/public/genomics/&lt;&lt;USER&gt;&gt;/MitoPilot_workshop/test_project/run_01"</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># specify an execution environment, "local", "NMNH_Hydra", or "NOAA_SEDNA"</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>ex <span class="ot">&lt;-</span> <span class="st">"NMNH_Hydra"</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize the test project</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>MitoPilot<span class="sc">::</span><span class="fu">new_test_project</span>(</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">path =</span> wd,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">executor =</span> ex,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">full_size =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">Rproj =</span> <span class="cn">FALSE</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If the test project was successfully initialized, you should see the following message.</p>
 <pre><code>Creating project directory: /pool/public/genomics/macguigand/MitoPilot/NMNH_workshop_2025-12-01/test_project_01
 SRR22396758 - Upeneus parvus
@@ -436,9 +437,10 @@ Please open and review the .config file to ensure all required options are speci
 <p>We can now launch the R Shiny graphical user interface (GUI) to examine our test project and start the MitoPilot analysis pipeline.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the function to launch the GUI </span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># must be called from within your project directory</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>wd <span class="ot">&lt;-</span> <span class="st">"/pool/public/genomics/&lt;&lt;USER&gt;&gt;/MitoPilot_workshop/test_project/run_01"</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(wd)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>MitoPilot<span class="sc">::</span><span class="fu">MitoPilot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># swap &lt;&lt;USER&gt;&gt; for your user ID</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>wd <span class="ot">&lt;-</span> <span class="st">"/pool/public/genomics/&lt;&lt;USER&gt;&gt;/MitoPilot_workshop/test_project/run_01"</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(wd)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>MitoPilot<span class="sc">::</span><span class="fu">MitoPilot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../images/01.png" class="img-fluid figure-img"></p>

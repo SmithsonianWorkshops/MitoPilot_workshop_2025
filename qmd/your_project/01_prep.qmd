@@ -5,6 +5,7 @@ title: "01 - data prep"
 The following pages will walk through an example of how to initialize a MitoPilot project with your own data.
 
 To get started, you will need:
+
 - a directory containing all of your sequence data
 - a CSV mapping file
 

@@ -371,7 +371,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>The following pages will walk through an example of how to initialize a MitoPilot project with your own data.</p>
-<p>To get started, you will need: - a directory containing all of your sequence data - a CSV mapping file</p>
+<p>To get started, you will need:</p>
+<ul>
+<li>a directory containing all of your sequence data</li>
+<li>a CSV mapping file</li>
+</ul>
 <p>First, let’s create a directory to house our project. On the command line, run the following:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> /pool/public/genomics/<span class="va">${USER}</span>/MitoPilot_workshop/my_project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now we need some sequence data. The workshop GitHub repo has some example data, consisting of four octocoral species. This directory contains two FASTQ files per sample (the forward and reverse reads).</p>
