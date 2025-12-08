@@ -11,8 +11,9 @@ MitoPilot currently has curation/validation rulesets for the following groups of
 - fishes
 - starfish
 - octocorals
+- hexacorals
 - dipterans
-- turtles (testing in progress)
+- turtles
 - copepods (testing in progress)
 - mammals (untested)
 - lepidosaurs (untested)

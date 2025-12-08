@@ -58,7 +58,6 @@ TTY detected. Printing informational message about logging configuration. Loggin
 If you get a message saying "ERROR system error 98 (Address already in use)", someone else has a tunnel established with the default port (8787). To fix this, try using a different port, e.g. `start-rstudio-server -port 8890`. Any port number between 1025-65535 is allowed.
 :::
 
-
 Leave this cluster terminal window open, open a new terminal window on your local computer, and run the `ssh` command printed by `start-rstudio-server`.
 
 ```bash
