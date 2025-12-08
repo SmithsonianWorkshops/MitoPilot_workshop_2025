@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>02 - RStudio server – MitoPilot Workshop 2025</title>
+<title>02 - RStudio Server – MitoPilot Workshop 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/setup/01_Hydra.html">Setup</a></li><li class="breadcrumb-item"><a href="../../qmd/setup/02_RstudioServer.html">02 - RStudio server</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/setup/01_Hydra.html">Setup</a></li><li class="breadcrumb-item"><a href="../../qmd/setup/02_RstudioServer.html">02 - RStudio Server</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -212,7 +212,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../qmd/setup/02_RstudioServer.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">02 - RStudio server</span></a>
+ <span class="menu-text">02 - RStudio Server</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -350,10 +350,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#launching-rstudio-server" id="toc-launching-rstudio-server" class="nav-link active" data-scroll-target="#launching-rstudio-server">Launching RStudio server</a>
+  <li><a href="#launching-rstudio-server" id="toc-launching-rstudio-server" class="nav-link active" data-scroll-target="#launching-rstudio-server">Launching RStudio Server</a>
   <ul class="collapse">
-  <li><a href="#method-1-rstudio-galaxy-server-recommended" id="toc-method-1-rstudio-galaxy-server-recommended" class="nav-link" data-scroll-target="#method-1-rstudio-galaxy-server-recommended">Method 1: RStudio Galaxy server (recommended)</a></li>
-  <li><a href="#method-2-tunneling-to-a-rstudio-server-session" id="toc-method-2-tunneling-to-a-rstudio-server-session" class="nav-link" data-scroll-target="#method-2-tunneling-to-a-rstudio-server-session">Method 2: tunneling to a RStudio server session</a></li>
+  <li><a href="#method-1-the-dedicated-rstudio-server-recommended" id="toc-method-1-the-dedicated-rstudio-server-recommended" class="nav-link" data-scroll-target="#method-1-the-dedicated-rstudio-server-recommended">Method 1: the dedicated RStudio Server (recommended)</a></li>
+  <li><a href="#method-2-tunneling-to-a-rstudio-server-session" id="toc-method-2-tunneling-to-a-rstudio-server-session" class="nav-link" data-scroll-target="#method-2-tunneling-to-a-rstudio-server-session">Method 2: tunneling to a RStudio Server session</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -361,9 +361,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/setup/01_Hydra.html">Setup</a></li><li class="breadcrumb-item"><a href="../../qmd/setup/02_RstudioServer.html">02 - RStudio server</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/setup/01_Hydra.html">Setup</a></li><li class="breadcrumb-item"><a href="../../qmd/setup/02_RstudioServer.html">02 - RStudio Server</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">02 - RStudio server</h1>
+<h1 class="title">02 - RStudio Server</h1>
 </div>
 
 
@@ -381,13 +381,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <section id="launching-rstudio-server" class="level2">
-<h2 class="anchored" data-anchor-id="launching-rstudio-server">Launching RStudio server</h2>
-<p>We will use RStudio server to run MitoPilot. RStudio server on Hydra functions just like the normal RStudio on your local computer, except that you are accessing it remotely.</p>
-<p>There are two methods to access RStudio server on Hydra.</p>
-<section id="method-1-rstudio-galaxy-server-recommended" class="level3">
-<h3 class="anchored" data-anchor-id="method-1-rstudio-galaxy-server-recommended">Method 1: RStudio Galaxy server (recommended)</h3>
+<h2 class="anchored" data-anchor-id="launching-rstudio-server">Launching RStudio Server</h2>
+<p>We will use RStudio Server to run MitoPilot. RStudio Server on Hydra functions just like the normal RStudio on your local computer, except that you are accessing it remotely.</p>
+<p>There are two methods to access RStudio Server on Hydra.</p>
+<section id="method-1-the-dedicated-rstudio-server-recommended" class="level3">
+<h3 class="anchored" data-anchor-id="method-1-the-dedicated-rstudio-server-recommended">Method 1: the dedicated RStudio Server (recommended)</h3>
 <p>The Hydra Team recently launched an interactive R Studio environment that is accessible directly via a browser, at <a href="https://galaxy.si.edu/R4">https://galaxy.si.edu/R4</a>. More info is available <a href="https://confluence.si.edu/display/HPC/Dedicated+RStudio+Server">here</a>.</p>
-<p>Hydra users can leverage this server to test, debug, and develop R based workflows using the interactive RStudio GUI (currently running R 4.4.3).</p>
+<p>Hydra users can leverage this dedicated server to test, debug, and develop R based workflows using the interactive RStudio GUI (currently running R 4.4.3).</p>
 <p>By logging in with your Hydra account credentials, users will have access to the storage under /pool, /scratch, and /store. This server offers resources totaling 192 CPUs and 1.5 T of RAM.</p>
 <p><strong><em>Notes:</em></strong></p>
 <ol type="1">
@@ -395,10 +395,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>This server is only accessible from trusted computers, not on the public internet. For technical reasons, to access this resource via telework.si.edu, go to <a href="https://galaxy.si.edu">https://galaxy.si.edu</a> and then choose the “R4 v443” option.</li>
 <li>This is a new resource - please be patient as we test this offering with our user community. We will evaluate this test once Hydra is moved to the new datacenter and decide whether it should be kept or altered in any way.</li>
 </ol>
+<p>More information can be found <a href="https://confluence.si.edu/display/HPC/Dedicated+RStudio+Server">here</a>.</p>
 </section>
 <section id="method-2-tunneling-to-a-rstudio-server-session" class="level3">
-<h3 class="anchored" data-anchor-id="method-2-tunneling-to-a-rstudio-server-session">Method 2: tunneling to a RStudio server session</h3>
-<p>To launch RStudio server on Hydra, run the following.</p>
+<h3 class="anchored" data-anchor-id="method-2-tunneling-to-a-rstudio-server-session">Method 2: tunneling to a RStudio Server session</h3>
+<p>To launch a RStudio Server session on Hydra, run the following.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># avoid package conflicts (may not be necessary for all users)</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load the RStudio server module</span></span>
@@ -415,7 +416,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If this is your first time launching RStudio server, you may be asked to run a different command.</p>
+<p>If this is your first time launching RStudio Server, you may be asked to run a different command.</p>
 </div>
 </div>
 <p>You will see something like this printed to your screen.</p>
@@ -442,9 +443,9 @@ Why can’t I connect?
 </div>
 <p>Leave this cluster terminal window open, open a new terminal window on your local computer, and run the <code>ssh</code> command printed by <code>start-rstudio-server</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-N</span> <span class="at">-L</span> 8787:login02:8787 macguigand@hydra-login01.si.edu</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Enter your Hydra password when prompted. If nothing happens, this means that you have successfully established a SSH tunnel and can connect to RStudio server.</p>
+<p>Enter your Hydra password when prompted. If nothing happens, this means that you have successfully established a SSH tunnel and can connect to RStudio Server.</p>
 <p>Leaving both terminal windows open, enter <a href="http://localhost:YOUR_PORT_NUMBER">http://localhost:YOUR_PORT_NUMBER</a> in a web browser. We recommend using Chrome or Firefox. There are some known issues running MitoPilot with Safari.</p>
-<p>Enter your cluster login credentials to access the RStudio server. This should open a full RStudio session in your browser. Any R commands run in this new window will execute on the cluster.</p>
+<p>Enter your cluster login credentials to access the RStudio Server. This should open a full RStudio session in your browser. Any R commands run in this new window will execute on the cluster.</p>
 
 
 </section>

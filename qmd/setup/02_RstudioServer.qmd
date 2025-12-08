@@ -1,18 +1,18 @@
 ---
-title: "02 - RStudio server"
+title: "02 - RStudio Server"
 ---
 
-## Launching RStudio server
+## Launching RStudio Server
 
-We will use RStudio server to run MitoPilot. RStudio server on Hydra functions just like the normal RStudio on your local computer, except that you are accessing it remotely. 
+We will use RStudio Server to run MitoPilot. RStudio Server on Hydra functions just like the normal RStudio on your local computer, except that you are accessing it remotely. 
 
-There are two methods to access RStudio server on Hydra.
+There are two methods to access RStudio Server on Hydra.
 
-### Method 1: RStudio Galaxy server (recommended)
+### Method 1: the dedicated RStudio Server (recommended)
 
 The Hydra Team recently launched an interactive R Studio environment that is accessible directly via a browser, at [https://galaxy.si.edu/R4](https://galaxy.si.edu/R4). More info is available [here](https://confluence.si.edu/display/HPC/Dedicated+RStudio+Server).
 
-Hydra users can leverage this server to test, debug, and develop R based workflows using the interactive RStudio GUI (currently running R 4.4.3).
+Hydra users can leverage this dedicated server to test, debug, and develop R based workflows using the interactive RStudio GUI (currently running R 4.4.3).
 
 By logging in with your Hydra account credentials, users will have access to the storage under /pool, /scratch, and /store. This server offers resources totaling 192 CPUs and 1.5 T of RAM.
 
@@ -22,9 +22,11 @@ By logging in with your Hydra account credentials, users will have access to the
 2. This server is only accessible from trusted computers, not on the public internet. For technical reasons, to access this resource via telework.si.edu, go to [https://galaxy.si.edu](https://galaxy.si.edu) and then choose the "R4 v443" option.
 3. This is a new resource - please be patient as we test this offering with our user community. We will evaluate this test once Hydra is moved to the new datacenter and decide whether it should be kept or altered in any way.
 
-### Method 2: tunneling to a RStudio server session
+More information can be found [here](https://confluence.si.edu/display/HPC/Dedicated+RStudio+Server).
 
-To launch RStudio server on Hydra, run the following.
+### Method 2: tunneling to a RStudio Server session
+
+To launch a RStudio Server session on Hydra, run the following.
 
 ```bash
 # avoid package conflicts (may not be necessary for all users)
@@ -36,7 +38,7 @@ start-rstudio-server
 ```
 
 ::: {.callout-note}
-If this is your first time launching RStudio server, you may be asked to run a different command.
+If this is your first time launching RStudio Server, you may be asked to run a different command.
 :::
 
 You will see something like this printed to your screen.
@@ -63,8 +65,8 @@ Leave this cluster terminal window open, open a new terminal window on your loca
 ssh -N -L 8787:login02:8787 macguigand@hydra-login01.si.edu
 ```
 
-Enter your Hydra password when prompted. If nothing happens, this means that you have successfully established a SSH tunnel and can connect to RStudio server.
+Enter your Hydra password when prompted. If nothing happens, this means that you have successfully established a SSH tunnel and can connect to RStudio Server.
 
 Leaving both terminal windows open, enter [http://localhost:YOUR_PORT_NUMBER](http://localhost:YOUR_PORT_NUMBER) in a web browser. We recommend using Chrome or Firefox. There are some known issues running MitoPilot with Safari.
 
-Enter your cluster login credentials to access the RStudio server. This should open a full RStudio session in your browser. Any R commands run in this new window will execute on the cluster.
+Enter your cluster login credentials to access the RStudio Server. This should open a full RStudio session in your browser. Any R commands run in this new window will execute on the cluster.
