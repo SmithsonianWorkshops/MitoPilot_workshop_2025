@@ -2,7 +2,22 @@
 title: "02 - initialize your project"
 ---
 
-First we need to specify a number of parameters for the project.
+First we need to load the MitoPilot package.
+
+```r
+# ONLY NEEDED FOR HYDRA CLUSTER
+# modify PATH to include:
+#   ~/bin (contains nextflow exe)
+#   java 21.0.2 (required for nextflow)
+default_path <- "/cm/shared/apps/uge/8.8.1/bin/lx-amd64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/rstudio-server/bin/quarto/bin:/usr/lib/rstudio-server/bin/postback"
+new_path <- paste0(Sys.getenv("HOME"), "/bin:/share/apps/tools/java/21.0.2/bin")
+Sys.setenv(PATH = paste(new_path, default_path, sep = ":"))
+
+# load MitoPilot package
+library(MitoPilot)
+```
+
+Next we need to specify a number of parameters for the project.
 
 ```r
 # directory where your test project will be created
@@ -40,9 +55,6 @@ ex <- "NMNH_Hydra"
 Now we can initialize the project using those parameters.
 
 ```r
-# load the MitoPilot package
-library(MitoPilot)
-
 # initialize the test project
 MitoPilot::new_project(
     path = wd,
