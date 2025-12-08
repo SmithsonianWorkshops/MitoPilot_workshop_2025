@@ -41,6 +41,6 @@ source ~/.bashrc
  
 This should allow you to run `nextflow` from anywhere on the cluster.
 
-:::{.callout-important}
+:::{.callout-note}
 You must load the Hydra Java module (`module load tools/java/21.0.2`) whenever you wish to use Nextflow from the command line or in a job script.
 :::
