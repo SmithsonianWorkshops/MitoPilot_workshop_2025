@@ -118,5 +118,11 @@
   },
   "qmd/scripts/02_R-script.qmd": {
     "02_R-script.html": "513f38b4"
+  },
+  "qmd/setup/01_RstudioServer.qmd": {
+    "01_RstudioServer.html": "aa9e2a47"
+  },
+  "qmd/setup/02_Hydra.qmd": {
+    "02_Hydra.html": "1d98a660"
   }
 }
