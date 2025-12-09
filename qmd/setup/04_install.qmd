@@ -15,6 +15,10 @@ Now create a new R script. In RStudio, select `File > New File > R Script` and s
 To install MitoPilot, run the following commands within RStudio. First time installation will take a while.
 
 ```r
+###########################################################################
+# Install MitoPilot
+###########################################################################
+
 if (!requireNamespace("remotes", quietly = TRUE)) {
     install.packages("remotes")
 }
@@ -40,6 +44,10 @@ If there were no other error messages, you're ready to start using MitoPilot!
 If you need to update MitoPilot, run the following commands in RStudio server.
 
 ```r
+###########################################################################
+# Update MitoPilot (if needed)
+###########################################################################
+
 remove.packages("MitoPilot")
 BiocManager::install("Smithsonian/MitoPilot")
 .rs.restartR()

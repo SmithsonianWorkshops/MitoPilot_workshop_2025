@@ -11,6 +11,10 @@ This step is only necessary if you are running MitoPilot on the Hydra cluster. I
 :::
 
 ```r
+###########################################################################
+# Load MitoPilot
+###########################################################################
+
 # ONLY NEEDED FOR HYDRA CLUSTER
 # modify PATH to include:
 #   ~/bin (contains nextflow exe)

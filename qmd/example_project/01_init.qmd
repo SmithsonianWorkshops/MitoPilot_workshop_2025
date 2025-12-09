@@ -13,6 +13,10 @@ To initialize a MitoPilot with your own data, use the R function [`MitoPilot::ne
 :::
 
 ```r
+###########################################################################
+# Initialize test project
+###########################################################################
+
 # load the package
 library(MitoPilot)
 
@@ -61,6 +65,10 @@ The new project directory contains a hidden file `.config`, which you can inspec
 We can now launch the R Shiny graphical user interface (GUI) to examine our test project and start the MitoPilot analysis pipeline.
 
 ```r
+###########################################################################
+# Launch the MitoPilot GUI
+###########################################################################
+
 # the function to launch the GUI 
 # must be called from within your project directory
 # swap <<USER>> for your user ID
