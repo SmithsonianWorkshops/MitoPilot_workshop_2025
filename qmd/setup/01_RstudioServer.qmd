@@ -1,6 +1,10 @@
 ---
-title: "02 - RStudio Server"
+title: "01 - Hydra RStudio"
 ---
+
+## Access to the Hydra cluster
+
+You will need an account to access the Smithsonian Hyrda computing cluster. Instructions are available [here](https://confluence.si.edu/display/HPC/Hydra+Policies).
 
 ## Launching RStudio Server
 

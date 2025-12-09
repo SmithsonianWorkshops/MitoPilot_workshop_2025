@@ -22,8 +22,8 @@ website:
         - qmd/scripts/02_R-script.qmd
       - section: "Setup"
         contents:
-        - qmd/setup/01_Hydra.qmd
-        - qmd/setup/02_RstudioServer.qmd
+        - qmd/setup/01_RstudioServer.qmd
+        - qmd/setup/02_Hydra.qmd
         - qmd/setup/03_RIntro.qmd
         - qmd/setup/04_install.qmd
         - qmd/setup/05_load.qmd

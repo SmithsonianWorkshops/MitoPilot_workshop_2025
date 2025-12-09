@@ -1,10 +1,6 @@
 ---
-title: "01 - Hydra cluster setup"
+title: "02 - Hydra cluster setup"
 ---
-
-## Access to the Hydra cluster
-
-You will need an account to access the Smithsonian Hyrda computing cluster. Instructions are available [here](https://confluence.si.edu/display/HPC/Hydra+Policies).
 
 ## First time setup
 
