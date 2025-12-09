@@ -390,6 +390,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>mammals (untested)</li>
 <li>lepidosaurs (untested)</li>
 </ul>
+<p>We are always looking to add new taxa! If your taxonomic group is not listed here, please <a href="https://github.com/Smithsonian/MitoPilot/issues">post an issue</a> or contact Dan MacGuigan directly.</p>
 <section id="curation-parameters" class="level2">
 <h2 class="anchored" data-anchor-id="curation-parameters">Curation Parameters</h2>
 <p>Curation parameters are set in the <code>Curation Opts</code> section of the Annotate module.</p>
@@ -409,9 +410,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>overlap</strong>: Start (5’) and stop (3’) rules for overlap between genes. Start is the maximum number of base pairs that can overlap at the 5’ end of a gene. Stop is whether the 3’ end of a gene can overlap AT ALL with another gene (True/False).</li>
 <li><strong>start_codons</strong> [PCG only]: Acceptable start codons.</li>
 <li><strong>stop_codons</strong> [PCG only]: Acceptable stop codons, including incomplete stop codons.</li>
+<li><strong>intron</strong> [PCG only]: Can this gene have introns? (True/False)</li>
 </ul>
 <p>If a gene fails to meet the specified parameters, it will be flagged with a warning message.</p>
-<p>Customization of the parameters can be achieved by directly providing a complete named list, or by passing individual modifications to the <code>params_fish_mito()</code> function. For example, the default expected count of trnW genes could be increased to 2 and the default percent similarity of an “acceptable” protein-coding gene match could be reduced to 85 by initializing a new project with:</p>
+<p>Customization of the parameters can be achieved by providing a complete named list or by passing individual modifications to the <code>params_TAXON_mito()</code> function. For example, the default expected count of trnW genes could be increased to 2 and the default percent similarity of an “acceptable” protein-coding gene match could be reduced to 85 by initializing a new project with:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">new_project</span>(</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    ...,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">curate_params =</span> <span class="fu">params_fish_mito</span>(</span>
@@ -425,7 +427,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        )</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The full set of default curation parameters can be viewed in the MitoPilot GUI for each sample under <code>Curation Opts</code>. At the moments, these values can not be edited for individual samples from within the GUI, but this feature will eventually be added.</p>
+<p>The full set of default curation parameters can be viewed in the MitoPilot GUI for each sample under <code>Curation Opts</code>. Alternatively, one could examine the source code for a specific curation parameters function. For example, here is the source code for <a href="https://github.com/Smithsonian/MitoPilot/blob/main/R/params_fish_mito.R"><code>params_fish_mito</code></a>.</p>
+<p>At the moment, these values can not be edited for individual samples within the GUI, but this feature will eventually be added.</p>
 
 
 </section>

@@ -18,6 +18,8 @@ MitoPilot currently has curation/validation rulesets for the following groups of
 - mammals (untested)
 - lepidosaurs (untested)
 
+We are always looking to add new taxa! If your taxonomic group is not listed here, please [post an issue](https://github.com/Smithsonian/MitoPilot/issues) or contact Dan MacGuigan directly. 
+
 ## Curation Parameters
 
 Curation parameters are set in the `Curation Opts` section of the Annotate module.
@@ -34,10 +36,11 @@ Below is a full list of curation parameters.
 - **overlap**: Start (5') and stop (3') rules for overlap between genes. Start is the maximum number of base pairs that can overlap at the 5' end of a gene. Stop is whether the 3' end of a gene can overlap AT ALL with another gene (True/False).
 - **start_codons** [PCG only]: Acceptable start codons.
 - **stop_codons** [PCG only]: Acceptable stop codons, including incomplete stop codons.
+- **intron** [PCG only]: Can this gene have introns? (True/False)
 
 If a gene fails to meet the specified parameters, it will be flagged with a warning message.
 
-Customization of the parameters can be achieved by directly providing a complete named list, or by passing individual modifications to the `params_fish_mito()` function. For example, the default expected count of trnW genes could be increased to 2 and the default percent similarity of an "acceptable" protein-coding gene match could be reduced to 85 by initializing a new project with:
+Customization of the parameters can be achieved by providing a complete named list or by passing individual modifications to the `params_TAXON_mito()` function. For example, the default expected count of trnW genes could be increased to 2 and the default percent similarity of an "acceptable" protein-coding gene match could be reduced to 85 by initializing a new project with:
 
 ```r
 new_project(
@@ -55,4 +58,6 @@ new_project(
 )
 ```
 
-The full set of default curation parameters can be viewed in the MitoPilot GUI for each sample under `Curation Opts`. At the moments, these values can not be edited for individual samples from within the GUI, but this feature will eventually be added.
+The full set of default curation parameters can be viewed in the MitoPilot GUI for each sample under `Curation Opts`. Alternatively, one could examine the source code for a specific curation parameters function. For example, here is the source code for [`params_fish_mito`](https://github.com/Smithsonian/MitoPilot/blob/main/R/params_fish_mito.R).
+
+At the moment, these values can not be edited for individual samples within the GUI, but this feature will eventually be added.
