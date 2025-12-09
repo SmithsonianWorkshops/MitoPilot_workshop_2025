@@ -31,6 +31,8 @@ mkdir ~/bin
 mv ~/nextflow ~/bin/nextflow 
 # add bin directory to PATH, in case it's not already there
 echo 'export PATH="${HOME}/bin:${PATH}"' >> ~/.bashrc 
+# specify Nextflow version to avoid a bug in latest release
+echo 'export NXF_VER=25.04.3' >> ~/.bashrc
 # reload your bash configuration file
 source ~/.bashrc
 ```

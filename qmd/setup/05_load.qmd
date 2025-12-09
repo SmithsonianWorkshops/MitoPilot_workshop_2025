@@ -22,6 +22,8 @@ This step is only necessary if you are running MitoPilot on the Hydra cluster. I
 default_path <- "/cm/shared/apps/uge/8.8.1/bin/lx-amd64:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/rstudio-server/bin/quarto/bin:/usr/lib/rstudio-server/bin/postback"
 new_path <- paste0(Sys.getenv("HOME"), "/bin:/share/apps/tools/java/21.0.2/bin")
 Sys.setenv(PATH = paste(new_path, default_path, sep = ":"))
+# specify Nextflow version to avoid a bug in latest release
+Sys.setenv(NXF_VER = "25.04.3")
 ```
 ## Loading the MitoPilot package
 
