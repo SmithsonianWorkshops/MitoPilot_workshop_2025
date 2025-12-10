@@ -5,12 +5,12 @@ title: "01 - assembly alternatives"
 ## MitoFinder
 
 By default, MitoPilot uses [GetOrganelle](https://github.com/Kinggerm/GetOrganelle) to assemble the mitochondrial genome.
-GetOrganelle will only assemble the subset of sequence reads which it identifies as mitochondrial. 
+GetOrganelle will only assemble the subset of reads which it identifies as mitochondrial. 
 This makes it a very fast assembler that tends to work best if you have a sufficient reference database (more on that later).
-However, there may be cases where GetOrganlle produces unsatisfactory results.
+However, there may be cases where GetOrganelle produces unsatisfactory results.
 
 If you wish to try a different assembly method, we have also implemented [MitoFinder](https://github.com/RemiAllio/MitoFinder) in MitoPilot.
-Unlike GetOrganlle, MitoFinder performs a complete assembly of all your reads using [MEGAHIT](https://github.com/voutcn/megahit), [MetaSPAdes](https://github.com/ablab/spades), or [IDBA-UB](https://github.com/loneknightpy/idba).
+Unlike GetOrganelle, MitoFinder performs a complete assembly of all your reads using [MEGAHIT](https://github.com/voutcn/megahit), [MetaSPAdes](https://github.com/ablab/spades), or [IDBA-UB](https://github.com/loneknightpy/idba).
 This makes it far slower, but can sometimes be more effective for organisms with few or poor reference mitogenomes.
 
 MitoFinder can be selected as the assembler in the `Assembly Opts.` window of the Assemble module.
