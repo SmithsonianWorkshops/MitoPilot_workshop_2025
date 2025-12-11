@@ -29,4 +29,9 @@ mv ~/nextflow ~/bin/nextflow
 echo 'export PATH="${HOME}/bin:${PATH}"' >> ~/.bashrc 
 # reload your bash configuration file
 source ~/.bashrc
+
+# make directory for workshop
+mkdir -p /pool/public/genomics/${USER}/MitoPilot_workshop/test_project
+# create a new R script
+touch /pool/public/genomics/${USER}/MitoPilot_workshop/test_project/MitoPilot.R
 ```

@@ -380,7 +380,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="first-time-installation" class="level2">
 <h2 class="anchored" data-anchor-id="first-time-installation">First-time installation</h2>
 <p>It’s best practice to save R code to a script rather than copying and pasting directly to the R console. In a terminal, run the following command to set up a new directory for the test project.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> /pool/public/genomics/<span class="va">${USER}</span>/MitoPilot_workshop/test_project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make directory for workshop</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> /pool/public/genomics/<span class="va">${USER}</span>/MitoPilot_workshop/test_project</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new R script</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> /pool/public/genomics/<span class="va">${USER}</span>/MitoPilot_workshop/test_project/MitoPilot.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now create a new R script. In RStudio, select <code>File &gt; New File &gt; R Script</code> and save it to the new project directory. Use this script to save your R code for the test project.</p>
 <p>To install MitoPilot, run the following commands within RStudio. First time installation will take a while.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">###########################################################################</span></span>

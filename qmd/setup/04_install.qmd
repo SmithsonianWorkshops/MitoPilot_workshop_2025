@@ -7,7 +7,10 @@ title: "04 - MitoPilot installation"
 It's best practice to save R code to a script rather than copying and pasting directly to the R console. In a terminal, run the following command to set up a new directory for the test project.
 
 ```bash
+# make directory for workshop
 mkdir -p /pool/public/genomics/${USER}/MitoPilot_workshop/test_project
+# create a new R script
+touch /pool/public/genomics/${USER}/MitoPilot_workshop/test_project/MitoPilot.R
 ```
 
 Now create a new R script. In RStudio, select `File > New File > R Script` and save it to the new project directory. Use this script to save your R code for the test project.
